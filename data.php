@@ -11,18 +11,16 @@ require_once './common/config.php';
 
 
 $json_data = file_get_contents("php://input");
-$data = json_decode($json_data);
+$data = json_decode($json_data,true);
 
 
 function check_repeat($data)
 {
 	$db = DB::getInstance();
 	//导入人员明细
-	$T_EC_EmpDetail = $data["T_EC_EmpDetail"];
-	$cond = array(
-		"IdCardNo" => $T_EC_EmpDetail["IdCardNo"],
-	);
-	$ret = $db->find(DB_NAME,"T_EC_EmpDetail",array("*"),$cond);
+	$T_EC_Apply = $data["T_EC_Apply"];
+
+	$ret = $db->find(DB_NAME,"T_EC_Apply",array("*"),$T_EC_Apply);
 	if(is_array($ret) && sizeof($ret) >= 1){
 		return true;
 	}
@@ -54,7 +52,6 @@ function insert_data($data){
 	return true;
 }
 
-
 switch ($data["cmd"]) {
 	case 'check_repeat':
 		$ret = check_repeat($data["data"]);
@@ -65,10 +62,12 @@ switch ($data["cmd"]) {
 		}
 		break;
 	case 'insert_image':
-		insert_image($data["data"]);
+		$ret = insert_image($data["data"]);
+		echo $ret;
 		break;
 	case 'insert_data':
-		insert_data($data["data"]);
+		$ret = insert_data($data["data"]);
+		echo $ret;
 		break;
 
 	default:
@@ -76,4 +75,3 @@ switch ($data["cmd"]) {
 		break;
 }
 
-$db = DB::getInstance();

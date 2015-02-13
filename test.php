@@ -41,6 +41,14 @@ $data["T_EC_ResumeEducation"] = array();
 //工作经历-简历子表
 $data["T_EC_ResumeExperience"] = array();
 
-$msg["data"] = $data;
+$msg["data"] = array(
+		"test" => array(
+				"id" => 1,
+				"name" => "luan",
+			)
 
-Util::http_post("http://127.0.0.1/haierHR-DB/data.php",json_encode($msg));
+	);
+
+$ret = Util::http_post("http://127.0.0.1/haierHR-DB/data.php",json_encode($msg));
+
+echo $ret;

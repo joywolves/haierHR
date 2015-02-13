@@ -7,7 +7,7 @@
 
 
 define('DB_HOST', '192.168.1.107');
-define('DB_USER', 'luan');
+define('DB_USER', 'sa');
 define('DB_PASS', 'luan');
 define('DB_NAME', 'ConfigEX');
 

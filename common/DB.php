@@ -56,26 +56,31 @@ class DB{
 		}
 		$Condition = implode(" and ", $Conds);
 		$sql = "select ".$Fields." from ".$table." where ".$Condition;
+		echo $sql;
     	$query = $this->query($db,$sql);
     	$data  = $this->fetch($query);
     	return $data;
 	}
 
 	public function insert($db,$table,$data){
-		$Fields = "";
-		$Values = "";
+		$Fields = array();
+		$Values = array();
 		foreach ($data as $key => $value){
 			if(is_string($value)){
 				$value = "'$value'";
 			}else{
 				$value = "$value";
 			}
-			$Fields = $Fields.$key.",";
-			$Values = $Values.$value.",";
+			array_push($Fields, $key);
+			array_push($Values, $value);
+			$Fields_s = implode(",", $Fields);
+			$Values_s = implode(",", $Values);
+
 		}
-		$sql = "insert into ".$table." (".$Fields.") values (".$Values.")";
+		$sql = "insert into ".$table." (".$Fields_s.") values (".$Values_s.")";
+		echo $sql;
 		$query = $this->query($db,$sql);
-		return mssql_rows_affected();
+		return mssql_rows_affected($this->_conn);
 	}
 
 	public function update($db,$data){
