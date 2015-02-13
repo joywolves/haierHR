@@ -6,8 +6,8 @@
  */
 
 
-define('DB_HOST', 'your host');
-define('DB_USER', 'db user name');
-define('DB_PASS', '******');
-define('DB_NAME', 'db name');
+define('DB_HOST', '192.168.1.107');
+define('DB_USER', 'luan');
+define('DB_PASS', 'luan');
+define('DB_NAME', 'ConfigEX');
 

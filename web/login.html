@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <title>haier</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.s.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<script src="js/jquery-1.7.2.min.js"></script> 
+	<script src="js/jquery.cxselect.min.js"></script>
+	<style type="text/css"></style>
+
+</head>
+<body>
+<!--加载页-->
+<div id="J_loading" class="mp_loading hide">
+  <div class="mp_loading_cont">
+    <div class="mp_loading_l"><i></i><i></i><i></i></div>
+    <div class="mp_loading_r"><i></i><i></i><i></i></div>
+    <div class="mp_loading_coffee"><i></i><i></i><i></i></div>
+  </div>
+  <txt id="J_percent" class="mp_loading_txt">100</txt>
+</div>
+<!--黑屏分享页-->
+<div id="J_mask" class="mask hide">
+  <img src="img/guide.png">
+</div>
+<!--遮膜页-->
+<div id="J_z_mask" class="z_mask hide"></div>
+<!-- music -->
+<!-- <audio id="musci1" src="audio/music.mp3" loop="loop"></audio> 
+<div class="music_btn off animated fadeIn"></div> -->
+<!--内容页-->
+<div id="J_wrapper" class="content">
+  <div class="wrapper">
+    <ul class="container" style="height: 100%; width:100%; -webkit-transform: translate3d(0px, 0px, 0px);">
+      <!--page1-->
+	  <li class="page page1" style="width:100%; height: 100%;">
+        <div id="content1" class="content">              
+            
+			<div><input id="login_sfz" type="text" class="p1_3 animated4 fadeIn" placeholder="用身份证信息登录，HR已录过应聘者信息 "></div>
+			<a href="index.html" id="page1enter"><img src="img/login_btn.png" class="p1_4 animated bounceInUp"></a>
+		   <!-- <div class="icos_arrow"></div> -->
+        </div>          
+       
+        
+      </li>
+	  	  
+    </ul>
+  </div>
+</div>
+
+<!--本界面不支持横屏操作，清竖屏浏览-->
+<div class="landscape">
+    <div class="iphone"></div>
+    <div class="iphone_text">请将屏幕竖向浏览</div>
+</div>
+<script src="js/halo.js"></script>
+<!--分享朋友-->
+<script>
+      var path=window.location.protocol+"//"+window.location.host+window.location.pathname.replace(/[^\/]+$/,'');
+      halo.shareConfig = {
+          img_url: path+'__PUBLIC__/Sns/haier/img/share.png',
+          img_width: 80,
+          img_heigth: 80,
+          link: path+'index.html',
+          title: '分享标题',
+          desc: '分享内容'
+      };
+</script>
+<!--功能效果处理-->
+<script>
+// 加载元素获取
+var J_loading = document.getElementById('J_loading');
+var J_wrapper = document.getElementById('J_wrapper');
+var J_percent = document.getElementById('J_percent');
+
+//屏蔽页面获取
+var J_mask = document.getElementById('J_mask');
+var J_z_mask = document.getElementById('J_z_mask');
+
+//操作功能
+halo.use('yscroll', 'loader',function(m){
+  var loader = new m.loader(['img/loading.png']).loadend(function(){
+      J_percent.innerHTML = parseInt(this.percent);
+
+      if(this._index == 3){      
+        m.removeClass(J_wrapper, 'hide');
+      }
+  }).complete(function(){
+      m.addClass(J_loading, 'hide');
+
+      var _last_idx = 0;
+
+
+      J_maskbtn.addEventListener('touchstart', function(e){
+        halo.util.removeClass(J_mask, 'hide');
+        e.preventDefault();
+        e.stopPropagation();
+        setTimeout(function(){
+          J_mask.addEventListener('touchstart', function(e){
+            halo.util.addClass(J_mask, 'hide'); 
+            e.preventDefault();
+            e.stopPropagation();
+          })
+        }, 300);   
+      });
+
+      document.addEventListener('touchstart', function(e){
+        var target = e.targetTouches ? e.targetTouches[0] : e.target;
+        if(target.target.className.indexOf('S_yp') > -1){
+          target = target.target;
+          var id = target.dataset['id'];
+          halo.util.removeClass(J_z_mask, 'hide');
+          console.log(id);
+        }
+      });
+
+    var trim = function(str) {  
+            return str.replace(/(^\s*)|(\s*$)/g, "");  
+    } 
+	
+    J_z_mask.addEventListener('touchstart', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+    })
+
+  });
+});
+//版本内核信息
+var browser={
+  versions:function(){
+    var u = navigator.userAgent, app = navigator.appVersion;
+    return {//移动终端浏览器版本信息
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/)||!!u.match(/AppleWebKit/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+      iPad: u.indexOf('iPad') > -1, //是否iPad
+      webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+      weixin:u.indexOf('MicroMessenger')>-1
+    };
+       }(),
+       language:(navigator.browserLanguage || navigator.language).toLowerCase(),
+   versionNum:function(){
+    /*版本号,只针对android*/
+    var u = navigator.userAgent,matchIndex=u.indexOf('Android');
+    if(matchIndex>-1){
+      var num=u.substring(matchIndex+7,matchIndex+11).replace(' ','');
+      return parseFloat(num);
+    }
+    return '';
+   }(),
+   avail:function(){
+    return {width:document.documentElement.clientWidth,height:document.documentElement.clientHeight}; 
+   }()
+};
+if(parseFloat(browser.versionNum) <= 2.3){
+  halo.util.addClass(J_wrapper, 'andoird2-3');
+}
+</script>
+<script>
+var orderFinished = false;
+var imgList = [];
+var count1=0;
+var progress1;
+var tempNum;
+var screenOneLocation = 1;
+imgList.push($('img').eq(count1).attr('src'));
+
+function com(){
+	var imgLength = $("img").length;
+	if(count1 == $("img").length - 1){
+		$(".loading").fadeOut();
+		$(".order_phone").hide();
+		setTimeout("screenOne()",500);
+		setTimeout("showAllBtn()",1000);
+		$("#musci1")[0].pause();
+	}else{
+		count1++;
+		//$("#loading_progress").html(count1);	
+		imgList.push($('img').eq(count1).attr('src'));
+		$("#loading_progress").html(parseInt((count1/imgLength)*100)+"%");
+		$.fn.loadImgList({
+			loadName:progress1,
+			loadProgressId:'loading_progress',
+			loadProgressType:'Number',
+			listName:imgList,
+			Callback:'com()'
+		});
+	}	
+}
+
+function showAllBtn(){
+	//$(".order_phone").show().addClass("animated fadeIn");	
+	$(".music_btn").show().addClass("animated fadeIn");
+}
+
+$(document).ready(function(){
+	com();
+	
+	window.addEventListener('touchstart', function() {
+	    if($(".music_btn").hasClass("off") && screenOneLocation ==1) {
+	        $(".music_btn").removeClass("off");
+	        $("#musci1")[0].play();
+	    }
+	}, false);
+
+})
+$(document).ready(function(){
+	//$("#musci1")[0].play();
+	$('video').bind('playing', function() {
+		$(".music_btn").addClass('off');
+		$("#musci1")[0].pause();
+	}).bind('pause ended', function() {
+		$(".music_btn").removeClass('off');
+		$("#musci1")[0].play();
+	});
+	
+	$("#video_btn").click(function(){
+		$("#video1")[0].play();	
+		$("#video1")[0].requestFullscreen();
+		$("#video1")[0].webkitEnterFullscreen(); // webkit类型的浏览器  
+        $("#video1")[0].mozRequestFullScreen();  // FireFox浏览器 
+	});
+	
+	$(".music_btn").click(function(){
+		if($(this).hasClass("off")){
+			$("#musci1")[0].play();
+			$(this).removeClass("off");
+		}else{
+			$("#musci1")[0].pause();
+			$(this).addClass("off");
+		}
+	});
+	
+	$(".s1_txt1 ").click(function(){
+		$(".event").fadeIn();
+	})
+	
+	$(".rules_close").click(function(){
+		$(".event").fadeOut();	
+	});
+	
+	$(window).bind('orientationchange', function(e) {
+        orient();
+    });
+	
+})
+ 
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 如有问题请通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+	var appId = "{zd:$jsapiappId}";
+	var timestamp = {zd:$jsapitimestamp};
+	var nonceStr = "{zd:$jsapinonceStr}";
+	var signature = "{zd:$jsapisignature}";
+	var link = window.location.href;
+	
+	wx.config({
+		  debug: false,
+		  appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: <?php echo $signPackage["timestamp"];?>,
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+		  signature: '<?php echo $signPackage["signature"];?>',
+		  jsApiList: [
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage'
+		  ]
+	  });
+/*
+  wx.config({
+      debug: false,
+      appId: appId,
+      timestamp: timestamp,
+      nonceStr: nonceStr,
+      signature: signature,
+      jsApiList: [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage'
+      ]
+  });
+	*/
+
+	wx.ready(function () {
+
+	  wx.onMenuShareAppMessage({
+		  title: '点我，日日顺，年年顺',
+		  desc: '过年了，你负责陪陪爸妈，我负责清洁你家。',
+		  link: link,
+		  imgUrl: 'http://web.wei-7star.com/rongyao_test/img/share.jpg',
+		  trigger: function (res) {
+			<!-- alert('用户点击发送给朋友'); -->
+		  },
+		  success: function (res) {
+			<!-- alert('已分享'); -->
+		  },
+		  cancel: function (res) {
+			<!-- alert('已取消'); -->
+		  },
+		  fail: function (res) {
+			alert(JSON.stringify(res));
+		  }
+		});
+
+	  wx.onMenuShareTimeline({
+		  title: '小伙伴们',
+		  link: link,
+		  imgUrl: 'http://web.wei-7star.com/rongyao_test/img/share.jpg',
+		  trigger: function (res) {
+			<!-- alert('用户点击分享到朋友圈'); -->
+		  },
+		  success: function (res) {
+			<!-- alert('已分享'); -->
+		  },
+		  cancel: function (res) {
+			<!-- alert('已取消'); -->
+		  },
+		  fail: function (res) {
+			alert(JSON.stringify(res));
+		  }
+		});
+	});
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?571c1dc08014b15b249f839bdabef1af";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</body></html>

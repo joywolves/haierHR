@@ -76,3 +76,4 @@ switch ($data["cmd"]) {
 		break;
 }
 
+$db = DB::getInstance();
