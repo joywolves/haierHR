@@ -47,9 +47,9 @@ class DB{
 		$Conds  = array();
 		foreach ($cond as $key => $value){
 			if(is_string($value)){
-				$values = "'$value'";
+				$value = "'$value'";
 			}else{
-				$values = "$value";
+				$value = "$value";
 			}
 			$one = $key." = ".$value;
 			array_push($Conds, $one);
@@ -66,9 +66,9 @@ class DB{
 		$Values = "";
 		foreach ($data as $key => $value){
 			if(is_string($value)){
-				$values = "'$value'";
+				$value = "'$value'";
 			}else{
-				$values = "$value";
+				$value = "$value";
 			}
 			$Fields = $Fields.$key.",";
 			$Values = $Values.$value.",";
