@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * auth 	: luan
+ * email 	: luan@luanhailiang.cn
+ * date 	: 2015/02/13
+ */
+
 require_once './common/DB.php';
 require_once './common/config.php';
 
