@@ -32,6 +32,22 @@ function insert_data($data){
 	return true;
 }
 
+function insert_image($data){
+	
+    $filename = $_FILES["file"]["name"];
+    $tmp_filename = $_FILES["file"]["tmp_name"];
+    $datastring = implode('', file ($tmp_filename));
+    $data = unpack("H*hex", $datastring);
+    $EmpPhoto = "0x".$data['hex'];
+
+    $fields = $data["T_EC_EntryPhoto"];
+    $fields["ImgContent"] = $EmpPhoto;
+
+    $ret = $db->insert(DB_NAME,"T_EC_EntryPhoto",$fields);
+
+    return $ret;
+}
+
 switch ($data["cmd"]) {
 	case 'check_repeat':
 		$ret = check_repeat($data["data"]);
@@ -43,6 +59,9 @@ switch ($data["cmd"]) {
 		break;
 	case 'insert_data':
 		insert_data($data["data"]);
+		break;
+	case 'insert_image':
+		insert_image($data["data"]);
 		break;
 	default:
 		# code...

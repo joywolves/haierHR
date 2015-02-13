@@ -60,8 +60,8 @@ class DB{
 		$Fields = "";
 		$Values = "";
 		foreach ($data as $key => $value){
-			$Fields = $Fields."'".$key."',";
-			$Values = $Values."'".$value."',";
+			$Fields = $Fields.$key.",";
+			$Values = $Values.$value.",";
 		}
 		$sql = "insert into ".$table." (".$Fields.") values (".$Values.")";
 		$query = $this->query($db,$sql);
