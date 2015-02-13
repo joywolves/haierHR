@@ -23,15 +23,6 @@ function check_repeat($data)
 	return false;
 }
 
-function insert_data($data){
-	$db = DB::getInstance();
-	//TODO 数据库事务回滚
-	foreach ($data as $table => $fields) {
-		$ret = $db->insert(DB_NAME,$table,$fields);
-	}
-	return true;
-}
-
 function insert_image($data){
 	
     $filename = $_FILES["file"]["name"];
@@ -48,6 +39,16 @@ function insert_image($data){
     return $ret;
 }
 
+function insert_data($data){
+	$db = DB::getInstance();
+	//TODO 数据库事务回滚
+	foreach ($data as $table => $fields) {
+		$ret = $db->insert(DB_NAME,$table,$fields);
+	}
+	return true;
+}
+
+
 switch ($data["cmd"]) {
 	case 'check_repeat':
 		$ret = check_repeat($data["data"]);
@@ -57,12 +58,13 @@ switch ($data["cmd"]) {
 			echo "no-repeat";
 		}
 		break;
-	case 'insert_data':
-		insert_data($data["data"]);
-		break;
 	case 'insert_image':
 		insert_image($data["data"]);
 		break;
+	case 'insert_data':
+		insert_data($data["data"]);
+		break;
+
 	default:
 		# code...
 		break;
