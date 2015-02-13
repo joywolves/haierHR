@@ -1,5 +1,7 @@
 
-ubuntu require:
+mssql is require
+
+ubuntu install:
 
 apt-get install php5-sybase
 
