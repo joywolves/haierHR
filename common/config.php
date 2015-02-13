@@ -6,8 +6,8 @@
  */
 
 
-define('DB_HOST', '10.135.104.154');
-define('DB_USER', 'HaierEntryForWX');
-define('DB_PASS', 'Haier,123');
+define('DB_HOST', 'your host');
+define('DB_USER', 'db user name');
+define('DB_PASS', '******');
 define('DB_NAME', 'ConfigEX');
 
