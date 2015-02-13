@@ -46,6 +46,11 @@ class DB{
     	$Fields = implode(",",$feilds);;
 		$Conds  = array();
 		foreach ($cond as $key => $value){
+			if(is_string($value)){
+				$values = "'$value'";
+			}else{
+				$values = "$value";
+			}
 			$one = $key." = ".$value;
 			array_push($Conds, $one);
 		}
@@ -60,6 +65,11 @@ class DB{
 		$Fields = "";
 		$Values = "";
 		foreach ($data as $key => $value){
+			if(is_string($value)){
+				$values = "'$value'";
+			}else{
+				$values = "$value";
+			}
 			$Fields = $Fields.$key.",";
 			$Values = $Values.$value.",";
 		}

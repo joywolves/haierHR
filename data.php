@@ -22,7 +22,7 @@ function check_repeat($data)
 	$cond = array(
 		"IdCardNo" => $T_EC_EmpDetail["IdCardNo"],
 	);
-	$ret = $db->find(DB_NAME,"T_EC_EmpDetail",$cond);
+	$ret = $db->find(DB_NAME,"T_EC_EmpDetail",array("*"),$cond);
 	if(is_array($ret) && sizeof($ret) >= 1){
 		return true;
 	}
