@@ -29,7 +29,7 @@ function check_login () {
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		// alert("Data: " + data + "\nStatus: " + status);
-		if(data == false){
+		if(data == "false"){
 			alert("IDCardNo not exist");
 		}else{
 			window.location.href="./index.html";
