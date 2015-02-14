@@ -18,3 +18,18 @@ function post_data(){
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
+
+function login_check () {
+	var data = {}
+	var msg = {}
+	msg["cmd"] = "check_repeat";
+	msg["data"] = data;
+	$.post("data.php",msg,
+	function(data,status){
+		alert("Data: " + data + "\nStatus: " + status);
+	});
+}
+
+function pull_data (argument) {
+	// body...
+}
