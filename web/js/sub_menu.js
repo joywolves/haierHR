@@ -62,14 +62,14 @@ $(function(){
 		public_search();
 	});
 	function public_search(){
-		var zw = $('.search_btn').css('width');
-		zw = zw.substring(0,zw.length-2);
+		// var zw = $('.search_btn').css('width');
+		// zw = zw.substring(0,zw.length-2);
 		
-		var w = document.documentElement.clientWidth-zw;
+		// var w = document.documentElement.clientWidth-zw;
 		
-		$('.search_text').css({'width':w+'px'});
-		var h = document.body.clientHeight-40;
-		$('.sub_menu').css({'height':h});
+		// $('.search_text').css({'width':w+'px'});
+		// var h = document.body.clientHeight-40;
+		// $('.sub_menu').css({'height':h});
 	}
 //返回顶部	
 $(function(){

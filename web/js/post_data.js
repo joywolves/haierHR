@@ -1,13 +1,9 @@
 function post_data(){
-	var T_EC_EntryEmpInfo = {}
-	T_EC_EntryEmpInfo["EmpName"] = $("#EmpName").val();
-
-	var T_EC_EntryInfo = {}
-	T_EC_EntryInfo["EmpName"] = $("#EmpName").val();
+	var T_EC_EntryEmpInfoExtra = {}
+	T_EC_EntryEmpInfoExtra["EmpName"] = $("#EmpName").val();
 
 	var data = {}
-	data["T_EC_EntryEmpInfo"] = T_EC_EntryEmpInfo;
-	data["T_EC_EntryInfo"] = T_EC_EntryInfo;
+	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
 
 	var msg = {}
 	msg["cmd"] = "insert_data";
@@ -43,7 +39,7 @@ function check_login () {
 
 function show_data(data){
 	var table;
-	if(table = data["T_EC_EntryEmpInfo"]){
+	if(table = data["T_EC_EntryEmpInfoExtra"]){
 		$("#EmpName").val(table["EmpName"]);
 	}
 	//...set html val by sql data
@@ -56,7 +52,7 @@ function pull_data () {
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
-		show_data(data);
+		show_data(JSON.parse(data));
 	});
 }
 
