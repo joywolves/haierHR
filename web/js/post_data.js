@@ -13,13 +13,13 @@ function post_data(){
 	msg["cmd"] = "insert_data";
 	msg["data"] = data;
 
-	$.post("data.php",JSON.stringify(msg),
+	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
 
-function login_check () {
+function check_login () {
 	var T_EC_EmpDetail = {}
 	T_EC_EmpDetail["IDCardNo"] = $("#IDCardNo").val();
 
@@ -30,9 +30,14 @@ function login_check () {
 	msg["cmd"] = "check_login";
 	msg["data"] = data;
 
-	$.post("data.php",JSON.stringify(msg),
+	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
+		if(data == false){
+
+		}else{
+			window.location.href="./index.html";
+		}
 	});
 }
 
@@ -48,7 +53,7 @@ function pull_data () {
 	var msg = {}
 	msg["cmd"] = "pull_data";
 
-	$.post("data.php",JSON.stringify(msg),
+	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
 		show_data(data);
@@ -59,7 +64,7 @@ function pull_image() {
 	var msg = {}
 	msg["cmd"] = "pull_image";
 
-	$.post("data.php",JSON.stringify(msg),
+	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
 	});
