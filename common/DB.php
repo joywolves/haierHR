@@ -83,11 +83,55 @@ class DB{
 		return mssql_rows_affected($this->_conn);
 	}
 
-	public function update($db,$data){
+	public function update($db,$table,$data,$cond,$upsert=false){
+		$Conds  = array();
+		foreach ($cond as $key => $value){
+			if(is_string($value)){
+				$value = "'$value'";
+			}else{
+				$value = "$value";
+			}
+			$one = $key." = ".$value;
+			array_push($Conds, $one);
+		}
+		$Condition = implode(" and ", $Conds);
 
+		$Sets  = array();
+		foreach ($data as $key => $value){
+			if(is_string($value)){
+				$value = "'$value'";
+			}else{
+				$value = "$value";
+			}
+			$one = $key." = ".$value;
+			array_push($Sets, $one);
+		}
+		$SetData = implode(" , ", $Sets);
+
+		$sql = "update ".$table." set ".$SetData." where ".$Condition;
+		$query = $this->query($db,$sql);
+		$ret = mssql_rows_affected($this->_conn);
+		if($ret == 0 && $upsert){
+			return insert($db,$table,$data);
+		}
+		return $ret;
 	}
 
-	public function remove($db,$data){
+	public function remove($db,$table,$cond){
+		$Conds  = array();
+		foreach ($cond as $key => $value){
+			if(is_string($value)){
+				$value = "'$value'";
+			}else{
+				$value = "$value";
+			}
+			$one = $key." = ".$value;
+			array_push($Conds, $one);
+		}
+		$Condition = implode(" and ", $Conds);
 
+		$sql = "delete from ".$table." where ".$Condition;
+		$query = $this->query($db,$sql);
+		return mssql_rows_affected($this->_conn);
 	}
 }
