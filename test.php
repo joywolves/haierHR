@@ -12,7 +12,7 @@ require_once './common/Util.php';
 
 $msg = array();
 
-$msg["cmd"] = "check_repeat"; 
+$msg["cmd"] = "check_login"; 
 //$msg["cmd"] = "insert_image"; 
 //$msg["cmd"] = "insert_data"; 
 

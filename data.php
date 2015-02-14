@@ -14,7 +14,7 @@ $json_data = file_get_contents("php://input");
 $data = json_decode($json_data,true);
 
 
-function check_repeat($data)
+function check_login($data)
 {
 	$db = DB::getInstance();
 	//导入人员明细
@@ -24,66 +24,113 @@ function check_repeat($data)
 	if(is_array($ret) && sizeof($ret) >= 1){
 		$one = end($ret);
 		// record Primary_key in cookie
-		// setcookie("Primary_key",$one["Primary_key"]);
+		setcookie("ApplyID",$one["ApplyID"]);
+		return $one;
+	}
+	return false;
+}
+function pull_data()
+{
+	if(!isset($_COOKIE["ApplyID"])){
+		return false;
+	}
+	$datas = array();
+	foreach ($TABLE_KEY as $table => $key) {
+		if($table == "T_EC_EntryPhoto"){
+			continue;
+		}
+		$cond = array(
+			$key => $_COOKIE["ApplyID"],
+		);
+		$ret = $db->find(DB_NAME,$table,array("*"),$cond);
+		if(is_array($ret) && sizeof($ret) >= 1){
+			$one = end($ret);
+			$datas[$table] = $one;
+		}
+	}
+	return $datas;
+}
+function pull_image()
+{
+	if(!isset($_COOKIE["ApplyID"])){
+		return false;
+	}
+	$table = "T_EC_EntryPhoto";
+	$key = $TABLE_KEY[$table];
+	$cond = array(
+		$key => $_COOKIE["ApplyID"],
+	);
+	$ret = $db->find(DB_NAME,$table,array("*"),$cond);
+	if(is_array($ret) && sizeof($ret) >= 1){
+		$one = end($ret);
 		return $one;
 	}
 	return null;
 }
-
 //not test yet
 function insert_image($data){
-	
+	if(!isset($_COOKIE["ApplyID"])){
+		return false;
+	}
     $filename = $_FILES["file"]["name"];
     $tmp_filename = $_FILES["file"]["tmp_name"];
     $datastring = implode('', file ($tmp_filename));
     $data = unpack("H*hex", $datastring);
     $EmpPhoto = "0x".$data['hex'];
 
-    $fields = $data["T_EC_EntryPhoto"];
+    $table = "T_EC_EntryPhoto";
+    $fields = $data[$table];
     $fields["ImgContent"] = $EmpPhoto;
-
-    $ret = $db->insert(DB_NAME,"T_EC_EntryPhoto",$fields);
+	$key = $TABLE_KEY[$table];
+	$cond = array(
+		$key => $_COOKIE["ApplyID"],
+	);
+    $ret = $db->update(DB_NAME,$table,$fields,$cond,true);
 
     return $ret;
 }
 
 function insert_data($data){
+	if(!isset($_COOKIE["ApplyID"])){
+		return false;
+	}
 	$db = DB::getInstance();
 
-	foreach ($data as $table => $fields) {
-		$ret = $db->insert(DB_NAME,$table,$fields);
-	}
 	// shoud like this
-	// foreach ($data as $table => $fields) {
-	// 	$cond = array(
-	// 		"Primary_key" => $fields["Primary key"],
-	// 	//	"Primary_key" => $_COOKIE["Primary key"],
-	// 	);
-	// 	$ret = $db->update(DB_NAME,$table,$fields,$cond,true);
-	// }
+	foreach ($data as $table => $fields) {
+		$key = $TABLE_KEY[$table];
+		$cond = array(
+			$key => $_COOKIE["ApplyID"],
+		);
+		$ret = $db->update(DB_NAME,$table,$fields,$cond,true);
+	}
 	return true;
 }
 
 switch ($data["cmd"]) {
-	case 'check_repeat':
-		$ret = check_repeat($data["data"]);
-		if($ret){
-			echo "repeat";
-		}else{
-			echo "no-repeat";
-		}
+	case 'check_login':
+		$ret = check_login($data["data"]);
+		echo json_encode($ret);
+		break;
+	case 'pull_data':
+		$ret = pull_data();
+		echo json_encode($ret);
+		break;
+	case 'pull_image':
+		$ret = pull_image();
+		echo json_encode($ret);
 		break;
 	case 'insert_image':
 		$ret = insert_image($data["data"]);
-		echo $ret;
+		echo json_encode($ret);
 		break;
 	case 'insert_data':
 		$ret = insert_data($data["data"]);
-		echo $ret;
+		echo json_encode($ret);
 		break;
 
 	default:
-		# code...
+		echo "Error command:".$data["cmd"];
 		break;
 }
 
