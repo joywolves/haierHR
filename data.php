@@ -22,11 +22,15 @@ function check_repeat($data)
 
 	$ret = $db->find(DB_NAME,"T_EC_Apply",array("*"),$T_EC_Apply);
 	if(is_array($ret) && sizeof($ret) >= 1){
-		return true;
+		$one = end($ret);
+		// record Primary_key in cookie
+		// setcookie("Primary_key",$one["Primary_key"]);
+		return $one;
 	}
-	return false;
+	return null;
 }
 
+//not test yet
 function insert_image($data){
 	
     $filename = $_FILES["file"]["name"];
@@ -45,10 +49,18 @@ function insert_image($data){
 
 function insert_data($data){
 	$db = DB::getInstance();
-	//TODO 数据库事务回滚
+
 	foreach ($data as $table => $fields) {
 		$ret = $db->insert(DB_NAME,$table,$fields);
 	}
+	// shoud like this
+	// foreach ($data as $table => $fields) {
+	// 	$cond = array(
+	// 		"Primary_key" => $fields["Primary key"],
+	// 	//	"Primary_key" => $_COOKIE["Primary key"],
+	// 	);
+	// 	$ret = $db->update(DB_NAME,$table,$fields,$cond,true);
+	// }
 	return true;
 }
 
