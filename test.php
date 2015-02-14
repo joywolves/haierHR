@@ -12,9 +12,8 @@ require_once './common/Util.php';
 
 $msg = array();
 
-$msg["cmd"] = "check_login"; 
-//$msg["cmd"] = "insert_image"; 
-//$msg["cmd"] = "insert_data"; 
+$msg["cmd"] = $_GET["cmd"]; 
+
 
 $data = array();
 
@@ -42,12 +41,15 @@ $data["T_EC_ResumeEducation"] = array();
 $data["T_EC_ResumeExperience"] = array();
 
 $msg["data"] = array(
-		"test" => array(
-				"id" => 1,
-				"name" => "luan",
+		"T_EC_EmpDetail" => array(
+				"IDCardNo" => "370686",
+			),
+		"T_EC_EntryEmpInfoExtra" => array(
+				"IDCardNo" => "370686",
 			)
 
 	);
+
 
 $ret = Util::http_post("http://127.0.0.1/haierHR-DB/data.php",json_encode($msg));
 

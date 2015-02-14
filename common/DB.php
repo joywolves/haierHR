@@ -118,7 +118,7 @@ class DB{
 		$query = $this->query($db,$sql);
 		$ret = mssql_rows_affected($this->_conn);
 		if($ret == 0 && $upsert){
-			return insert($db,$table,$data);
+			return $this->insert($db,$table,$data);
 		}
 		return $ret;
 	}

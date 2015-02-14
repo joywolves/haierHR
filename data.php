@@ -25,15 +25,18 @@ function check_login($data)
 		$one = end($ret);
 		// record Primary_key in cookie
 		setcookie("ApplyID",$one["ApplyID"]);
+		echo($_COOKIE["ApplyID"]);
 		return $one;
 	}
 	return false;
 }
 function pull_data()
 {
+	global  $TABLE_KEY;
 	if(!isset($_COOKIE["ApplyID"])){
 		return false;
 	}
+	$db = DB::getInstance();
 	$datas = array();
 	foreach ($TABLE_KEY as $table => $key) {
 		if($table == "T_EC_EntryPhoto"){
@@ -52,9 +55,11 @@ function pull_data()
 }
 function pull_image()
 {
+	global  $TABLE_KEY;
 	if(!isset($_COOKIE["ApplyID"])){
 		return false;
 	}
+	$db = DB::getInstance();
 	$table = "T_EC_EntryPhoto";
 	$key = $TABLE_KEY[$table];
 	$cond = array(
@@ -69,9 +74,11 @@ function pull_image()
 }
 //not test yet
 function insert_image($data){
+	global  $TABLE_KEY;
 	if(!isset($_COOKIE["ApplyID"])){
 		return false;
 	}
+	$db = DB::getInstance();
     $filename = $_FILES["file"]["name"];
     $tmp_filename = $_FILES["file"]["tmp_name"];
     $datastring = implode('', file ($tmp_filename));
@@ -85,12 +92,14 @@ function insert_image($data){
 	$cond = array(
 		$key => $_COOKIE["ApplyID"],
 	);
+	$fields[$key] = $_COOKIE["ApplyID"];
     $ret = $db->update(DB_NAME,$table,$fields,$cond,true);
 
     return $ret;
 }
 
 function insert_data($data){
+	global  $TABLE_KEY;
 	if(!isset($_COOKIE["ApplyID"])){
 		return false;
 	}
@@ -102,6 +111,7 @@ function insert_data($data){
 		$cond = array(
 			$key => $_COOKIE["ApplyID"],
 		);
+		$fields[$key] = $_COOKIE["ApplyID"];
 		$ret = $db->update(DB_NAME,$table,$fields,$cond,true);
 	}
 	return true;

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <title>haier</title>
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+<a href="#" onclick="chech_login()">check_login</a>|
+<a href="#" onclick="insert_data()">insert_data</a>|
+<a href="#" onclick="pull_data()">pull_data</a>|
+
+<script>
+
+function chech_login(){
+	var T_EC_EmpDetail = {}
+	T_EC_EmpDetail["IDCardNo"] = "370686";
+
+	var data = {}
+	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
+
+	var msg = {}
+	msg["cmd"] = "check_login";
+	msg["data"] = data;
+
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+		alert("Data: " + data + "\nStatus: " + status);
+	});
+}
+function insert_data(){
+	var T_EC_EntryEmpInfoExtra = {}
+	T_EC_EntryEmpInfoExtra["IDCardNo"] = "370686";
+
+	var data = {}
+	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
+
+	var msg = {}
+	msg["cmd"] = "insert_data";
+	msg["data"] = data;
+
+	$.post("../data.php", JSON.stringify(msg),
+	function(data,status){
+		alert("Data: " + data + "\nStatus: " + status);
+	});
+}
+
+function pull_data(){
+	var msg = {}
+	msg["cmd"] = "pull_data";
+
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+		alert("Data: " + data + "\nStatus: " + status);
+		show_data(data);
+	});
+}
+</script>
+
+
+</body>
+
+</html>
