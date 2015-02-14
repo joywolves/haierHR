@@ -18,9 +18,9 @@ function check_login($data)
 {
 	$db = DB::getInstance();
 	//导入人员明细
-	$T_EC_Apply = $data["T_EC_Apply"];
+	$T_EC_EmpDetail = $data["T_EC_EmpDetail"];
 
-	$ret = $db->find(DB_NAME,"T_EC_Apply",array("*"),$T_EC_Apply);
+	$ret = $db->find(DB_NAME,"T_EC_EmpDetail",array("*"),$T_EC_EmpDetail);
 	if(is_array($ret) && sizeof($ret) >= 1){
 		$one = end($ret);
 		// record Primary_key in cookie

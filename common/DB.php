@@ -56,7 +56,7 @@ class DB{
 		}
 		$Condition = implode(" and ", $Conds);
 		$sql = "select ".$Fields." from ".$table." where ".$Condition;
-		echo $sql;
+
     	$query = $this->query($db,$sql);
     	$data  = $this->fetch($query);
     	return $data;
@@ -81,7 +81,7 @@ class DB{
 
 		}
 		$sql = "insert into ".$table." (".$Fields_s.") values (".$Values_s.")";
-		echo $sql;
+
 		$query = $this->query($db,$sql);
 		return mssql_rows_affected($this->_conn);
 	}
