@@ -66,6 +66,9 @@ class DB{
 		$Fields = array();
 		$Values = array();
 		foreach ($data as $key => $value){
+			if($value == ""){
+				continue;
+			}
 			if(is_string($value)){
 				$value = "'$value'";
 			}else{
@@ -98,6 +101,9 @@ class DB{
 
 		$Sets  = array();
 		foreach ($data as $key => $value){
+			if($value == ""){
+				continue;
+			}
 			if(is_string($value)){
 				$value = "'$value'";
 			}else{
