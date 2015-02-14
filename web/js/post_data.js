@@ -28,9 +28,9 @@ function check_login () {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		alert("Data: " + data + "\nStatus: " + status);
+		// alert("Data: " + data + "\nStatus: " + status);
 		if(data == false){
-
+			alert("IDCardNo not exist");
 		}else{
 			window.location.href="./index.html";
 		}
@@ -51,7 +51,7 @@ function pull_data () {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		alert("Data: " + data + "\nStatus: " + status);
+		// alert("Data: " + data + "\nStatus: " + status);
 		show_data(JSON.parse(data));
 	});
 }
