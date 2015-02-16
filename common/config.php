@@ -6,10 +6,10 @@
  */
 
 
-define('DB_HOST', '192.168.1.107');
+define('DB_HOST', '115.28.63.129');
 define('DB_USER', 'sa');
-define('DB_PASS', 'luan');
-define('DB_NAME', 'ConfigEX');
+define('DB_PASS', 'Dechao1012');
+define('DB_NAME', 'testdb');
 
 
 

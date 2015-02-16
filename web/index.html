@@ -34,9 +34,9 @@
 		<div class="headinfo">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">
-				<h1>小小曹</h1>
-				<h2>PSI部门</h2>
-				<h2>软件工程师</h2>
+				<h1 id="name_head">小小曹</h1>
+				<h2 id="name_bm">PSI部门</h2>
+				<h2 id="name_zw">软件工程师</h2>
 				<a href="" class="load_tx"><img src="img/load_tx.png"></a> 
 			</div>			
 		</div>
@@ -55,64 +55,64 @@
 				</label>
 				<ul class="options">
 					<li>*&nbsp;<input id = "EmpName" type="text" placeholder="请输入姓名"></li>
-					<li>&nbsp;&nbsp;<input type="text" placeholder="请输入英文名"></li>
-					<li>&nbsp;&nbsp;<input type="text" placeholder="请输入曾用名"></li>
+					<li>&nbsp;&nbsp;<input id="EnglishName" type="text" placeholder="请输入英文名"></li>
+					<li>&nbsp;&nbsp;<input id="UsedName" type="text" placeholder="请输入曾用名"></li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="Gender">
 						<option value="选择性别" selected="selected">选择性别</option>
-						<option value="男">男</option>
-						<option value="女">女</option>
+						<option value="1">男</option>
+						<option value="2">女</option>
 					</select>
 					</li>				
 					
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="Nation">
 						<option value="选择民族" selected="selected">选择民族</option>
-						<option value="汉族">汉族</option>
-						<option value="苗族">苗族</option>
+						<option value="1">汉族</option>
+						<option value="2">苗族</option>
 					</select>
 					</li>
-					<li>*&nbsp;<input type="text" placeholder="请输入生日，例1985-04-21"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入健康状态"></li>
+					<li>*&nbsp;<input id="Birthday" type="text" placeholder="请输入生日，例1985-04-21"></li>
+					<li>*&nbsp;<input id="HealthStatus" type="text" placeholder="请输入健康状态"></li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="CitizenShip">
 						<option value="选择国籍">选择国籍</option>
 						<option value="中国" selected="selected">中国</option>
 					</select>
 					</li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="Religion">
 						<option value="选择宗教">选择宗教</option>
-						<option value="基督教" selected="selected">基督教</option>
-						<option value="佛教">佛教</option>
-						<option value="伊斯兰教">伊斯兰教</option>
-						<option value="其他">其他</option>
+						<option value="1" selected="selected">基督教</option>
+						<option value="2">佛教</option>
+						<option value="3">伊斯兰教</option>
+						<option value="4">其他</option>
 					</select>
 					</li>
-					<li>*&nbsp;<input type="text" placeholder="请输入出生省份"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入户口所在地"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入身份证号"></li>
-					<li>&nbsp;&nbsp;<input type="text" placeholder="请输入护照号码"></li>
+					<li>*&nbsp;<input id="Provience" type="text" placeholder="请输入出生省份"></li>
+					<li>*&nbsp;<input id="HukouLocation" type="text" placeholder="请输入户口所在地"></li>
+					<li>*&nbsp;<input id="IdCardNo" type="text" placeholder="请输入身份证号"></li>
+					<li>&nbsp;&nbsp;<input id="PassportNo" type="text" placeholder="请输入护照号码"></li>
 					<li>
 					<select name="choose" id="choose">
 						<option value="是否为独生子女" selected="selected">是否为独生子女</option>
-						<option value="是">是</option>
-						<option value="否">否</option>
+						<option value="1">是</option>
+						<option value="0">否</option>
 					</select>
 					</li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="MarriedType">
 						<option value="请选择婚姻状况" selected="selected">请选择婚姻状况</option>
-						<option value="已婚">已婚</option>
-						<option value="单身">单身</option>
-						<option value="离异">离异</option>
+						<option value="1">已婚</option>
+						<option value="0">单身</option>
+						<option value="2">离异</option>
 					</select>
 					</li>
-					<li>*&nbsp;<input type="text" placeholder="请输入结婚日期"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入子女数量"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入首次参加工作时间"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入Email"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入移动电话"></li>
+					<li>*&nbsp;<input id="MarriageDate" type="text" placeholder="请输入结婚日期"></li>
+					<li>*&nbsp;<input id="ChildNo" type="text" placeholder="请输入子女数量"></li>
+					<li>*&nbsp;<input id="FirstWorkDate" type="text" placeholder="请输入首次参加工作时间"></li>
+					<li>*&nbsp;<input id="Email" type="text" placeholder="请输入Email"></li>
+					<li>*&nbsp;<input id="Phone" type="text" placeholder="请输入移动电话"></li>
 				</ul>
 			</li>
 			<li class="block">
@@ -122,39 +122,39 @@
 				</label>
 				<ul class="options">
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="LCountryCode">
 						<option value="请选择居住国家" selected="selected">请选择居住国家</option>
-						<option value="中国">中国</option>
-						<option value="其他">其他</option>
+						<option value="1">中国</option>
+						<option value="0">其他</option>
 					</select>
 					</li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="LProvince">
 						<option value="请选择居住省份" selected="selected">请选择居住省份</option>
-						<option value="北京">北京</option>
-						<option value="山东">山东</option>
-						<option value="其他">其他</option>
+						<option value="1">北京</option>
+						<option value="2">山东</option>
+						<option value="3">其他</option>
 					</select>
 					</li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="LCityArea">
 						<option value="请选择居住城市" selected="selected">请选择居住城市</option>
-						<option value="北京">北京</option>
-						<option value="青岛">青岛</option>
-						<option value="其他">其他</option>
+						<option value="1">北京</option>
+						<option value="2">青岛</option>
+						<option value="3">其他</option>
 					</select>
 					</li>
-					<li>*&nbsp;<input type="text" placeholder="请输入详细的居住地址"></li>
+					<li>*&nbsp;<input id="LDetailAddress" type="text" placeholder="请输入详细的居住地址"></li>
 					<li>*&nbsp;<input type="text" placeholder="请输入居住地址的邮政编码"></li>
 					<li>
 					<select name="choose" id="choose">
 						<option value="是否服过军役" selected="selected">是否服过军役</option>
-						<option value="是">是</option>
-						<option value="否">否</option>
+						<option value="1">是</option>
+						<option value="0">否</option>
 					</select>
 					</li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="PartyShipName">
 						<option value="请选择政治面貌" selected="selected">请选择政治面貌</option>
 						<option value="党员">党员</option>
 						<option value="群众">群众</option>
@@ -177,32 +177,32 @@
 					<li>
 					<select name="choose" id="choose">
 						<option value="请选择全日制学历" selected="selected">请选择全日制学历</option>
-						<option value="高中">高中</option>
-						<option value="大专">大专</option>
-						<option value="本科">本科</option>
-						<option value="硕士">硕士</option>
-						<option value="博士">博士</option>
+						<option value="0">高中</option>
+						<option value="1">大专</option>
+						<option value="2">本科</option>
+						<option value="3">硕士</option>
+						<option value="4">博士</option>
 					</select>
 					</li>
 					<li>*&nbsp;<input type="text" placeholder="请输入入学日期"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入毕业日期"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入毕业学校"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入毕业证书编号"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入毕业证发证机关"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入第一专业"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入第一学位"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入学位证书编号"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入学位证发证机关"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入第二专业"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入第二学位"></li>
+					<li>*&nbsp;<input id="EduEndDate" type="text" placeholder="请输入毕业日期"></li>
+					<li>*&nbsp;<input  type="text" placeholder="请输入毕业学校"></li>
+					<li>*&nbsp;<input id="GCNo" type="text" placeholder="请输入毕业证书编号"></li>
+					<li>*&nbsp;<input id="GCOrg" type="text" placeholder="请输入毕业证发证机关"></li>
+					<li>*&nbsp;<input id="FirstMajor" type="text" placeholder="请输入第一专业"></li>
+					<li>*&nbsp;<input id="FirstDegree" type="text" placeholder="请输入第一学位"></li>
+					<li>*&nbsp;<input id="DCNo" type="text" placeholder="请输入学位证书编号"></li>
+					<li>*&nbsp;<input id="DCOrg" type="text" placeholder="请输入学位证发证机关"></li>
+					<li>*&nbsp;<input id="SecondMajor" type="text" placeholder="请输入第二专业"></li>
+					<li>*&nbsp;<input id="SecondDegree" type="text" placeholder="请输入第二学位"></li>
 					<li>
-					<select name="choose" id="choose">
+					<select name="choose" id="HighDegree">
 						<option value="请选择最高学历" selected="selected">请选择最高学历</option>
-						<option value="高中">高中</option>
-						<option value="大专">大专</option>
-						<option value="本科">本科</option>
-						<option value="硕士">硕士</option>
-						<option value="博士">博士</option>
+						<option value="0">高中</option>
+						<option value="1">大专</option>
+						<option value="2">本科</option>
+						<option value="3">硕士</option>
+						<option value="4">博士</option>
 					</select>
 					</li>
 				</ul>
@@ -483,12 +483,11 @@
 	<div class="flo_btn_1">
 		<ul></ul>
 	</div>
-
-		<!--add by luan pull data -->
+	
+			<!--add by luan pull data -->
         <script>
            	pull_data();
         </script>
-        
         <script>
            var t1 = new TouchSlider('slider1', {'auto': true, speed: 600, timeout: 6000})
         </script>

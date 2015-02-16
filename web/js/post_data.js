@@ -1,14 +1,58 @@
 function post_data(){
-	var T_EC_EntryEmpInfoExtra = {}
-	T_EC_EntryEmpInfoExtra["EmpName"] = $("#EmpName").val();
+	//var T_EC_Apply = {}
+	
+	//应聘者姓名
+	//T_EC_Apply["EmpName"] = $("#EmpName").val();
+	
+    
+var T_EC_EmpDetail = {};//人员明细表----------------------------------------------
+	
+	
+	T_EC_EmpDetail["EnglishName"] = $("#EnglishName").val();         //英文名
+	T_EC_EmpDetail["Gender"] = $("#Gender").val();                   //性别
+	T_EC_EmpDetail["Nation"] = $("#Nation").val();                   //民族
+	T_EC_EmpDetail["Religion"] = $("#Religion").val();               //宗教
+	T_EC_EmpDetail["HukouLocation"] = $("#HukouLocation").val();     //户口
+	T_EC_EmpDetail["IdCardNo"] = $("#IdCardNo").val();               //身份证号
+	T_EC_EmpDetail["PassportNo"] = $("#PassportNo").val();           //护照号码
+	T_EC_EmpDetail["FirstWorkDate"] = $("#FirstWorkDate").val();     //参加工作时间
+	T_EC_EmpDetail["Phone"] = $("#Phone").val();                     //移动电话
+	T_EC_EmpDetail["LCountryCode"] = $("#LCountryCode").val();       //居住国家
+	T_EC_EmpDetail["LProvince"] = $("#LProvince").val();             //居住省份
+	T_EC_EmpDetail["LCityArea"] = $("#LCityArea").val();             //居住城市
+	T_EC_EmpDetail["LDetailAddress"] = $("#LDetailAddress").val();   //详细居住地址
+	T_EC_EmpDetail["EduEndDate"] = $("#EduEndDate").val();           //毕业日期
+	T_EC_EmpDetail["GCNo"] = $("#GCNo").val();                       //毕业证书编号
+	T_EC_EmpDetail["GCOrg"] = $("#GCOrg").val();                     //毕业证书发证机关
+	T_EC_EmpDetail["FirstDegree"] = $("#FirstDegree").val();         //第一学位
+	T_EC_EmpDetail["DCNo"] = $("#DCNo").val();                       //学位证书编号
+	T_EC_EmpDetail["DCOrg"] = $("#DCOrg").val();                     //学位证书发证机关
+	T_EC_EmpDetail["FirstMajor"] = $("#FirstMajor").val();           //第一专业
+	T_EC_EmpDetail["SecondMajor"] = $("#SecondMajor").val();         //第二专业
+	T_EC_EmpDetail["SecondDegree"] = $("#SecondDegree").val();       //第二学位
+	T_EC_EmpDetail["HighDegree"] = $("#HighDegree").val();           //最高学历
+	
 
+	
+	
+    
+var T_EC_EntryEmpInfo = {};//导入信息补充表---------------------------------------------
+	
+	
+	T_EC_EntryEmpInfo["UsedName"] = $("#UsedName").val();            //曾用名
+	T_EC_EntryEmpInfo["HealthStatus"] = $("#HealthStatus").val();    //健康状况
+	T_EC_EntryEmpInfo["Award"] = $("#Award").val();                  //奖励
+	T_EC_EntryEmpInfo["Punishment"] = $("#Punishment").val();        //处分
+	
+	
+	
 	var data = {}
-	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
-
+//	data["T_EC_Apply"] = T_EC_Apply; 主表只限于查询
+	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
+	data["T_EC_EntryEmpInfo"] = T_EC_EntryEmpInfo;
 	var msg = {}
 	msg["cmd"] = "insert_data";
 	msg["data"] = data;
-
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
@@ -28,7 +72,7 @@ function check_login () {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		// alert("Data: " + data + "\nStatus: " + status);
+	//	 alert("Data: " + data + "\nStatus: " + status);
 		if(data == "false"){
 			alert("IDCardNo not exist");
 		}else{
@@ -38,10 +82,49 @@ function check_login () {
 }
 
 function show_data(data){
-	var table;
-	if(table = data["T_EC_EntryEmpInfoExtra"]){
-		$("#EmpName").val(table["EmpName"]);
+var table;
+	console.log(data)
+	//---------------------------------------------------------------------------
+
+	//---------------------------------------------------------------------------
+	if(table = data["T_EC_EmpDetail"]){
+		$("#EmpName").val(table["EmpName"]);		//应聘者姓名
+		$("#name_head").text(table["EmpName"]);		//应聘者姓名
+		$("#EnglishName").val(table["EnglishName"]);		//英文名
+		$("#Gender").val(table["Gender"]);					//性别
+		$("#Nation").val(table["Nation"]);					//民族
+		$("#Religion").val(table["Religion"]);				//宗教
+		$("#HukouLocation").val(table["HukouLocation"]);	//户口
+		$("#IdCardNo").val(table["IdCardNo"]);	            //身份证号
+		$("#PassportNo").val(table["PassportNo"]);	        //护照号码
+		$("#FirstWorkDate").val(table["FirstWorkDate"]);	//参加工作时间
+		$("#Phone").val(table["Phone"]);	                //移动电话
+		$("#LCountryCode").val(table["LCountryCode"]);	    //居住国家
+		$("#LProvince").val(table["LProvince"]);	        //居住省份
+		$("#LCityArea").val(table["LCityArea"]);	        //居住城市
+		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
+		$("#EduEndDate").val(table["EduEndDate"]);	        //毕业日期
+		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
+		$("#GCOrg").val(table["GCOrg"]);	                //毕业证书发证机关
+		$("#FirstDegree").val(table["FirstDegree"]);	    //第一学位
+		$("#DCNo").val(table["DCNo"]);	                    //学位证书编号
+		$("#DCOrg").val(table["DCOrg"]);	                //学位证书发证机关
+		$("#FirstMajor").val(table["FirstMajor"]);	        //第一专业
+		$("#SecondMajor").val(table["SecondMajor"]);	    //第二专业
+		$("#SecondDegree").val(table["SecondDegree"]);	    //第二学位
+		$("#HighDegree").val(table["HighDegree"]);	        //最高学历
+		
+		
+		
 	}
+	//---------------------------------------------------------------------------
+	if(table = data["T_EC_EntryEmpInfo"]){
+		$("#UsedName").val(table["UsedName"]);			        //曾用名
+		$("#HealthStatus").val(table["HealthStatus"]);			//健康状况
+		$("#Award").val(table["Award"]);			            //奖励
+		$("#Punishment").val(table["Punishment"]);			    //处分
+		
+		}	
 	//...set html val by sql data
 }
 
@@ -51,7 +134,7 @@ function pull_data () {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		// alert("Data: " + data + "\nStatus: " + status);
+	//	 alert("Data: " + data + "\nStatus: " + status);
 		show_data(JSON.parse(data));
 	});
 }

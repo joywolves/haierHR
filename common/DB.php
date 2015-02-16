@@ -31,13 +31,16 @@ class DB{
 		if(!$ret){
 			return $ret;
 		}
+		//`echo $sql;
 		$query = mssql_query($sql);
 		return $query;
 	}
 	public function fetch($query){
 		$data = array();
-		while ($row = mssql_fetch_array($query)){
        		array_push($data, $row);
+		//while ($row = mssql_fetch_array($query)){
+		while ($row = mssql_fetch_assoc($query)){
+			array_push($data, $row);
 		}
 		// mssql_free_result($query);
 		return $data;

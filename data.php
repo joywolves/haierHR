@@ -14,6 +14,8 @@ $json_data = file_get_contents("php://input");
 
 $data = json_decode($json_data,true);
 
+function output($arr = array()) {    return eval('return ' . iconv('GB2312', 'UTF-8', var_export($arr, true)) . ';');}
+function input($arr = array()) {    return eval('return ' . iconv('UTF-8', 'GB2312',  var_export($arr, true)) . ';');}
 
 function check_login($data)
 {
@@ -26,7 +28,6 @@ function check_login($data)
 		$one = end($ret);
 		// record Primary_key in cookie
 		setcookie("ApplyID",$one["ApplyID"]);
-		echo($_COOKIE["ApplyID"]);
 		return $one;
 	}
 	return false;
@@ -113,7 +114,7 @@ function insert_data($data){
 			$key => $_COOKIE["ApplyID"],
 		);
 		$fields[$key] = $_COOKIE["ApplyID"];
-		$ret = $db->update(DB_NAME,$table,$fields,$cond,true);
+		$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
 	}
 	return true;
 }
@@ -121,23 +122,23 @@ function insert_data($data){
 switch ($data["cmd"]) {
 	case 'check_login':
 		$ret = check_login($data["data"]);
-		echo json_encode($ret);
+		echo json_encode(output($ret));
 		break;
 	case 'pull_data':
 		$ret = pull_data();
-		echo json_encode($ret);
+		echo json_encode(output($ret));
 		break;
 	case 'pull_image':
 		$ret = pull_image();
-		echo json_encode($ret);
+		echo json_encode(output($ret));
 		break;
 	case 'insert_image':
 		$ret = insert_image($data["data"]);
-		echo json_encode($ret);
+		echo json_encode(output($ret));
 		break;
 	case 'insert_data':
 		$ret = insert_data($data["data"]);
-		echo json_encode($ret);
+		echo json_encode(output($ret));
 		break;
 
 	default:
