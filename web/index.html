@@ -145,7 +145,7 @@
 					</select>
 					</li>
 					<li>*&nbsp;<input id="LDetailAddress" type="text" placeholder="请输入详细的居住地址"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入居住地址的邮政编码"></li>
+					<li>*&nbsp;<input id="ZipCode" type="text" placeholder="请输入居住地址的邮政编码"></li>
 					<li>
 					<select name="choose" id="choose">
 						<option value="是否服过军役" selected="selected">是否服过军役</option>
@@ -161,11 +161,11 @@
 					</select>
 					</li>
 					<li>*&nbsp;<input type="text" placeholder="请输入加入党派时间"></li>
-					<li>*&nbsp;<input type="text" placeholder="专业技术职务任职资格，示例：高级工程师，没有填写“无”"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入授予时间"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入爱好特长，没有请填写“无”"></li>
-					<li>*&nbsp;<input type="text" placeholder="何时何处何原因受过奖励，请填写市级以上奖励，示例：2010年10月，山东劳动模范，没有请填写“无”"></li>
-					<li>*&nbsp;<input type="text" value="何时何处何原因受过处分，没有请填写“无”"></li>
+					<li>*&nbsp;<input id="ProfessionQualification" type="text" placeholder="专业技术职务任职资格，示例：高级工程师，没有填写“无”"></li>
+					<li>*&nbsp;<input id="ProfessionAwardDate" type="text" placeholder="请输入授予时间"></li>
+					<li>*&nbsp;<input id="SpeSkill" type="text" placeholder="请输入爱好特长，没有请填写“无”"></li>
+					<li>*&nbsp;<input id="Award" type="text" placeholder="何时何处何原因受过奖励，请填写市级以上奖励，示例：2010年10月，山东劳动模范，没有请填写“无”"></li>
+					<li>*&nbsp;<input id="Punishment" type="text" value="何时何处何原因受过处分，没有请填写“无”"></li>
 				</ul>
 			</li>
 			<li class="block">
@@ -249,7 +249,7 @@
 						<option value="兄妹">兄妹</option>
 					</select>
 					</li>
-					<li>*<input type="text" placeholder="请输入姓名"></li>
+					<li>*<input id="FFName" type="text" placeholder="请输入姓名"></li>
 					<li>
 					<select name="choose" id="choose">
 						<option value="选择性别" selected="selected">选择性别</option>
@@ -257,14 +257,14 @@
 						<option value="女">女</option>
 					</select>
 					</li>
-					<li>*<input type="text" placeholder="请输入出生日期，示例：1950-11-11"></li>		
+					<li>*<input id="FFBirthday" type="text" placeholder="请输入出生日期，示例：1950-11-11"></li>		
 					<li>
 					<select name="choose" id="choose">
 						<option value="选择国籍">选择国籍</option>
 						<option value="中国" selected="selected">中国</option>
 					</select>
 					</li>
-					<li>*<input type="text" placeholder="请输入职业"></li>	
+					<li>*<input id="FFJob" type="text" placeholder="请输入职业"></li>	
 					<li>
 					<select name="choose" id="choose">
 						<option value="请选择居住省份" selected="selected">请选择居住省份</option>
@@ -281,9 +281,9 @@
 						<option value="其他">其他</option>
 					</select>
 					</li>
-					<li>*&nbsp;<input type="text" placeholder="请输入详细地址"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入电话"></li>
-					<li>*&nbsp;<input type="text" placeholder="请输入工作单位"></li>
+					<li>*&nbsp;<input id="FFDetailAddress" type="text" placeholder="请输入详细地址"></li>
+					<li>*&nbsp;<input id="FFPhone" type="text" placeholder="请输入电话"></li>
+					<li>*&nbsp;<input id="FFCityArea" type="text" placeholder="请输入工作单位"></li>
 					<li>
 					<select name="choose" id="choose">
 						<option value="是否为海尔员工" selected="selected">是否为海尔员工</option>
@@ -291,7 +291,7 @@
 						<option value="否">否</option>
 					</select>
 					</li>
-					<li>*&nbsp;<input type="text" placeholder="请输入所在海尔部门"></li>
+					<li>*&nbsp;<input id="FFHaierBU" type="text" placeholder="请输入所在海尔部门"></li>
 				</ul>
 			</li>
 		  </ul>		
@@ -548,9 +548,9 @@ for(i=0; i <tabList.length; i++)
 <script type="text/javascript">
 (function($){
 var selects=$('select');//获取select
-for(var i=0;i<selects.length;i++){
-	createSelect(selects[i],i);
-}
+//for(var i=0;i<selects.length;i++){
+//	createSelect(selects[i],i);
+//}
 function createSelect(select_container,index){
 	//创建select容器，class为select_box，插入到select标签前
 	var tag_select=$('<div></div>');//div相当于select标签
