@@ -14,12 +14,17 @@
 <a href="#" onclick="chech_login()">check_login</a>|
 <a href="#" onclick="insert_data()">insert_data</a>|
 <a href="#" onclick="pull_data()">pull_data</a>|
+                                        <select name="choose" id="Gender">
+                                                <option value="" selected="selected">选择性别</option>
+                                                <option value="1">男</option>
+                                                <option value="2">女</option>
+                                        </select>
 
 <script>
 
 function chech_login(){
 	var T_EC_EmpDetail = {}
-	T_EC_EmpDetail["IDCardNo"] = "370686";
+	T_EC_EmpDetail["IDCardNo"] = "371329198012115754";
 
 	var data = {}
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
@@ -34,11 +39,10 @@ function chech_login(){
 	});
 }
 function insert_data(){
-	var T_EC_EntryEmpInfoExtra = {}
-	T_EC_EntryEmpInfoExtra["IDCardNo"] = "370686";
-
+	var T_EC_EmpDetail = {}
+ 	T_EC_EmpDetail["Gender"] = $("#Gender").find("option:selected").val();
 	var data = {}
-	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
+	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 
 	var msg = {}
 	msg["cmd"] = "insert_data";

@@ -119,30 +119,29 @@ function insert_data($data){
 	return true;
 }
 
+error_log( $data["cmd"]." : ".var_export($data["data"], true), 3, "/var/tmp/my-errors.log");
 switch ($data["cmd"]) {
 	case 'check_login':
 		$ret = check_login($data["data"]);
-		echo json_encode(output($ret));
 		break;
 	case 'pull_data':
 		$ret = pull_data();
-		echo json_encode(output($ret));
 		break;
 	case 'pull_image':
 		$ret = pull_image();
-		echo json_encode(output($ret));
 		break;
 	case 'insert_image':
 		$ret = insert_image($data["data"]);
-		echo json_encode(output($ret));
 		break;
 	case 'insert_data':
 		$ret = insert_data($data["data"]);
-		echo json_encode(output($ret));
 		break;
 
 	default:
 		echo "Error command:".$data["cmd"];
-		break;
+		return;
+	
 }
 
+echo json_encode(output($ret));
+error_log( $data["cmd"]." : ".var_export($ret, true), 3, "/var/tmp/my-errors.log");
