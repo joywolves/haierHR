@@ -37,7 +37,6 @@ class DB{
 	}
 	public function fetch($query){
 		$data = array();
-       		array_push($data, $row);
 		//while ($row = mssql_fetch_array($query)){
 		while ($row = mssql_fetch_assoc($query)){
 			array_push($data, $row);
