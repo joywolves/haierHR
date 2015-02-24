@@ -140,6 +140,7 @@ switch ($data["cmd"]) {
 		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD));
 		$ret = $mailer->send($data["to"],array('From' => MAIL_FROM, 'To' => $data["to"], 'Subject' => MAIL_SUBJECT, 'Content-Type' => 'text/html; charset="UTF-8"'),str_replace('{name}', $data["name"], MAIL_TEMPLATE));
 		echo json_encode(output($ret)); 
+		break;
 	default:
 		echo "Error command:".$data["cmd"];
 		return;
