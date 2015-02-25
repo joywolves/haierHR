@@ -120,6 +120,8 @@ function insert_data($data){
 }
 
 error_log( $data["cmd"]." : ".var_export($data["data"], true), 3, "/var/tmp/my-errors.log");
+
+$ret = null;
 switch ($data["cmd"]) {
 	case 'check_login':
 		$ret = check_login($data["data"]);

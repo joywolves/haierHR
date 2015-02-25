@@ -10,7 +10,7 @@ class DB{
 	private static $_instance = null;
 
 	private function __construct($host, $username, $password){
-		$this->_conn = mssql_connect($host, $username, $password); 
+		$this->_conn = mssql_connect($host, $username, $password) or die("can't connect db server:".$host); 
 	}
 	
 	private function __clone() {}
