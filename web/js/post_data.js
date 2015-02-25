@@ -104,6 +104,19 @@ function check_login () {
 	});
 }
 
+function set_select (id,val) {
+	if(!val || val == ""){
+		return;
+	}
+	var count = $("#"+id+" option").length;
+	for (var i = 0; i<count; i++) {
+		if($("#"+id).get(0).options[i].value == val.toString() ){
+			$("#"+id).get(0).options[i].selected = true;
+			break;
+		}
+	}
+}
+
 function show_data(data){
 var table;
 	console.log(data)
@@ -111,6 +124,8 @@ var table;
 
 	//---------------------------------------------------------------------------
 	if(table = data["T_EC_EmpDetail"]){
+		set_select("Gender",table["Gender"]);
+
 		$("#EmpName").val(table["EmpName"]);		//应聘者姓名
 		$("#health_name").text(table["EmpName"]);
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名

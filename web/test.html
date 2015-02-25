@@ -54,9 +54,22 @@ function insert_data(){
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
+function set_select (id,val) {
+	if(!val || val == ""){
+		return;
+	}
+	var count = $("#"+id+" option").length;
+	for (var i = 0; i<count; i++) {
+		if($("#"+id).get(0).options[i].value == val.toString() ){
+			$("#"+id).get(0).options[i].selected = true;
+			break;
+		}
+
+	}
+}
 function show_data(data){
 	if(table = data["T_EC_EmpDetail"]){
-		$("#Gender").val(table["Gender"]);					//性别
+		set_select("Gender",table["Gender"]);
 	}
 }
 function pull_data(){
@@ -66,7 +79,7 @@ function pull_data(){
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
-		show_data(data);
+		show_data(JSON.parse(data));
 	});
 }
 </script>
