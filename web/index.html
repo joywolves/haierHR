@@ -496,7 +496,7 @@
             <div class="rule_content">
             	<h2>体检通知单</h2>
                 <div id="content1" class="mCustomScrollbar">
-                    <p>兹介绍<luan id="health_name"></luan>同志前往你处体检，请予以安排。</p>
+                    <p>兹介绍&nbsp;<luan id="health_name"></luan>&nbsp;同志前往你处体检，请予以安排。</p>
                     <p>海尔集团HR共享服务中心入职模块</p>
 					<h3>2015年02月24日</h3>
 					<h3>注意事项：</h3>
@@ -504,7 +504,7 @@
                     <p>2、体检地点：青岛市市北区人民医院，医务科（四楼）；地址：青岛市抚顺路25号。</p>
                     <p>可乘坐的公交车：1、367、229、362 302、126、309、36路公交车到抚顺路站下车。</p>
                     <p>3、体检要求：空腹（不吃饭、不喝水，查体前一天不喝酒，要求休息好）。</p>
-                    <p>4、携带身份证及体检通知单。<br/>
+                    <p>4、携带身份证及体检通知单。</p>
 					<p>5、体检付费方式：个人自付费用。</p>
                     <p>6、请到达医院后前往住院二部负一楼查体中心，联系医生领取体检表。</p>
                 </div>
@@ -602,9 +602,9 @@ for(i=0; i <tabList.length; i++)
 <script type="text/javascript">
 (function($){
 var selects=$('select');//获取select
-//for(var i=0;i<selects.length;i++){
-//	createSelect(selects[i],i);
-//}
+for(var i=0;i<selects.length;i++){
+	createSelect(selects[i],i);
+}
 function createSelect(select_container,index){
 	//创建select容器，class为select_box，插入到select标签前
 	var tag_select=$('<div></div>');//div相当于select标签
