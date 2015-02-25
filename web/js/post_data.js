@@ -112,6 +112,7 @@ var table;
 	//---------------------------------------------------------------------------
 	if(table = data["T_EC_EmpDetail"]){
 		$("#EmpName").val(table["EmpName"]);		//应聘者姓名
+		$("#health_name").text(table["EmpName"]);
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名
 		$("#EnglishName").val(table["EnglishName"]);		//英文名
 		$("#Gender").val(table["Gender"]);					//性别

@@ -14,11 +14,12 @@
 <a href="#" onclick="chech_login()">check_login</a>|
 <a href="#" onclick="insert_data()">insert_data</a>|
 <a href="#" onclick="pull_data()">pull_data</a>|
-                                        <select name="choose" id="Gender">
-                                                <option value="" selected="selected">选择性别</option>
-                                                <option value="1">男</option>
-                                                <option value="2">女</option>
-                                        </select>
+
+<select name="choose" id="Gender">
+        <option value="" selected="selected">选择性别</option>
+        <option value="1">男</option>
+        <option value="2">女</option>
+</select>
 
 <script>
 
@@ -53,7 +54,11 @@ function insert_data(){
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
-
+function show_data(data){
+	if(table = data["T_EC_EmpDetail"]){
+		$("#Gender").val(table["Gender"]);					//性别
+	}
+}
 function pull_data(){
 	var msg = {}
 	msg["cmd"] = "pull_data";
