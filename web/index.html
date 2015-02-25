@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!-- saved from url=(0050)http://shop.wei-7star.com/index.php?app=store&id=4 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
@@ -7,6 +7,11 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <title>海尔HR入职</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<style type="text/css">
+
+
+</style>
 <meta name="description" content="海尔入职">
 <meta name="keywords" content="海尔 入职">
         <link type="text/css" rel="stylesheet" href="css/index.css">
@@ -27,17 +32,36 @@
     
 <body>
 <div class="page0">	
-</div>
-<div class="page1">	
 	<div class="header">
-		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
-		<div class="headinfo">
-			<a href="" class="headshow"><img src="img/headshow.png"></a> 
+		<div id="head_page0" class="headinfo">
+			<div id="preview"><a href="" class="headshow"><img id="imghead" src="img/headshow.png"></a></div>		
+
 			<div class="content_person">
+
 				<h1 id="name_head">小小曹</h1>
 				<h2 id="name_bm">PSI部门</h2>
 				<h2 id="name_zw">软件工程师</h2>
-				<a href="" class="load_tx"><img src="img/load_tx.png"></a> 
+				<input type="file" id="t_file" onchange="previewImage(this)" style="position:absolute;filter:alpha(opacity=0);width:0px;"/>
+				<a href="" onclick="t_file.click()" class="load_tx"><img src="img/load_tx.png"></a> 
+			</div>			
+		</div>
+</div></div>
+<div class="page1">	
+
+	<div class="header">
+
+		 
+
+<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>
+		<div class="headinfo hide">
+			<div id="preview"><a href="" <img  src="img/headshow.png"></a></div>		
+
+			<div class="content_person">
+
+				<h1 id="name_head">小小曹</h1>
+				<h2 id="name_bm">PSI部门</h2>
+				<h2 id="name_zw">软件工程师</h2>
+				<a href="" onclick="t_file.click()" class="load_tx"><img src="img/load_tx.png"></a> 
 			</div>			
 		</div>
 		<div class="instruction">
@@ -304,7 +328,7 @@
 	<div>
 		<div class="header">
 		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
-		<div class="headinfo">
+		<div class="headinfo hide">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">
 				<h1>小小曹</h1>
@@ -331,11 +355,12 @@
 			<div class="TabContent">
 			  <div id="myTab0_Content0"> <br/>
 				<p>请自行下载并打印“体检通知单”前往定点医院进行体检，有效期为三个月</p><br/>
-				<p style="color:#4c8692">体检通知单</p>
+				<p style="color:#fff">体检通知单</p>
 				<ul class="lianjie">
-					<li><a href="#"><img src="img/1.png"></img>下载到手机<a></li>
-					<li><a href="#"><img src="img/2.png">发送到邮箱<a></li>
-					<li><a href="#"><img src="img/3.png">在线预览<a></li>
+					
+					<li><a href="myfile.txt" target="_self"><img src="img/1.png"></img>下载到手机<a></li>
+					<li><a href="#" id="send_tj"><img src="img/2.png">发送到邮箱<a></li>
+					<li><a href="#" id="look_tj"><img src="img/3.png">在线预览<a></li>
 				</ul>
 			  </div>
 			  
@@ -351,7 +376,7 @@
 	<div>
 		<div class="header">
 		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
-		<div class="headinfo">
+		<div class="headinfo hide">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">
 				<h1>小小曹</h1>
@@ -359,6 +384,9 @@
 				<h2>软件工程师</h2>
 				<a href="" class="load_tx"><img src="img/load_tx.png"></a> 
 			</div>			
+		</div>
+				<div class="instruction">
+			
 		</div>
 		</div>
 	</div>
@@ -404,7 +432,7 @@
 	<div>
 		<div class="header">
 		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
-		<div class="headinfo">
+		<div class="headinfo hide">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">
 				<p>小小曹</p>
@@ -439,13 +467,8 @@
 				<p>身份证原件;</p>
 				<p>毕业证、学位证、职称证、技能等级证、上岗资格证原件及复印件;</p>
 				<p>学籍档案、工作档案;</p><br/>
-				<p style="color:#4c8692">入职通知函</p>
-				<ul class="lianjie">
-					<li><a href="#"><img src="img/1.png"></img>下载到手机<a></li>
-					<li><a href="#"><img src="img/2.png">发送到邮箱<a></li>
-					<li><a href="#"><img src="img/3.png">在线预览<a></li>
-				</ul>
-				<br/><br/><br/><br/><br/><br/><br/><br/>
+	
+				<br/><br/><br/>
 			  </div>
 			</div>
 		  </div>
@@ -453,7 +476,7 @@
 </div>
 	
 	
-</div>
+
 
 	
 
@@ -466,7 +489,38 @@
 		<a href="index.html" class="top"><img src="img/top.png"></a>
 		<p>  Copyright ©2013 海尔HR入职</p>
 	</div> 
+	<div id="event_tj" class="event hide">
+    	<div class="event_rules">
+        	<img src="img/close-btn.png" id="rules_close_tj" class="rules_close" />
 
+            <div class="rule_content">
+            	<h2>体检通知单</h2>
+                <div id="content1" class="mCustomScrollbar">
+                    <p>兹介绍    同志前往你处体检，请予以安排。</p>
+                    <p>海尔集团HR共享服务中心入职模块</p>
+					<h3>2015年02月24日</h3>
+					<h3>注意事项：</h3>
+                    <p>1、体检时间：，联系电话：83720867。</p>
+                    <p>2、体检地点：青岛市市北区人民医院，医务科（四楼）；地址：青岛市抚顺路25号。</p>
+                    <p>可乘坐的公交车：1、367、229、362 302、126、309、36路公交车到抚顺路站下车。</p>
+                    <p>3、体检要求：空腹（不吃饭、不喝水，查体前一天不喝酒，要求休息好）。</p>
+                    <p>4、携带身份证及体检通知单。<br/>
+					<p>5、体检付费方式：个人自付费用。</p>
+                    <p>6、请到达医院后前往住院二部负一楼查体中心，联系医生领取体检表。</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+	<div id="event_tj_send" class="event hide">
+    	<div class="event_rules_send">
+
+            <div class="rule_content">
+            	<input id="send_input" type="text" placeholder="请输入Email">
+				<a href="#" class="send_btn" onclick="send_email()">&nbsp;&nbsp;发送&nbsp;&nbsp;</a>
+				<a href="#" class="send_btn" id="rules_close_send">&nbsp;&nbsp;取消&nbsp;&nbsp;</a>
+            </div>
+        </div>
+    </div> 
 	<div class="footer_nav">
 		<ul class="nav">
 			<a href="javascript:;" class="home">
@@ -603,5 +657,68 @@ function createOptions(index,ul_list){
 }
 })(jQuery)
 </script>
- 
+<script type="text/javascript">
+
+
+      //图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 110; 
+          var MAXHEIGHT = 110;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+                
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+            
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+		
+		
+
+</script>     
+
 </body></html>

@@ -32,6 +32,25 @@ $(function(){
 		$(".footer").addClass("hide");
 		
 		});
+	//预览体检
+	$("#look_tj").click(function(){
+		$("#event_tj").removeClass("hide");
+	})
+	
+	$("#rules_close_tj").click(function(){
+		$("#event_tj").addClass("hide");	
+	});		
+	//预览入职函
+	$("#send_tj").click(function(){
+		$("#event_tj_send").removeClass("hide");
+	})
+	
+	$("#rules_close_send").click(function(){
+		$("#event_tj_send").addClass("hide");	
+	});			
+		
+		
+		
 	//二级菜单
 	$(".sub_menu li").click(function(){
 		$(this).children(".sub_menu_list").slideToggle();

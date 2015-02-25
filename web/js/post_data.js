@@ -193,7 +193,22 @@ function pull_image() {
 		alert("数据已保存成功！");
 	});
 }
-
+		// 邮件发送
+function send_email() {
+	var msg = {}
+	msg["cmd"] = "send_mail";
+	//解析参数处理
+	var arrayObj = new Array();
+	arrayObj=$("#send_input").val().split("@");
+/*	if(arrayObj.length!=2){
+		alert("格式错误！");
+		return;
+	}
+	$.post("../data.php",JSON.stringify(msg),
+	function(arrayObj[0],"smtp."+arrayObj[1]){
+		alert("邮件已发送成功！");
+	});*/
+}
 
 function post_image(){
 
