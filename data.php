@@ -119,7 +119,7 @@ function insert_data($data){
 	return true;
 }
 
-error_log( $data["cmd"]." : ".var_export($data["data"], true), 3, "/var/tmp/my-errors.log");
+error_log( $data["cmd"]." : ".var_export($data["data"], true)."\n", 3, "/var/tmp/my-errors.log");
 
 $ret = null;
 switch ($data["cmd"]) {
@@ -138,7 +138,7 @@ switch ($data["cmd"]) {
 	case 'insert_data':
 		$ret = insert_data($data["data"]);
 		break;
-        case 'send_mail':
+    case 'send_mail':
 		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD));
 		$ret = $mailer->send($data["to"],array('From' => MAIL_FROM, 'To' => $data["to"], 'Subject' => MAIL_SUBJECT, 'Content-Type' => 'text/html; charset="UTF-8"'),str_replace('{name}', $data["name"], MAIL_TEMPLATE));
 		echo json_encode(output($ret)); 
@@ -150,4 +150,4 @@ switch ($data["cmd"]) {
 }
 
 echo json_encode(output($ret));
-error_log( $data["cmd"]." : ".var_export($ret, true), 3, "/var/tmp/my-errors.log");
+error_log( $data["cmd"]." : ".var_export($ret, true)."\n\n", 3, "/var/tmp/my-errors.log");
