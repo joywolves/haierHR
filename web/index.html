@@ -41,7 +41,11 @@
 				<h1 id="name_head">小小曹</h1>
 				<h2 id="name_bm">PSI部门</h2>
 				<h2 id="name_zw">软件工程师</h2>
-				<input type="file" id="t_file" onchange="previewImage(this)" style="position:absolute;filter:alpha(opacity=0);width:0px;"/>
+				  <form name="uploadFrom" id="uploadFrom" action="../image.php" method="post"  target="tarframe" enctype="multipart/form-data">
+				  <input name="cmd" type="text" value="insert_image" style="display:none;" />
+				<input name="file" type="file" id="t_file" onchange="previewImage(this)" style="position:absolute;filter:alpha(opacity=0);width:0px;"/>
+				 </form>
+				 <iframe src=""  width="0" height="0" style="display:none;" name="tarframe"></iframe>
 				<a href="" onclick="t_file.click()" class="load_tx"><img src="img/load_tx.png"></a> 
 			</div>			
 		</div>
@@ -646,6 +650,7 @@
 			<!--add by luan pull data -->
         <script>
            	pull_data();
+           	pull_image();
         </script>
         <script>
            var t1 = new TouchSlider('slider1', {'auto': true, speed: 600, timeout: 6000})
@@ -798,6 +803,7 @@ function createOptions(index,ul_list){
             status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
             div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
           }
+           $("#uploadFrom").submit();
         }
         function clacImgZoomParam( maxWidth, maxHeight, width, height ){
             var param = {top:0, left:0, width:width, height:height};

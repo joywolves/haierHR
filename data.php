@@ -119,7 +119,7 @@ function insert_data($data){
 	return true;
 }
 
-error_log( $data["cmd"]." : ".var_export($data["data"], true)."\n", 3, "/var/tmp/my-errors.log");
+error_log( ">>> : ".var_export($data, true)."\n", 3, "/var/tmp/my-errors.log");
 
 $ret = null;
 switch ($data["cmd"]) {
@@ -150,4 +150,4 @@ switch ($data["cmd"]) {
 }
 
 echo json_encode(output($ret));
-error_log( $data["cmd"]." : ".var_export($ret, true)."\n\n", 3, "/var/tmp/my-errors.log");
+error_log( "<<< : ".$data["cmd"]." : ".var_export($ret, true)."\n\n", 3, "/var/tmp/my-errors.log");
