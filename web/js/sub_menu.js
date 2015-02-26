@@ -3,11 +3,13 @@
 $(function(){
 	//下拉菜单
 	$(".menu").click(function(){
+		$("#menu").src="img/nav_2_.png";
 		$(".page1").addClass("hide");
 		$(".page2").removeClass("hide");
 		$(".page3").addClass("hide");
 		$(".page4").addClass("hide");
 		$(".footer").addClass("hide");
+		
 		});
 	$(".home").click(function(){
 		$(".page1").removeClass("hide");
