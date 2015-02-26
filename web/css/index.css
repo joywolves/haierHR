@@ -75,7 +75,8 @@ margin-top: -155px;
 .mCustomScrollbar{height:580px;padding-top:20px;}
 .event_rules_send{background:rgba(255, 255, 255, 0.9) no-repeat center center ;background-size:100% 100%;top:40%;left:5%;position:absolute;width:90%;height:120px;}
 
-table td{ font-size:13px;}
+table td{ font-size:12px;}
+.event_send{position:absolute;width:100%;height:100%;background:rgba(23, 113, 212,0.95);background-size:100% 100%;z-index:999999;top:0;left:0;}
 
 
 #send_input{background:rgba(0, 0, 0, 0);width:100%;line-height:30px;text-align:center;	margin:20px 0 10px 0 ;	border-bottom:2px solid #1771d4;}
