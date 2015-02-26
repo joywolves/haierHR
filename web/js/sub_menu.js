@@ -40,14 +40,31 @@ $(function(){
 	$("#rules_close_tj").click(function(){
 		$("#event_tj").addClass("hide");	
 	});		
-	//预览入职函
+	//邮件体检
 	$("#send_tj").click(function(){
 		$("#event_tj_send").removeClass("hide");
 	})
 	
 	$("#rules_close_send").click(function(){
 		$("#event_tj_send").addClass("hide");	
-	});			
+	});	
+
+	//预览入职函
+	$("#look_rz").click(function(){
+		$("#pr_rz").removeClass("hide");
+	})
+	
+	$("#rules_close_rz").click(function(){
+		$("#pr_rz").addClass("hide");	
+	});		
+	//邮件入职函
+	$("#send_rz").click(function(){
+		$("#event_tj_send").removeClass("hide");
+	})
+	
+	$("#rules_close_send").click(function(){
+		$("#event_tj_send").addClass("hide");	
+	});		
 		
 		
 		
