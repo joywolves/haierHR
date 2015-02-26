@@ -241,7 +241,7 @@ table td{ font-size:12px;}
     border-right: 6px solid transparent;
     border-top: 12px solid #fff;
 }
- input{border-style:none;}
+ input{border-style:none;width: 90%;}
  
  
 select{
