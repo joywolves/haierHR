@@ -243,7 +243,7 @@ table td{ font-size:12px;}
     border-right: 6px solid transparent;
     border-top: 12px solid #fff;
 }
- input{border-style:none;width: 68%;text-align:center}
+ input{border-style:none;width: 60%;text-align:center}
  
  
 select{
@@ -254,7 +254,7 @@ a{text-decoration:none;}
 select{
 display: none;
 }
-.select_box{font-family: "宋体"; font-size: 12px;width: 68%;margin: 0 auto;float: right;}
+.select_box{font-family: "宋体"; font-size: 12px;width: 60%;margin: 0 auto;float: right;}
 .select_showbox{height: 31px;padding-left: 5px;background: url(../img/icon.png) no-repeat 95% 5px;text-align:center;}
 .select_option{border-top: none;display: none;border: 1px solid #4c8692;}
 .select_option li{padding-left: 5px;border:none;}
