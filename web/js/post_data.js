@@ -205,9 +205,10 @@ function pull_image() {
 	var msg = {}
 	msg["cmd"] = "pull_image";
 
-	$.post("../data.php",JSON.stringify(msg),
+	$.post("../image.php",JSON.stringify(msg),
 	function(data,status){
-		alert("数据已保存成功！");
+		//	 alert("Data: " + data + "\nStatus: " + status);
+		$("#imghead").attr('src',data); 
 	});
 }
 		// 邮件发送
@@ -260,5 +261,4 @@ function post_image(){
 
 
 }
-
 
