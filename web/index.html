@@ -706,10 +706,10 @@ for(i=0; i <tabList.length; i++)
 <!--script type="text/javascript" src="/ajaxjs/jquery-1.7.2.min.js"></script-->
 <script type="text/javascript">
 (function($){
-var selects=$('select');//获取select
-for(var i=0;i<selects.length;i++){
-	createSelect(selects[i],i);
-}
+//var selects=$('select');//获取select
+//for(var i=0;i<selects.length;i++){
+//	createSelect(selects[i],i);
+//}
 function createSelect(select_container,index){
 	//创建select容器，class为select_box，插入到select标签前
 	var tag_select=$('<div></div>');//div相当于select标签
@@ -777,8 +777,8 @@ function createOptions(index,ul_list){
               var img = document.getElementById('imghead');
               img.onload = function(){
                 var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
-                img.width  =  rect.width;
-                img.height =  rect.height;
+                img.width  =  110;
+                img.height =  110;
 //                 img.style.marginLeft = rect.left+'px';
                 img.style.marginTop = rect.top+'px';
               }
