@@ -58,7 +58,7 @@ margin-top: -155px;
 .header .headinfo .load_tx img{ width:92px; height:30px;}
 .headshow{position:absolute;top:10%;}
 
-.content_person{position:relative;top:10%;left:50%;text-align:left;width:110px;height:110px;margin:-110px 0 0 0;}
+.content_person{position:relative;top:50%;left:50%;text-align:left;width:110px;height:110px;margin:-110px 0 0 0;}
 .content_person h1{font-size:18px;font-weight:bold;}
 .content_person h2{font-size:14px;margin:2px 0;}
 .instruction{line-height:20px;margin:122px 0 5% 0;}
@@ -179,7 +179,7 @@ table td{ font-size:12px;}
 }
 .per_info ul ul li{
 	margin:0 8px; 
-	width:78%;
+	width:88%;
 //	padding:8px;
 	line-height:30px;
 }
@@ -205,9 +205,11 @@ table td{ font-size:12px;}
 
 .per_info ul ul li {
 	border-bottom:1px solid #4c8692;
+	color:#000;
+}
+.per_info ul ul li  s1{
 	color:red;
 }
-
 .per_info ul ul li:first-child {
 	padding-top:6px;
 }
@@ -241,7 +243,7 @@ table td{ font-size:12px;}
     border-right: 6px solid transparent;
     border-top: 12px solid #fff;
 }
- input{border-style:none;width: 90%;}
+ input{border-style:none;width: 68%;text-align:center}
  
  
 select{
@@ -252,19 +254,19 @@ a{text-decoration:none;}
 select{
 display: none;
 }
-.select_box{font-family: "宋体"; font-size: 12px;color: #999;width: 100%;margin: 0 auto;}
-.select_showbox{height: 31px;padding-left: 5px;background: url(../img/icon.png) no-repeat 95% 5px;}
+.select_box{font-family: "宋体"; font-size: 12px;width: 68%;margin: 0 auto;float: right;}
+.select_showbox{height: 31px;padding-left: 5px;background: url(../img/icon.png) no-repeat 95% 5px;text-align:center;}
 .select_option{border-top: none;display: none;border: 1px solid #4c8692;}
 .select_option li{padding-left: 5px;border:none;}
 .per_info ul ul ul li{
 	margin:0 8px; 
-	width:78%;
+	width:88%;
 //	padding:8px;
 	line-height:30px;
 	border: 1px solid #fff;
 	color:#000;
 }
-.select_option li.selected{background-color: #F3F3F3;color: #999;}
+.select_option li.selected{background-color: #F3F3F3;}
 .select_option li.hover{background: #7b6959; color: #fff;}
  
  
