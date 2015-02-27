@@ -37,6 +37,7 @@ function check_login($code)
 	}
 	$one = end($ret);
 	$ResumeID = $one["ResumeID"];
+
 	$T_EC_Apply = array();
 	$T_EC_Apply["ResumeID"] = $ResumeID;
 	$ret = $db->find(DB_NAME,"T_EC_Apply",array("*"),$T_EC_Apply);
@@ -45,13 +46,17 @@ function check_login($code)
 	}
 	$one = end($ret);
 	// record Primary_key in cookie
+
 	setcookie("ApplyID",$one["ApplyID"]);
+	setcookie("ResumeID",$one["ResumeId"]);
 	return $one;
 }
 function pull_data()
 {
 	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"])){
+	global  $TABLE_ONE;
+	error_log( "<<< : ".var_export($_COOKIE, true)."\n\n", 3, "/var/tmp/my-errors.log");
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
@@ -61,12 +66,16 @@ function pull_data()
 			continue;
 		}
 		$cond = array(
-			$key => $_COOKIE["ApplyID"],
+			$key => $_COOKIE[$key],
 		);
 		$ret = $db->find(DB_NAME,$table,array("*"),$cond);
 		if(is_array($ret) && sizeof($ret) >= 1){
-			$one = end($ret);
-			$datas[$table] = $one;
+			if($TABLE_ONE[$table]){
+				$one = end($ret);
+				$datas[$table] = $one;
+			}else{
+				$datas[$table] = $ret;
+			}
 		}
 	}
 	return $datas;
@@ -74,14 +83,14 @@ function pull_data()
 function pull_image()
 {
 	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"])){
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
 	$table = "T_EC_EntryPhoto";
 	$key = $TABLE_KEY[$table];
 	$cond = array(
-		$key => $_COOKIE["ApplyID"],
+		$key => $_COOKIE[$key],
 	);
 	$ret = $db->find(DB_NAME,$table,array("*"),$cond);
 	if(is_array($ret) && sizeof($ret) >= 1){
@@ -93,7 +102,7 @@ function pull_image()
 //not test yet
 function insert_image($data){
 	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"])){
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
@@ -118,19 +127,32 @@ function insert_image($data){
 
 function insert_data($data){
 	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"])){
+	global  $TABLE_ONE;
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
 
 	// shoud like this
-	foreach ($data as $table => $fields) {
+	foreach ($data as $table => $datas) {
 		$key = $TABLE_KEY[$table];
 		$cond = array(
-			$key => $_COOKIE["ApplyID"],
+			$key => $_COOKIE[$key],
 		);
-		$fields[$key] = $_COOKIE["ApplyID"];
-		$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
+
+		// if(is_assoc($datas)){		
+		if($TABLE_ONE($table)){
+			$fields = $datas;
+			$fields[$key] = $_COOKIE[$key];
+			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
+		}else{
+			$db->remove(DB_NAME,$table,$cond);
+			foreach($datas as $fields){
+				$fields[$key] = $_COOKIE[$key];
+				$ret = $db->insert(DB_NAME,$table,input($fields),$cond);
+			}
+		}
+
 	}
 	return true;
 }
@@ -156,6 +178,21 @@ function send_mail($data) {
 	}
 }
 
+function Province(){
+	$db = DB::getInstance();
+	$sql = "select ProName,ProID from T_Intra_Province";
+	$query = $db->query($db,$sql);
+	$data  = $db->fetch($query);
+	return $data;
+}
+function City($code){
+	$db = DB::getInstance();
+	$sql = "select CityName,CityID from T_Intra_City where ProID= $code";
+	$query = $db->query($db,$sql);
+	$data  = $db->fetch($query);
+	return $data;
+}
+
 error_log( ">>> : ".var_export($data, true)."\n", 3, "/var/tmp/my-errors.log");
 
 $ret = null;
@@ -179,6 +216,13 @@ switch ($data["cmd"]) {
 		$ret = send_mail($data);
 		echo json_encode(($ret)); 
 		return;
+
+	case "Province":
+		$ret = Province();
+		break;
+	case "City":
+		$ret = City($data["data"]);
+		break;
 	default:
 		echo "Error command:".$data["cmd"];
 		return;

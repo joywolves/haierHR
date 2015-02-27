@@ -371,7 +371,25 @@ function pull_data () {
 		show_data(JSON.parse(data));
 	});
 }
+function Province () {
+	var msg = {}
+	msg["cmd"] = "Province";
 
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+		 alert("Data: " + data + "\nStatus: " + status);
+	});
+}
+function City (code) {
+	var msg = {}
+	msg["cmd"] = "City";
+	msg["data"] = code;
+
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+		 alert("Data: " + data + "\nStatus: " + status);
+	});
+}
 function pull_image() {
 	var msg = {}
 	msg["cmd"] = "pull_image";

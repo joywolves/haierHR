@@ -14,7 +14,8 @@
 <a href="#" onclick="chech_login()">check_login</a>|
 <a href="#" onclick="insert_data()">insert_data</a>|
 <a href="#" onclick="pull_data()">pull_data</a>|
-
+<a href="#" onclick="Province()">Province</a>|
+<a href="#" onclick="City(1)">City</a>|
 <select name="choose" id="Gender">
         <option value="" selected="selected">选择性别</option>
         <option value="1">男</option>
@@ -80,6 +81,26 @@ function pull_data(){
 	function(data,status){
 		alert("Data: " + data + "\nStatus: " + status);
 		show_data(JSON.parse(data));
+	});
+}
+
+function Province () {
+	var msg = {}
+	msg["cmd"] = "Province";
+
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+		 alert("Data: " + data + "\nStatus: " + status);
+	});
+}
+function City (code) {
+	var msg = {}
+	msg["cmd"] = "City";
+	msg["data"] = code;
+
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+		 alert("Data: " + data + "\nStatus: " + status);
 	});
 }
 </script>

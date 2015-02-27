@@ -33,16 +33,29 @@ define('MAIL_TEMPLATE', '
 
 //
 $TABLE_KEY = array(
-	// "T_EC_Apply" => "ApplyID",
+	"T_EC_Apply" => "ApplyID",
 	"T_EC_EmpDetail" => "ApplyID",
 	"T_EC_EntryEmpInfo" => "ApplyID",
 	"T_EC_EntryEmpInfoExtra" => "ApplyID",
-	// "T_EC_EntryInfo" => "ApplyID",
-	// "T_EC_EntryPhoto" => "ApplyID",
-	// "T_EC_EntrySocialRelation" =>"ApplyID",
-	// "T_EC_PhysicalExamTime" => "ApplyID",
-	// "T_EC_Resume" => "ResumeID",
-	// "T_EC_ResumeEducation" => "ResumeID",
-	// "T_EC_ResumeExperience" => "ResumeID",
+	"T_EC_EntryInfo" => "ApplyID",
+	"T_EC_EntryPhoto" => "ApplyID",
+	"T_EC_EntrySocialRelation" =>"ApplyID",
+	"T_EC_PhysicalExamTime" => "ApplyID",
+	"T_EC_Resume" => "ResumeID",
+	"T_EC_ResumeEducation" => "ResumeID",
+	"T_EC_ResumeExperience" => "ResumeID",
 );
 
+$TABLE_ONE = array(
+	"T_EC_Apply" => true,
+	"T_EC_EmpDetail" => true,
+	"T_EC_EntryEmpInfo" => true,
+	"T_EC_EntryEmpInfoExtra" => true,
+	"T_EC_EntryInfo" => true,
+	"T_EC_EntryPhoto" => true,
+	"T_EC_EntrySocialRelation" =>false,
+	"T_EC_PhysicalExamTime" => true,
+	"T_EC_Resume" => true,
+	"T_EC_ResumeEducation" => false,
+	"T_EC_ResumeExperience" => false,
+);
