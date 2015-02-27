@@ -17,11 +17,11 @@ define('MAIL_HOST', 'smtp.163.com');
 // smtp服务器端口
 define('MAIL_PORT', '25');
 // smtp用户名
-define('MAIL_USER', '');
+define('MAIL_USER', 'yxrs_xy@163.com');
 // smtp密码
-define('MAIL_PASSWORD', '');
+define('MAIL_PASSWORD', 'xy_1012');
 // 邮件显示的From
-define('MAIL_FROM', 'sender@example.com');
+define('MAIL_FROM', 'yxrs_xy@163.com');
 // 邮件标题
 define('MAIL_SUBJECT', 'this is an email');
 // 邮件内容
