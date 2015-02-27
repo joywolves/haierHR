@@ -17,17 +17,23 @@ $data = json_decode($json_data,true);
 function output($arr = array()) {    return eval('return ' . iconv('GB2312', 'UTF-8', var_export($arr, true)) . ';');}
 function input($arr = array()) {    return eval('return ' . iconv('UTF-8', 'GB2312',  var_export($arr, true)) . ';');}
 
-function check_login($data)
+function is_assoc ($arr) {
+    return (is_array($arr) && count(array_filter(array_keys($arr),'is_string')) == count($arr));
+}
+
+function check_login($code)
 {
 	$db = DB::getInstance();
 	//导入人员明细
-	$T_EC_EmpDetail = $data["T_EC_EmpDetail"];
+	$T_EC_Resume = array();
+	$T_EC_Resume["IDCardNo"] = $code;
 
-	$ret = $db->find(DB_NAME,"T_EC_EmpDetail",array("*"),$T_EC_EmpDetail);
+	$ret = $db->find(DB_NAME,"T_EC_Resume",array("*"),$T_EC_Resume);
 	if(is_array($ret) && sizeof($ret) >= 1){
 		$one = end($ret);
+		$ResumeID = $one["ResumeID"];
 		// record Primary_key in cookie
-		setcookie("ApplyID",$one["ApplyID"]);
+		setcookie("ApplyID",$one["ResumeID"]);
 		return $one;
 	}
 	return false;
@@ -139,10 +145,13 @@ switch ($data["cmd"]) {
 		$ret = insert_data($data["data"]);
 		break;
     case 'send_mail':
-		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD));
+		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD,'auth' => true));
 		$ret = $mailer->send($data["to"],array('From' => MAIL_FROM, 'To' => $data["to"], 'Subject' => MAIL_SUBJECT, 'Content-Type' => 'text/html; charset="UTF-8"'),str_replace('{name}', $data["name"], MAIL_TEMPLATE));
-		echo json_encode(output($ret)); 
-		break;
+		if(PEAR::isError($ret)){
+			die($ret->getMessage() . "\n");
+		}
+		echo json_encode(($ret)); 
+		return;
 	default:
 		echo "Error command:".$data["cmd"];
 		return;

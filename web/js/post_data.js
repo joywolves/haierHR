@@ -1,4 +1,132 @@
+/**
+ * 日期格式化函数
+ */
+Date.prototype.Format = function(format){ 
+	var o = { 
+		"M+" : this.getMonth()+1, //month 
+		"d+" : this.getDate(), //day 
+		"h+" : this.getHours(), //hour 
+		"m+" : this.getMinutes(), //minute 
+		"s+" : this.getSeconds(), //second 
+		"q+" : Math.floor((this.getMonth()+3)/3), //quarter 
+		"S" : this.getMilliseconds() //millisecond 
+	} 
+
+	if(/(y+)/.test(format)) { 
+		format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+	} 
+	
+	for(var k in o) { 
+		if(new RegExp("("+ k +")").test(format)) { 
+			format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length)); 
+		} 
+	} 
+	return format; 
+} 
+
+
+function isemail(txtemail)
+{    
+	var regx=/^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$/;
+	return regx.test(txtemail);
+}
+function istel(txttel)
+{    
+	var regx=/^((\(\d{3}\))|(\d{3}\-))?1\d{10}$/;
+	return regx.test(txttel);
+}
+
+
+
 function post_data(){
+	
+	  //if($("#Gender").val()=="选择性别"){
+	  //alert("请选择性别！");
+	  //return false;
+	//}
+	//if($("#Nation").val()==""){
+	  //alert("请选择民族");
+	  //return false;
+	//}
+	if($("#Birthday").val()==""){
+	  alert("生日不能为空！");
+	  return false;
+	}
+	if($("#HealthStatus").val()==""){
+	  alert("健康状况不能为空！");
+	  return false;
+	}
+	//if($("#Religion").val()==""){
+	  //alert("请选择宗教！");
+	  //return false;
+	//}
+	if($("#HukouLocation").val()==""){
+	  alert("户口地址不能为空！");
+	  return false;
+	}
+    if($("#FirstWorkDate").val()==""){
+	  alert("首次工作不能为空！");
+	  return false;
+	}
+    
+    if($("#Email").val()==""){
+	  alert("电子邮箱不能为空！");
+	  return false;
+	}
+	else{
+	  if(!isemail($("#Email").val())){
+	     alert("电子邮箱的格式不正确！");
+		 return false;
+	  }
+	}
+    if($("#Phone").val()==""){
+	  alert("移动电话不能为空！");
+	  return false;
+	}
+	else{
+	  if(!istel($("#Phone").val())){
+	     alert("移动电话的格式不正确！");
+		 return false;
+	  }
+	}
+	
+	
+   //附加个人信息
+   if($("#LDetailAddress").val()==""){
+	  alert("居住地址不能为空！");
+	  return false;
+	}
+	if($("#ZipCode").val()==""){
+	  alert("邮政编码不能为空！");
+	  return false;
+	}
+	//入党派时间没有ID
+	//if($("#").val()==""){
+	  //alert("入党派时间不能为空！");
+	  //return false;
+	//}
+	if($("#ProfessionQualification").val()==""){
+	  alert("专业技术职务任职资格不能为空！");
+	  return false;
+	}
+	if($("#ProfessionAwardDate").val()==""){
+	  alert("授予时间不能为空！");
+	  return false;
+	}
+	if($("#SpeSkill").val()==""){
+	  alert("爱好特长不能为空！");
+	  return false;
+	}
+	if($("#Award").val()==""){
+	  alert("何时何处何原因受过奖励不能为空！");
+	  return false;
+	}
+	if($("#Punishment").val()==""){
+	  alert("何时何处何原因受过处分不能为空！");
+	  return false;
+	}
+	
+	
 	//var T_EC_Apply = {}
 	
 	//应聘者姓名
@@ -83,19 +211,19 @@ var T_EC_EntryEmpInfoExtra = {};//个人信息拓展表-------------------------
 }
 
 function check_login () {
-	var T_EC_EmpDetail = {}
-	T_EC_EmpDetail["IDCardNo"] = $("#IDCardNo").val();
+	// var T_EC_EmpDetail = {}
+	// T_EC_EmpDetail["IDCardNo"] = $("#IDCardNo").val();
 
-	var data = {}
-	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
+	// var data = {}
+	// data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 
 	var msg = {}
 	msg["cmd"] = "check_login";
-	msg["data"] = data;
+	msg["data"] = $("#IDCardNo").val();
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		 //alert("Data: " + data + "\nStatus: " + status);
+		 alert("Data: " + data + "\nStatus: " + status);
 		if(data == "false" ||data == "null" ){
 			alert("身份证号无效!");
 		}else{
@@ -108,15 +236,20 @@ function set_select (id,val) {
 	if(!val || val == ""){
 		return;
 	}
-	var count = $("#"+id+" option").length;
+	/*var count = $("#"+id+" option").length;
 	for (var i = 0; i<count; i++) {
 		if($("#"+id).get(0).options[i].value == val.toString() ){
 			$("#"+id).get(0).options[i].selected = true;
 			break;
 		}
-	}
+	}*/
 }
-
+function get_date(date){
+	if(!date || date.length<20){
+		return;
+	}
+	return (new Date(date.substr(0,20))).Format("yyyy-MM-dd");
+}
 function show_data(data){
 var table;
 	console.log(data)
@@ -126,6 +259,16 @@ var table;
 	if(table = data["T_EC_EmpDetail"]){
 		set_select("Gender",table["Gender"]);
 
+		if(table["EmpName"]!=""&&table["Birthday"]!=""&&table["HealthStatus"]!=""&&table["HukouLocation"]!=""&&table["IdCardNo"]!=""&&table["FirstWorkDate"]!=""&&table["Email"]!=""&&table["Phone"]!=""){
+			document.getElementById('wsid1').style.color='green';
+		   document.getElementById("wsid1").innerHTML = "已完善";
+		}
+		else{
+		   document.getElementById("wsid1").innerHTML = "未完善";
+		}
+		
+		
+		
 		$("#EmpName").val(table["EmpName"]);		//应聘者姓名
 		$("#health_name").text(table["EmpName"]);
 		$("#rz_name").text(table["EmpName"]);
@@ -134,25 +277,37 @@ var table;
 		$("#Gender").val(table["Gender"]);					//性别
 		$("#Nation").val(table["Nation"]);					//民族
 		$("#Religion").val(table["Religion"]);				//宗教
-		$("#Birthday").val(table["Birthday"]);	
+		$("#Birthday").val(get_date(table["Birthday"]));	
 		$("#HukouLocation").val(table["HukouLocation"]);	//户口
 		$("#IdCardNo").val(table["IdCardNo"]);	            //身份证号
 		$("#PassportNo").val(table["PassportNo"]);	        //护照号码
 		$("#Provience").val(table["Provience"]);	        //出生省份
 		
-		$("#MarriageDate").val(table["MarriageDate"]);	
+		$("#MarriageDate").val(get_date(table["MarriageDate"]));	
 		$("#ChildNo").val(table["ChildNo"]);	        
 		$("#Email").val(table["Email"]);	        	
 		$("#ZipCode").val(table["ZipCode"]);	        
 		
+		
+		//附加个人信息
+        if(table["LDetailAddress"]!=""&&table["ZipCode"]!=""&&table["ProfessionQualification"]!=""&&table["ProfessionAwardDate"]!=""&&table["SpeSkill"]!=""&&table["Award"]!=""&&table["Punishment"]!=""){
+		   document.getElementById('wsid2').style.color='green';
+		   document.getElementById("wsid2").innerHTML = "已完善";
+		}
+		else{
+		   document.getElementById("wsid2").innerHTML = "未完善";
+		}
+		
+		
+		
 
-		$("#FirstWorkDate").val(table["FirstWorkDate"]);	//参加工作时间
+		$("#FirstWorkDate").val(get_date(table["FirstWorkDate"]));	//参加工作时间
 		$("#Phone").val(table["Phone"]);	                //移动电话
 		$("#LCountryCode").val(table["LCountryCode"]);	    //居住国家
 		$("#LProvince").val(table["LProvince"]);	        //居住省份
 		$("#LCityArea").val(table["LCityArea"]);	        //居住城市
 		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
-		$("#EduEndDate").val(table["EduEndDate"]);	        //毕业日期
+		$("#EduEndDate").val(get_date(table["EduEndDate"]));	        //毕业日期
 		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
 		$("#GCOrg").val(table["GCOrg"]);	                //毕业证书发证机关
 		$("#FirstDegree").val(table["FirstDegree"]);	    //第一学位
@@ -213,11 +368,11 @@ function pull_image() {
 }
 		// 邮件发送
 function send_email() {
-	var msg = {}
-	msg["cmd"] = "send_mail";
-	//解析参数处理
-	var arrayObj = new Array();
-	arrayObj=$("#send_input").val().split("@");
+	// var msg = {}
+	// msg["cmd"] = "send_mail";
+	// //解析参数处理
+	// var arrayObj = new Array();
+	// arrayObj=$("#send_input").val().split("@");
 /*	if(arrayObj.length!=2){
 		alert("格式错误！");
 		return;
@@ -226,6 +381,15 @@ function send_email() {
 	function(arrayObj[0],"smtp."+arrayObj[1]){
 		alert("邮件已发送成功！");
 	});*/
+	var msg = {}
+	msg["cmd"] = "send_mail";
+	msg["to"] = $("#send_input").val();
+	msg["name"] = $("#EmpName").val();
+	$.post("../data.php",JSON.stringify(msg),
+	function(data,status){
+	//	 alert("Data: " + data + "\nStatus: " + status);
+		alert("邮件已发送成功！");
+	});
 }
 
 function post_image(){
