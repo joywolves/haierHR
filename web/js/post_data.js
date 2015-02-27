@@ -24,7 +24,74 @@ Date.prototype.Format = function(format){
 	return format; 
 } 
 
+
+function isemail(txtemail)
+{    
+	var regx=/^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$/;
+	return regx.test(txtemail);
+}
+function istel(txttel)
+{    
+	var regx=/^((\(\d{3}\))|(\d{3}\-))?1\d{10}$/;
+	return regx.test(txttel);
+}
+
+
+
 function post_data(){
+	
+	  //if($("#Gender").val()=="选择性别"){
+	  //alert("请选择性别！");
+	  //return false;
+	//}
+	//if($("#Nation").val()==""){
+	  //alert("请选择民族");
+	  //return false;
+	//}
+	if($("#Birthday").val()==""){
+	  alert("生日不能为空！");
+	  return false;
+	}
+	if($("#HealthStatus").val()==""){
+	  alert("健康状况不能为空！");
+	  return false;
+	}
+	//if($("#Religion").val()==""){
+	  //alert("请选择宗教！");
+	  //return false;
+	//}
+	if($("#HukouLocation").val()==""){
+	  alert("户口地址不能为空！");
+	  return false;
+	}
+    if($("#FirstWorkDate").val()==""){
+	  alert("首次工作不能为空！");
+	  return false;
+	}
+    
+    if($("#Email").val()==""){
+	  alert("电子邮箱不能为空！");
+	  return false;
+	}
+	else{
+	  if(!isemail($("#Email").val())){
+	     alert("电子邮箱的格式不正确！");
+		 return false;
+	  }
+	}
+    if($("#Phone").val()==""){
+	  alert("移动电话不能为空！");
+	  return false;
+	}
+	else{
+	  if(!istel($("#Phone").val())){
+	     alert("移动电话的格式不正确！");
+		 return false;
+	  }
+	}
+	
+	
+	
 	//var T_EC_Apply = {}
 	
 	//应聘者姓名
