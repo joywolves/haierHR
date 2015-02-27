@@ -1,3 +1,29 @@
+/**
+ * 日期格式化函数
+ */
+Date.prototype.Format = function(format){ 
+	var o = { 
+		"M+" : this.getMonth()+1, //month 
+		"d+" : this.getDate(), //day 
+		"h+" : this.getHours(), //hour 
+		"m+" : this.getMinutes(), //minute 
+		"s+" : this.getSeconds(), //second 
+		"q+" : Math.floor((this.getMonth()+3)/3), //quarter 
+		"S" : this.getMilliseconds() //millisecond 
+	} 
+
+	if(/(y+)/.test(format)) { 
+		format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+	} 
+	
+	for(var k in o) { 
+		if(new RegExp("("+ k +")").test(format)) { 
+			format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length)); 
+		} 
+	} 
+	return format; 
+} 
+
 function post_data(){
 	//var T_EC_Apply = {}
 	
@@ -116,7 +142,12 @@ function set_select (id,val) {
 		}
 	}
 }
-
+function get_date(date){
+	if(!date || date.length<20){
+		return;
+	}
+	return (new Date(date.substr(0,20))).Format("yyyy-MM-dd");
+}
 function show_data(data){
 var table;
 	console.log(data)
@@ -134,25 +165,25 @@ var table;
 		$("#Gender").val(table["Gender"]);					//性别
 		$("#Nation").val(table["Nation"]);					//民族
 		$("#Religion").val(table["Religion"]);				//宗教
-		$("#Birthday").val(table["Birthday"]);	
+		$("#Birthday").val(get_date(table["Birthday"]));	
 		$("#HukouLocation").val(table["HukouLocation"]);	//户口
 		$("#IdCardNo").val(table["IdCardNo"]);	            //身份证号
 		$("#PassportNo").val(table["PassportNo"]);	        //护照号码
 		$("#Provience").val(table["Provience"]);	        //出生省份
 		
-		$("#MarriageDate").val(table["MarriageDate"]);	
+		$("#MarriageDate").val(get_date(table["MarriageDate"]));	
 		$("#ChildNo").val(table["ChildNo"]);	        
 		$("#Email").val(table["Email"]);	        	
 		$("#ZipCode").val(table["ZipCode"]);	        
 		
 
-		$("#FirstWorkDate").val(table["FirstWorkDate"]);	//参加工作时间
+		$("#FirstWorkDate").val(get_date(table["FirstWorkDate"]));	//参加工作时间
 		$("#Phone").val(table["Phone"]);	                //移动电话
 		$("#LCountryCode").val(table["LCountryCode"]);	    //居住国家
 		$("#LProvince").val(table["LProvince"]);	        //居住省份
 		$("#LCityArea").val(table["LCityArea"]);	        //居住城市
 		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
-		$("#EduEndDate").val(table["EduEndDate"]);	        //毕业日期
+		$("#EduEndDate").val(get_date(table["EduEndDate"]));	        //毕业日期
 		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
 		$("#GCOrg").val(table["GCOrg"]);	                //毕业证书发证机关
 		$("#FirstDegree").val(table["FirstDegree"]);	    //第一学位
