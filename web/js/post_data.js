@@ -176,15 +176,15 @@ var T_EC_EntryEmpInfoExtra = {};//个人信息拓展表-------------------------
 }
 
 function check_login () {
-	var T_EC_EmpDetail = {}
-	T_EC_EmpDetail["IDCardNo"] = $("#IDCardNo").val();
+	// var T_EC_EmpDetail = {}
+	// T_EC_EmpDetail["IDCardNo"] = $("#IDCardNo").val();
 
-	var data = {}
-	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
+	// var data = {}
+	// data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 
 	var msg = {}
 	msg["cmd"] = "check_login";
-	msg["data"] = data;
+	msg["data"] = $("#IDCardNo").val();
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){

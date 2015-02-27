@@ -21,17 +21,19 @@ function is_assoc ($arr) {
     return (is_array($arr) && count(array_filter(array_keys($arr),'is_string')) == count($arr));
 }
 
-function check_login($data)
+function check_login($code)
 {
 	$db = DB::getInstance();
 	//导入人员明细
-	$T_EC_EmpDetail = $data["T_EC_EmpDetail"];
+	$T_EC_Resume = array();
+	$T_EC_Resume["IDCardNo"] = $code;
 
-	$ret = $db->find(DB_NAME,"T_EC_EmpDetail",array("*"),$T_EC_EmpDetail);
+	$ret = $db->find(DB_NAME,"T_EC_Resume",array("*"),$T_EC_Resume);
 	if(is_array($ret) && sizeof($ret) >= 1){
 		$one = end($ret);
+		$ResumeID = $one["ResumeID"];
 		// record Primary_key in cookie
-		setcookie("ApplyID",$one["ApplyID"]);
+		setcookie("ApplyID",$one["ResumeID"]);
 		return $one;
 	}
 	return false;
