@@ -139,10 +139,13 @@ switch ($data["cmd"]) {
 		$ret = insert_data($data["data"]);
 		break;
     case 'send_mail':
-		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD));
+		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD,'auth' => true));
 		$ret = $mailer->send($data["to"],array('From' => MAIL_FROM, 'To' => $data["to"], 'Subject' => MAIL_SUBJECT, 'Content-Type' => 'text/html; charset="UTF-8"'),str_replace('{name}', $data["name"], MAIL_TEMPLATE));
-		echo json_encode(output($ret)); 
-		break;
+		if(PEAR::isError($ret)){
+			die($ret->getMessage() . "\n");
+		}
+		echo json_encode(($ret)); 
+		return;
 	default:
 		echo "Error command:".$data["cmd"];
 		return;
