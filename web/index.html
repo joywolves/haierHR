@@ -59,6 +59,10 @@
 							alert(returnData.length);
 						}
 						
+						function delFP(_this){
+							$(_this).parent().remove();
+						}
+						
 						//新加功能，以下主要处理工作经验
 						var WEno=0;
 						function addWE(_this){
