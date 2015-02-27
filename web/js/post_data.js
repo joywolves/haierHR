@@ -223,7 +223,7 @@ function check_login () {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		 //alert("Data: " + data + "\nStatus: " + status);
+		 alert("Data: " + data + "\nStatus: " + status);
 		if(data == "false" ||data == "null" ){
 			alert("身份证号无效!");
 		}else{
