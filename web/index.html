@@ -59,6 +59,10 @@
 							alert(returnData.length);
 						}
 						
+						function delFP(_this){
+							$(_this).parent().remove();
+						}
+						
 						//新加功能，以下主要处理工作经验
 						var WEno=0;
 						function addWE(_this){
@@ -103,7 +107,7 @@
 			<div class="content_person">
 
 				<h1 id="name_head">小小曹</h1>
-				<h2 id="name_bm"></h2>
+				<h2 id="name_bm">&nbsp;</h2>
 				<h2 id="name_zw"></h2>
 				  <form name="uploadFrom" id="uploadFrom" action="../image.php" method="post"  target="tarframe" enctype="multipart/form-data">
 				  <input name="cmd" type="text" value="insert_image" style="display:none;" />
@@ -142,7 +146,7 @@
 			<li class="block">
 				<input type="checkbox" name="item" id="item1" />   
 				<label for="item1">
-				<i aria-hidden="true" class="icon-users"></i> 基本信息 <span style="color:green">已完善</span>
+				<i aria-hidden="true" class="icon-users"></i> 基本信息 <span  id="wsid1">未完善</span>
 				<i class="jt-down"><i id="triangle-down"> </i></i>
 				</label>
 				<ul class="options">
@@ -575,7 +579,7 @@
 			</li>
 			<li class="block">
 				<input type="checkbox" name="item" id="item2" />   
-				<label for="item2"><i aria-hidden="true" class="icon-film"></i> 附加个人信息 <span>未完善</span>
+				<label for="item2"><i aria-hidden="true" class="icon-film"></i> 附加个人信息 <span id="wsid2">未完善</span>
 				<i class="jt-down"><i id="triangle-down"> </i></i>
 				</label>
 				<ul class="options">
@@ -966,7 +970,7 @@
 			</div>			
 		</div>
 		<div class="instruction">
-			请完善以下个人信息，提交个人信息后，你只需携带相关入职资料到指定地点签订劳动合同。
+			海尔集团有如下两种方案，请根据您的需求自行选择。无论您选择哪种体验方案，体检表有效期3个月。
 		</div>
 		</div>
 	</div>
