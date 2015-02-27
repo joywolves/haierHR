@@ -17,6 +17,10 @@ $data = json_decode($json_data,true);
 function output($arr = array()) {    return eval('return ' . iconv('GB2312', 'UTF-8', var_export($arr, true)) . ';');}
 function input($arr = array()) {    return eval('return ' . iconv('UTF-8', 'GB2312',  var_export($arr, true)) . ';');}
 
+function is_assoc ($arr) {
+    return (is_array($arr) && count(array_filter(array_keys($arr),'is_string')) == count($arr));
+}
+
 function check_login($data)
 {
 	$db = DB::getInstance();
