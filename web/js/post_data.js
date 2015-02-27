@@ -91,6 +91,41 @@ function post_data(){
 	}
 	
 	
+   //附加个人信息
+   if($("#LDetailAddress").val()==""){
+	  alert("居住地址不能为空！");
+	  return false;
+	}
+	if($("#ZipCode").val()==""){
+	  alert("邮政编码不能为空！");
+	  return false;
+	}
+	//入党派时间没有ID
+	//if($("#").val()==""){
+	  //alert("入党派时间不能为空！");
+	  //return false;
+	//}
+	if($("#ProfessionQualification").val()==""){
+	  alert("专业技术职务任职资格不能为空！");
+	  return false;
+	}
+	if($("#ProfessionAwardDate").val()==""){
+	  alert("授予时间不能为空！");
+	  return false;
+	}
+	if($("#SpeSkill").val()==""){
+	  alert("爱好特长不能为空！");
+	  return false;
+	}
+	if($("#Award").val()==""){
+	  alert("何时何处何原因受过奖励不能为空！");
+	  return false;
+	}
+	if($("#Punishment").val()==""){
+	  alert("何时何处何原因受过处分不能为空！");
+	  return false;
+	}
+	
 	
 	//var T_EC_Apply = {}
 	
@@ -225,6 +260,7 @@ var table;
 		set_select("Gender",table["Gender"]);
 
 		if(table["EmpName"]!=""&&table["Birthday"]!=""&&table["HealthStatus"]!=""&&table["HukouLocation"]!=""&&table["IdCardNo"]!=""&&table["FirstWorkDate"]!=""&&table["Email"]!=""&&table["Phone"]!=""){
+			document.getElementById('wsid1').style.color='green';
 		   document.getElementById("wsid1").innerHTML = "已完善";
 		}
 		else{
@@ -251,6 +287,18 @@ var table;
 		$("#ChildNo").val(table["ChildNo"]);	        
 		$("#Email").val(table["Email"]);	        	
 		$("#ZipCode").val(table["ZipCode"]);	        
+		
+		
+		//附加个人信息
+        if(table["LDetailAddress"]!=""&&table["ZipCode"]!=""&&table["ProfessionQualification"]!=""&&table["ProfessionAwardDate"]!=""&&table["SpeSkill"]!=""&&table["Award"]!=""&&table["Punishment"]!=""){
+		   document.getElementById('wsid2').style.color='green';
+		   document.getElementById("wsid2").innerHTML = "已完善";
+		}
+		else{
+		   document.getElementById("wsid2").innerHTML = "未完善";
+		}
+		
+		
 		
 
 		$("#FirstWorkDate").val(get_date(table["FirstWorkDate"]));	//参加工作时间
