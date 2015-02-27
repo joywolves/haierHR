@@ -134,13 +134,13 @@ function set_select (id,val) {
 	if(!val || val == ""){
 		return;
 	}
-	var count = $("#"+id+" option").length;
+	/*var count = $("#"+id+" option").length;
 	for (var i = 0; i<count; i++) {
 		if($("#"+id).get(0).options[i].value == val.toString() ){
 			$("#"+id).get(0).options[i].selected = true;
 			break;
 		}
-	}
+	}*/
 }
 function get_date(date){
 	if(!date || date.length<20){
