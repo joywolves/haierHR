@@ -224,6 +224,15 @@ var table;
 	if(table = data["T_EC_EmpDetail"]){
 		set_select("Gender",table["Gender"]);
 
+		if(table["EmpName"]!=""&&table["Birthday"]!=""&&table["HealthStatus"]!=""&&table["HukouLocation"]!=""&&table["IdCardNo"]!=""&&table["FirstWorkDate"]!=""&&table["Email"]!=""&&table["Phone"]!=""){
+		   document.getElementById("wsid1").innerHTML = "已完善";
+		}
+		else{
+		   document.getElementById("wsid1").innerHTML = "未完善";
+		}
+		
+		
+		
 		$("#EmpName").val(table["EmpName"]);		//应聘者姓名
 		$("#health_name").text(table["EmpName"]);
 		$("#rz_name").text(table["EmpName"]);
