@@ -29,14 +29,21 @@ function check_login($code)
 	$T_EC_Resume["IDCardNo"] = $code;
 
 	$ret = $db->find(DB_NAME,"T_EC_Resume",array("*"),$T_EC_Resume);
-	if(is_array($ret) && sizeof($ret) >= 1){
-		$one = end($ret);
-		$ResumeID = $one["ResumeID"];
-		// record Primary_key in cookie
-		setcookie("ApplyID",$one["ResumeID"]);
-		return $one;
+	if(!is_array($ret) || !sizeof($ret) ){
+		return false;
 	}
-	return false;
+	$one = end($ret);
+	$ResumeID = $one["ResumeID"];
+	$T_EC_Apply = array();
+	$T_EC_Apply["ResumeID"] = $ResumeID;
+	$ret = $db->find(DB_NAME,"T_EC_Apply",array("*"),$T_EC_Apply);
+	if(!is_array($ret) || !sizeof($ret) ){
+		return false;
+	}
+	$one = end($ret);
+	// record Primary_key in cookie
+	setcookie("ApplyID",$one["ApplyID"]);
+	return $one;
 }
 function pull_data()
 {
