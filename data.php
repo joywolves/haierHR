@@ -36,10 +36,10 @@ function check_login($code)
 		return false;
 	}
 	$one = end($ret);
-	$ResumeId = $one["ResumeID"];
+	$ResumeID = $one["ResumeID"];
 
 	$T_EC_Apply = array();
-	$T_EC_Apply["ResumeId"] = $ResumeId;
+	$T_EC_Apply["ResumeID"] = $ResumeID;
 	$ret = $db->find(DB_NAME,"T_EC_Apply",array("*"),$T_EC_Apply);
 	if(!is_array($ret) || !sizeof($ret) ){
 		return false;
@@ -48,7 +48,7 @@ function check_login($code)
 	// record Primary_key in cookie
 
 	setcookie("ApplyID",$one["ApplyID"]);
-	setcookie("ResumeId",$one["ResumeId"]);
+	setcookie("ResumeID",$one["ResumeId"]);
 	return $one;
 }
 function pull_data()
@@ -56,7 +56,7 @@ function pull_data()
 	global  $TABLE_KEY;
 	global  $TABLE_ONE;
 	error_log( "<<< : ".var_export($_COOKIE, true)."\n\n", 3, "/var/tmp/my-errors.log");
-	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeId"])){
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
@@ -83,7 +83,7 @@ function pull_data()
 function pull_image()
 {
 	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeId"])){
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
@@ -102,7 +102,7 @@ function pull_image()
 //not test yet
 function insert_image($data){
 	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeId"])){
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
@@ -128,7 +128,7 @@ function insert_image($data){
 function insert_data($data){
 	global  $TABLE_KEY;
 	global  $TABLE_ONE;
-	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeId"])){
+	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
 	$db = DB::getInstance();
