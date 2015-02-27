@@ -32,7 +32,7 @@ function isemail(txtemail)
 }
 function istel(txttel)
 {    
-	var regx=/^((\(\d{3}\))|(\d{3}\-))?13\d{9}$/;
+	var regx=/^((\(\d{3}\))|(\d{3}\-))?1\d{10}$/;
 	return regx.test(txttel);
 }
 
