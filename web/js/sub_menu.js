@@ -10,6 +10,10 @@ $(function(){
 		$(".page4").addClass("hide");
 		$(".footer").addClass("hide");
 		
+		$(".menu").addClass("curr_nav");
+		$(".home").removeClass("curr_nav");
+		$(".other").removeClass("curr_nav");
+		$(".routine").removeClass("curr_nav");
 		});
 	$(".home").click(function(){
 		$(".page1").removeClass("hide");
@@ -17,6 +21,11 @@ $(function(){
 		$(".page3").addClass("hide");
 		$(".page4").addClass("hide");
 		$(".footer").removeClass("hide");
+		
+		$(".menu").removeClass("curr_nav");
+		$(".home").addClass("curr_nav");
+		$(".other").removeClass("curr_nav");
+		$(".routine").removeClass("curr_nav");
 		});
 		
 	$(".other").click(function(){
@@ -25,6 +34,12 @@ $(function(){
 		$(".page3").removeClass("hide");
 		$(".page4").addClass("hide");
 		$(".footer").addClass("hide");
+		
+		$(".menu").removeClass("curr_nav");
+		$(".home").removeClass("curr_nav");
+		$(".other").addClass("curr_nav");
+		$(".routine").removeClass("curr_nav");
+		
 		});
 	$(".routine").click(function(){
 		$(".page1").addClass("hide");
@@ -32,6 +47,11 @@ $(function(){
 		$(".page3").addClass("hide");
 		$(".page4").removeClass("hide");
 		$(".footer").addClass("hide");
+		
+		$(".menu").removeClass("curr_nav");
+		$(".home").removeClass("curr_nav");
+		$(".other").removeClass("curr_nav");
+		$(".routine").addClass("curr_nav");
 		
 		});
 	//预览体检

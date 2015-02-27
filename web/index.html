@@ -110,7 +110,7 @@
 								createSelect(selects[i],i);
 							}
 						}
-						function saveWE(_this){
+						function saveED(_this){
 						}
         </script>		
 		
@@ -590,11 +590,14 @@
 					<option value="5">再婚</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>结婚日期:&nbsp;&nbsp;</b><input id="MarriageDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入结婚日期"> </li>
-					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>子女数量:&nbsp;&nbsp;</b><input id="ChildNo" type="text" placeholder="请输入子女数量"></li>
+					<li class="hide"><b><s1>&nbsp;&nbsp;&nbsp;</s1>结婚日期:&nbsp;&nbsp;</b><input id="MarriageDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入结婚日期"> </li>
+					<li class="hide"><b><s1>&nbsp;&nbsp;&nbsp;</s1>子女数量:&nbsp;&nbsp;</b><input id="ChildNo" type="text" placeholder="请输入子女数量"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>首次工作:&nbsp;&nbsp;</b><input id="FirstWorkDate" class="Wdate" type="text" onClick="WdatePicker()"  placeholder="首次参加工作时间"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>电子邮箱:&nbsp;&nbsp;</b><input id="Email" type="text" placeholder="请输入Email"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>移动电话:&nbsp;&nbsp;</b><input id="Phone" type="text" placeholder="请输入移动电话"></li>
+				
+					<div class="buttonType" onClick="saveItem1(this)"><span class="but green">保存</span></div>
+				
 				</ul>
 			</li>
 			<li class="block">
@@ -937,6 +940,7 @@
 					<li><b><s1>&nbsp;*&nbsp;</s1>爱好特长:&nbsp;&nbsp;</b><input id="SpeSkill" type="text" placeholder="没有请填写“无”"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>何时何处何原因受过奖励:&nbsp;&nbsp;</b><input id="Award" type="text" placeholder="请填写市级以上奖励，示例：2010年10月，山东劳动模范，没有请填写“无”"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>何时何处何原因受过处分:&nbsp;&nbsp;</b><input id="Punishment" type="text" value="没有请填写“无”"></li>
+					<div class="buttonType" onClick="saveItem2(this)"><span class="but green">保存</span></div>
 				</ul>
 			</li>
 			<li class="block">
@@ -945,7 +949,50 @@
 				<i class="jt-down"><i id="triangle-down"> </i></i>
 				</label>
 				<ul class="options">
+				
+					<li><b><s1>&nbsp;*&nbsp;</s1>学&nbsp;&nbsp;历:&nbsp;&nbsp;</b>
+					<select name="choose" id="choose">
+						<option value="请选择全日制学历" selected="selected">请选择全日制学历</option>
+						<option value="0">高中</option>
+						<option value="1">大专</option>
+						<option value="2">本科</option>
+						<option value="3">硕士</option>
+						<option value="4">博士</option>
+					</select>
+					</li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>入学日期:&nbsp;&nbsp;</b><input class="Wdate" disabled="disabled" type="text" onClick="WdatePicker()" placeholder="请输入入学日期"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>毕业日期:&nbsp;&nbsp;</b><input id="EduEndDate" disabled="disabled" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入毕业日期"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>毕业学校:&nbsp;&nbsp;</b><input  type="text" disabled="disabled" placeholder="请输入毕业学校"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>证书编号:&nbsp;&nbsp;</b><input id="GCNo" type="text" placeholder="请输入毕业证书编号"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>发证机关:&nbsp;&nbsp;</b><input id="GCOrg" type="text" placeholder="请输入毕业证发证机关"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>第一专业:&nbsp;&nbsp;</b><input id="FirstMajor" type="text" placeholder="请输入第一专业"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>第一学位:&nbsp;&nbsp;</b><input id="FirstDegree" type="text" placeholder="请输入第一学位"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>证书编号:&nbsp;&nbsp;</b><input id="DCNo" type="text" placeholder="请输入学位证书编号"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>发证机关:&nbsp;&nbsp;</b><input id="DCOrg" type="text" placeholder="请输入学位证发证机关"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>第二专业:&nbsp;&nbsp;</b><input id="SecondMajor" type="text" placeholder="请输入第二专业"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>第二学位:&nbsp;&nbsp;</b><input id="SecondDegree" type="text" placeholder="请输入第二学位"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>最高学历:&nbsp;&nbsp;</b>
+					<select name="choose" id="HighDegree">
+						<option value="">——请选择——</option>
+						<option value="01">小学</option>
+						<option value="02">初中</option>
+						<option value="03">高中</option>
+						<option value="04">中专</option>
+						<option value="05">职高</option>
+						<option value="06">职专</option>
+						<option value="07">技校</option>
+						<option value="08">大专</option>
+						<option selected="selected" value="09">大本</option>
+						<option value="10">双学位</option>
+						<option value="11">硕士</option>
+						<option value="12">博士</option>
+						<option value="13">博士后</option>
+					</select>
+					</li>
+				
+				
 					<div class="buttonType" onClick="addED(this)"><span class="but">添加</span></div>
+					<div class="buttonType" onClick="saveItem3(this)"><span class="but green">保存</span></div>
 					<!--div class="buttonType" onClick="saveFP(this)"><span class="but green">保存</span></div-->
 				</ul>
 			</li>
@@ -956,7 +1003,7 @@
 				</label>
 				<ul class="options">
 					<div class="buttonType" onClick="addWE(this)"><span class="but">添加</span></div>
-					<!--div class="buttonType" onClick="saveFP(this)"><span class="but green">保存</span></div-->
+					<div class="buttonType" onClick="saveItem4(this)"><span class="but green">保存</span></div>
 				</ul>
 			</li>
 			<li class="block" id="familyPersionDiv">
@@ -966,7 +1013,7 @@
 				</label>
 				<ul class="options">
 					<div class="buttonType" onClick="addFP(this)"><span class="but">添加</span></div>
-					<!--div class="buttonType" onClick="saveFP(this)"><span class="but green">保存</span></div-->
+					<div class="buttonType" onClick="saveItem5(this)"><span class="but green">保存</span></div>
 				</ul>
 			</li>
 		  </ul>		
@@ -1141,8 +1188,7 @@
 
     <div class="footer">
 		<p>
-			<a href="#" onClick="post_data()" ><img style="width:90px;" src="img/load_save.png"></a>
-			<a href="#" ><img style="width:90px;" src="img/load_gx.png"></a>
+			<a href="#" onClick="post_data_all()" ><img style="width:90px;" src="img/load_save.png"></a>
 		</p>
 		<a href="index.html" class="top"><img src="img/top.png"></a>
 		<p>  Copyright ©2013 海尔HR入职</p>
@@ -1182,11 +1228,11 @@
 		<div class="event_rules">
 		<img src="img/close-btn.png" id="rules_close_rz" class="rules_close" />
 		<div class="rule_content">
-        <p style="text-align: center; font-size: 26px; height:50px">
+        <p style="text-align: center; font-size: 26px; height:50px;color: #000;">
             <span id="lblIsQD">入职通知函</span></p>
-        <p style="height:50px">
+        <p style="height:50px;color: #000;">
             <u>&nbsp;&nbsp;&nbsp;&nbsp;<span id="rz_name"></span>&nbsp;&nbsp;&nbsp;&nbsp;</u>先生/女士</p>
-        <table width="100%" border="1" cellpadding="0" cellspacing="0">
+        <table width="100%" border="1" cellpadding="0" cellspacing="0"style="color: #000;">
             <colgroup>
                 <col width="15%">
                 <col width="35%">
@@ -1287,9 +1333,7 @@
     </div> 
 	<div class="footer_nav">
 		<ul class="nav">
-			<a href="javascript:;" class="home">
-				<span><img id="home" src="img/nav_1.png"></span>
-			</a>
+			<a href="javascript:;" class="home curr_nav"><li><span><img id="home" src="img/nav_1.png"></span></li></a>
 			<a href="javascript:;" class="menu"><li><span style="border-left:none;"><img id="menu" src="img/nav_2.png"></span></li></a>
 			<a href="javascript:;" class="other"><li><span><img id="other" src="img/nav_3.png"></span></li></a>
 			<a href="javascript:;" class="routine"><li><span style="border-right:none;"><img id="routine" src="img/nav_4.png"></span></li></a>
@@ -1642,43 +1686,34 @@
 				</ul>
 
 			<ul class="options" id="education" style="display:">
-				<div class="buttonType" onClick="delED(this)"><span class="but" style="background:red;">删除</span></div>	
-				<li><b><s1>&nbsp;*&nbsp;</s1>学&nbsp;&nbsp;历:&nbsp;&nbsp;</b>
-				<select name="choose" id="choose">
-					<option value="请选择全日制学历" selected="selected">请选择全日制学历</option>
-					<option value="0">高中</option>
-					<option value="1">大专</option>
-					<option value="2">本科</option>
-					<option value="3">硕士</option>
-					<option value="4">博士</option>
-				</select>
-				</li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>入学日期:&nbsp;&nbsp;</b><input class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入入学日期"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>毕业日期:&nbsp;&nbsp;</b><input id="EduEndDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入毕业日期"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>毕业学校:&nbsp;&nbsp;</b><input  type="text" placeholder="请输入毕业学校"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>证书编号:&nbsp;&nbsp;</b><input id="GCNo" type="text" placeholder="请输入毕业证书编号"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>发证机关:&nbsp;&nbsp;</b><input id="GCOrg" type="text" placeholder="请输入毕业证发证机关"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>第一专业:&nbsp;&nbsp;</b><input id="FirstMajor" type="text" placeholder="请输入第一专业"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>第一学位:&nbsp;&nbsp;</b><input id="FirstDegree" type="text" placeholder="请输入第一学位"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>证书编号:&nbsp;&nbsp;</b><input id="DCNo" type="text" placeholder="请输入学位证书编号"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>发证机关:&nbsp;&nbsp;</b><input id="DCOrg" type="text" placeholder="请输入学位证发证机关"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>第二专业:&nbsp;&nbsp;</b><input id="SecondMajor" type="text" placeholder="请输入第二专业"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>第二学位:&nbsp;&nbsp;</b><input id="SecondDegree" type="text" placeholder="请输入第二学位"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>最高学历:&nbsp;&nbsp;</b>
-				<select name="choose" id="HighDegree">
-					<option value="请选择最高学历" selected="selected">请选择最高学历</option>
-					<option value="0">高中</option>
-					<option value="1">大专</option>
-					<option value="2">本科</option>
-					<option value="3">硕士</option>
-					<option value="4">博士</option>
-				</select>
-				</li>
-			
+				<div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>	
+					<li><b><s1>&nbsp;*&nbsp;</s1>教育类型:&nbsp;&nbsp;</b>
+					<select name="choose" id="SchoolForms">
+						<option value="">——请选择——</option>
+						<option value="01" selected="selected" >小学</option>
+						<option value="02">初中</option>
+						<option value="03">高中</option>
+						<option value="04">中专</option>
+						<option value="05">职高</option>
+						<option value="06">职专</option>
+						<option value="07">技校</option>
+						<option value="08">大专</option>
+						<option value="09">大本</option>
+						<option value="10">双学位</option>
+						<option value="11">硕士</option>
+						<option value="12">博士</option>
+						<option value="13">博士后</option>
+					</select>
+					</li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>入学日期:&nbsp;&nbsp;</b><input id="EnterSchoolDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入入学日期"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>毕业日期:&nbsp;&nbsp;</b><input id="GraduateDate"  class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入毕业日期"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>毕业学校:&nbsp;&nbsp;</b><input id="College" name="SocHaierBU" type="text" placeholder="请输入毕业学校"></li>
+					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>专&nbsp;&nbsp;业:&nbsp;&nbsp;</b><input id="Specialty" name="SocHaierBU" disabled="disabled" type="text" placeholder="请输入专业"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>证&nbsp;明&nbsp;人:&nbsp;&nbsp;</b><input id="EduCertificer" name="SocHaierBU" type="text" placeholder="请输入毕业学校"></li>
 			</ul>
 			
 			<ul class="options" id="workExperience" style="display:">
-				<div class="buttonType" onClick="delWE(this)"><span class="but" style="background:red;">删除</span></div>	
+				<div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>	
 				<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input type="text" placeholder="请输入工作单位"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;务:&nbsp;&nbsp;</b><input type="text" placeholder="请输入职务"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>开始日期:&nbsp;&nbsp;</b><input type="text" placeholder="请输入开始日期"></li>
@@ -2039,6 +2074,9 @@ function createSelect(select_container,index){
 	li_option.on('click',function(){
 		$(this).addClass('selected').siblings().removeClass('selected');
 		var value=$(this).text();
+		//alert($(this).parent().parent().parent().html());
+		//alert("id:  "+$(this).parent().parent().parent().children("select").attr("id")+"  val:  "+$(this).attr("tvalue"));
+		set_select_special($(this).parent().parent().parent().children("select").attr("id"),$(this).attr("tvalue"));		
 		select_showbox.text(value);
 		ul_option.hide();
 	});

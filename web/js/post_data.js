@@ -35,12 +35,9 @@ function istel(txttel)
 	var regx=/^((\(\d{3}\))|(\d{3}\-))?1\d{10}$/;
 	return regx.test(txttel);
 }
-
-
-
-function post_data(){
-	
-	  //if($("#Gender").val()=="选择性别"){
+//点击递交按钮是需要全面校验并给出缺陷提示，点击局部保存按钮时只处理对应区域的内容保存处理
+function check_post_data(){
+//if($("#Gender").val()=="选择性别"){
 	  //alert("请选择性别！");
 	  //return false;
 	//}
@@ -126,27 +123,129 @@ function post_data(){
 	  return false;
 	}
 	
-	
+
+}
+//获取select的值
+function get_select(id){
+	var select_obj = $("#"+id);
+	var select_parent = select_obj.parent("li").children(".select_box");
+	//var select_option = select_parent.children(".select_option");
+	var select_show = select_parent.children(".select_showbox");
+	var obj_child = select_obj.children() ;
+	var val_text = select_show.text();
+	var count = obj_child.length;	
+	for (var i = 0; i<count; i++) {
+		//alert(select_obj.get(0).options[i].value);
+		if(select_obj.get(0).options[i].text == val_text ){
+			return select_obj.get(0).options[i].value;
+		}
+	}
+	return ;
+}
+//设置select的值中的特殊处理
+function set_select_special(id,val) {
+	//婚姻状况处理
+	if(id == "MarriedType"){
+		if(val == 0){	//单身处理,隐藏结婚日期和子女数量
+			$("#MarriageDate").parent("li").addClass("hide");
+			$("#ChildNo").parent("li").addClass("hide");
+		}else if(val == 2 || val ==3){	//离异 丧偶处理,隐藏子女数量
+			$("#MarriageDate").parent("li").addClass("hide");
+			$("#ChildNo").parent("li").removeClass("hide");
+		}else{
+			$("#MarriageDate").parent("li").removeClass("hide");
+			$("#ChildNo").parent("li").removeClass("hide");
+		}
+	}
+}
+//设置sect的值
+function set_select (id,val) {
+	if(!val || val == ""){
+		return;
+	}
+	var select_obj = $("#"+id);
+	var select_parent = select_obj.parent("li").children(".select_box");
+	var select_option = select_parent.children(".select_option");
+	var select_show = select_parent.children(".select_showbox");
+	var obj_child = select_obj.children() ;
+	var val_text = select_show.text;
+	//设置select_showbox的值
+	var count = obj_child.length;	
+	for (var i = 0; i<count; i++) {
+		//alert(select_obj.get(0).options[i].value);
+		if(select_obj.get(0).options[i].value == val.toString() ){
+			select_show.text(select_obj.get(0).options[i].text);
+			alert(select_show.text());
+			//缺少select_option的设置	
+			break;
+		}
+	}
+}
+
+
+
+//递交信息处理
+function post_data_all(){
+	//校验所有数据
+	check_post_data();
+	//递交数据
+	post_data();
+}
+
+//局部递交
+function saveItem1(){
+	//无需校验直接保存数据，暂时只提供整体保存方案
+	post_data();
+	//同步处理信息状态，是都已完善
+}
+//局部递交
+function saveItem2(){
+	//无需校验直接保存数据，暂时只提供整体保存方案
+	post_data();
+	//同步处理信息状态，是都已完善
+}
+//局部递交
+function saveItem3(){
+	//无需校验直接保存数据，暂时只提供整体保存方案
+	post_data();
+	//同步处理信息状态，是都已完善
+}
+//局部递交
+function saveItem4(){
+	//无需校验直接保存数据，暂时只提供整体保存方案
+	post_data();
+	//同步处理信息状态，是都已完善
+}
+//局部递交
+function saveItem5(){
+	//无需校验直接保存数据，暂时只提供整体保存方案
+	post_data();
+	//同步处理信息状态，是都已完善
+}
+
+
+function post_data(){
+
 	//var T_EC_Apply = {}
 	
 	//应聘者姓名
 	//T_EC_Apply["EmpName"] = $("#EmpName").val();
 	
     
-var T_EC_EmpDetail = {};//人员明细表----------------------------------------------
+	var T_EC_EmpDetail = {};//人员明细表----------------------------------------------
 	
 	
 	T_EC_EmpDetail["EnglishName"] = $("#EnglishName").val();         //英文名
-	T_EC_EmpDetail["Gender"] = $("#Gender").val();                   //性别
-	T_EC_EmpDetail["Nation"] = $("#Nation").val();                   //民族
-	T_EC_EmpDetail["Religion"] = $("#Religion").val();               //宗教
+	T_EC_EmpDetail["Gender"] = get_select("Gender");                   //性别
+	T_EC_EmpDetail["Nation"] = get_select("Nation");                   //民族
+	T_EC_EmpDetail["Religion"] = get_select("Religion");               //宗教
 	T_EC_EmpDetail["Birthday"] = $("#Birthday").val();               //生日
 	
 	T_EC_EmpDetail["HukouLocation"] = $("#HukouLocation").val();     //户口
 	T_EC_EmpDetail["IdCardNo"] = $("#IdCardNo").val();               //身份证号
-	T_EC_EmpDetail["PassportNo"] = $("#PassportNo").val();           //护照号码
-	
-	T_EC_EmpDetail["Provience"] = $("#Provience").val();             //出生省份
+	T_EC_EmpDetail["PassportNo"] = $("#PassportNo").val();           //护照号码	
+	T_EC_EmpDetail["MarriedType"] = $("#MarriedType").val();           //婚姻状况
+	T_EC_EmpDetail["Provience"] = get_select("Provience");             //出生省份
 	T_EC_EmpDetail["MarriageDate"] = $("#MarriageDate").val();       //结婚日期
 	T_EC_EmpDetail["ChildNo"] = $("#ChildNo").val();      			 //子女数量	
 	T_EC_EmpDetail["Email"] = $("#Email").val();      				 //Email 
@@ -239,18 +338,6 @@ function check_login () {
 	});
 }
 
-function set_select (id,val) {
-	if(!val || val == ""){
-		return;
-	}
-	/*var count = $("#"+id+" option").length;
-	for (var i = 0; i<count; i++) {
-		if($("#"+id).get(0).options[i].value == val.toString() ){
-			$("#"+id).get(0).options[i].selected = true;
-			break;
-		}
-	}*/
-}
 function get_date(date){
 	if(!date || date.length<20){
 		return;
@@ -288,7 +375,9 @@ var table;
 		$("#HukouLocation").val(table["HukouLocation"]);	//户口
 		$("#IdCardNo").val(table["IdCardNo"]);	            //身份证号
 		$("#PassportNo").val(table["PassportNo"]);	        //护照号码
+		$("#MarriedType").val(table["MarriedType"]);	        //婚姻状况
 		$("#Provience").val(table["Provience"]);	        //出生省份
+		
 		
 		$("#MarriageDate").val(get_date(table["MarriageDate"]));	
 		$("#ChildNo").val(table["ChildNo"]);	        

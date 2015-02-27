@@ -23,7 +23,7 @@ define('MAIL_PASSWORD', 'xy_1012');
 // 邮件显示的From
 define('MAIL_FROM', 'yxrs_xy@163.com');
 // 邮件标题
-define('MAIL_SUBJECT', 'this is an email');
+define('MAIL_SUBJECT', '体检通知单');
 // 邮件内容
 define('MAIL_TEMPLATE', '
 <h1>体检通知单</h1>

@@ -64,14 +64,14 @@ margin-top: -155px;
 .instruction{line-height:20px;margin:122px 0 5% 0;}
 
 
-.event{position:absolute;width:100%;height:900px;background:rgba(23, 113, 212,0.95);background-size:100% 100%;z-index:999999;top:0;left:0;}
+.event{position:absolute;width:100%;height:900px;background:rgba(255, 255, 255,0.95);background-size:100% 100%;z-index:999999;top:0;left:0;}
 .event_rules{background:rgba(0, 0, 0, 0) no-repeat center center ;background-size:90% 90%;top:5%;left:5%;position:absolute;width:90%;height:90%;}
 .rules_close{position:absolute;right:-5px;top:-1px;z-index:999999}
 
-.rule_content {position:inherit;width:86%;height:88%;top:6%;left:7%;}
+.rule_content {position:inherit;width:96%;height:88%;top:2%;left:2%;}
 .rule_content h2{font-size:14px;color:#fff;text-align:center;padding-top:20px;font-weight:normal;}
 .rule_content h3{font-size:13px;color:#fff;padding-top:8px;font-weight:normal}
-.rule_content p{font-size:12px;color:#fff;line-height:15px;margin-bottom:8px;}
+.rule_content p{font-size:12px;line-height:15px;margin-bottom:8px;}
 .mCustomScrollbar{height:580px;padding-top:20px;}
 .event_rules_send{background:rgba(255, 255, 255, 0.9) no-repeat center center ;background-size:100% 100%;top:40%;left:5%;position:absolute;width:90%;height:120px;}
 
@@ -426,13 +426,11 @@ float:left;
 /* .footer .top img{ width:100%;} */
 /* 底部导航 */
 .footer_nav{ position:fixed; left:0; bottom:0; width:100%;  z-index:99999; height:50px;background:#323333;box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1) inset;}
-.footer_nav .nav{position:relative; padding-left:30%;border-top: 2px solid #4c8692;}
-.footer_nav .nav .home{width:80px; height:80px; background:#323333;display:block; position:absolute; bottom:-45px; border-radius:50px; left:5px; bottom:-45jpx;  box-shadow:0px -1px 1px rgba(0, 0, 0, 0.7);}
-.footer_nav .nav .home span{ border-radius:50px; background:#222;display:block; width:70px; height:70px; margin:5px; box-shadow:1px 1px 3px rgba(0, 0, 0, 0.4) inset;}
-.footer_nav .nav .home span img{border-radius:50px; width:60px; height:60px; margin:5px;}
-.footer_nav .nav li{ float:left; width:33%; text-align:center;}
-.footer_nav .nav li span{  display:block; overflow:hidden; margin-top:5px; border-left:#444 solid 1px; border-right:#222 solid 1px;}
+
+.footer_nav .nav li{ float:left; width:25%; text-align:center;}
+.footer_nav .nav li span{  display:block; overflow:hidden; margin-top:5px; border-left:#444 solid 1px; }
 .footer_nav .nav li span img{ width:35px;}
+.footer_nav .nav .curr_nav li{ background:rgba(176, 197, 219, 0.4);height:50px}
 
 
 
