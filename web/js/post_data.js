@@ -196,6 +196,13 @@ var T_EC_EntryEmpInfoExtra = {};//个人信息拓展表-------------------------
 	T_EC_EntryEmpInfoExtra["ProfessionAwardDate"] = $("#ProfessionAwardDate").val();          		  //专业技术职务任职资格
 	
 	
+var T_EC_Resume = {};//外部简历---------------------------------------------	
+	T_EC_Resume["PartyShipName"] = $("#PartyShipName").val();            //政治面貌
+	
+	
+	
+	
+	
 	var data = {}
 //	data["T_EC_Apply"] = T_EC_Apply; 主表只限于查询
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
@@ -319,6 +326,7 @@ var table;
 		$("#SecondMajor").val(table["SecondMajor"]);	    //第二专业
 		$("#SecondDegree").val(table["SecondDegree"]);	    //第二学位
 		$("#HighDegree").val(table["HighDegree"]);	        //最高学历
+
 		
 		$("#FFName").val(table["FFName"]);	                    //
 		$("#FFBirthday").val(table["FFBirthday"]);	                //
@@ -341,6 +349,12 @@ var table;
 
 		$("#ProfessionQualification").val(table["ProfessionQualification"]);			  //专业技术职务任职资格
 		$("#ProfessionAwardDate").val(table["ProfessionAwardDate"]);			  		  //专业技术职务任职资格
+	}
+	//------------------------------------------------------------------------------
+	if(table = data["T_EC_Resume"]){	
+
+		$("#PartyShipName").val(table["PartyShipName"]);			  //政治面貌
+					  	
 	}
 
 		
