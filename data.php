@@ -147,7 +147,7 @@ function insert_data($data){
 			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
 		}else{
 			$db->remove(DB_NAME,$table,$cond);
-			foreach($data as $fields){
+			foreach($datas as $fields){
 				$fields[$key] = $_COOKIE[$key];
 				$ret = $db->insert(DB_NAME,$table,input($fields),$cond);
 			}
