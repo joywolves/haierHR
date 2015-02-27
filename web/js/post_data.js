@@ -303,6 +303,8 @@ var table;
 
 		$("#FirstWorkDate").val(get_date(table["FirstWorkDate"]));	//参加工作时间
 		$("#Phone").val(table["Phone"]);	                //移动电话
+		
+		//------------------------------附加个人信息--------------------------------------------------
 		$("#LCountryCode").val(table["LCountryCode"]);	    //居住国家
 		$("#LProvince").val(table["LProvince"]);	        //居住省份
 		$("#LCityArea").val(table["LCityArea"]);	        //居住城市

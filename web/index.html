@@ -39,6 +39,7 @@
             });
 						//新加功能，以下主要处理家庭成员信息
 						var FPno=0;
+						var returnFamilyData=new Array();
 						function addFP(_this){
 							var infoStr=$('#familyPer').html();
 							++FPno
@@ -49,14 +50,27 @@
 								createSelect(selects[i],i);
 							}
 						}
-						function saveFP(_this){
-							//var s = $(_this).parent().find('ul.options').length;
-							//alert(s);FFName;FFBirthday
-							var returnData;
-							$(_this).parent().find('ul.options').each(function(){
-								returnData.push([$(this).find($('#FFName').val()),$(this).find($('#FFBirthday').val())]);
-							});
-							alert(returnData.length);
+						function saveFP(){
+							returnFamilyData=[];
+							var obj = $('#familyPersionDiv ul ul[ultype=familyP]');
+							for(var i=0; i<obj.length;i++){
+								var tmp = [
+														$(obj[i]).find('.select_option:eq(0) li[class="selected"]').attr('tValue'),
+														$(obj[i]).find('input[name=SocName]').val(),
+														$(obj[i]).find('.select_option:eq(1) li[class="selected"]').attr('tValue'),
+														$(obj[i]).find('input[name=SocBirthday]').val(),
+														$(obj[i]).find('.select_option:eq(2) li[class="selected"]').attr('tValue'),
+														$(obj[i]).find('input[name=SocJob]').val(),
+														$(obj[i]).find('.select_option:eq(3) li[class="selected"]').attr('tValue'),
+														$(obj[i]).find('.select_option:eq(4) li[class="selected"]').attr('tValue'),
+														$(obj[i]).find('input[name=FFDetailAddress]').val(),
+														$(obj[i]).find('input[name=SocTel]').val(),
+														$(obj[i]).find('input[name=SocCompany]').val(),
+														$(obj[i]).find('.select_option:eq(5) li[class="selected"]').attr('tValue'),
+														$(obj[i]).find('input[name=SocHaierBU]').val()
+													];
+								returnFamilyData.push(tmp);
+							}
 						}
 						
 						function delFP(_this){
@@ -1285,7 +1299,7 @@
 			<ul class="options" id="familyPer" style="display:">
           <div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>
 					<li><b><s1>&nbsp;*&nbsp;</s1>成员类型:&nbsp;&nbsp;</b>
-					<select name="choose" id="SocType">
+					<select id="SocType" name="SocType">
 					<option selected="selected" value="1">配偶</option>
 					<option value="2">子女</option>
 					<option value="11">父亲</option>
@@ -1296,17 +1310,17 @@
 					<option value="6">妹</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>姓&nbsp;&nbsp;名:&nbsp;&nbsp;</b><input id="SocName" type="text" placeholder="请输入姓名"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>姓&nbsp;&nbsp;名:&nbsp;&nbsp;</b><input id="SocName" name="SocName" type="text" placeholder="请输入姓名"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>姓&nbsp;&nbsp;别:&nbsp;&nbsp;</b>
-					<select name="choose" id="Gender">
+					<select id="Gender" name="Gender">
 					<option value="">--请选择--</option>
 					<option value="1">男</option>
 					<option value="2">女</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>出生日期:&nbsp;&nbsp;</b><input id="SocBirthday" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入出生日期"></li>					
+					<li><b><s1>&nbsp;*&nbsp;</s1>出生日期:&nbsp;&nbsp;</b><input id="SocBirthday" name="SocBirthday" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入出生日期"></li>					
 					<li><b><s1>&nbsp;*&nbsp;</s1>国&nbsp;&nbsp;籍:&nbsp;&nbsp;</b>
-					<select name="choose" id="CitizenShip">
+					<select id="CitizenShip" name="CitizenShip">
 						<option value="">-请选择-</option>
 						<option selected="selected" value="CN">中国</option>
 						<option value="HK">中国香港</option>
@@ -1548,9 +1562,9 @@
 						<option value="ZW">津巴布韦</option>
 					</select>
 					</li>					
-					<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;业:&nbsp;&nbsp;</b><input id="SocJob" type="text" placeholder="请输入职业"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;业:&nbsp;&nbsp;</b><input id="SocJob" name="SocJob" type="text" placeholder="请输入职业"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>居住省份:&nbsp;&nbsp;</b>
-					<select name="choose" id="SocProvince">
+					<select id="SocProvince" name="SocProvince" >
 						<option value="1">北京</option>
 						<option value="2">天津</option>
 						<option value="3">河北</option>
@@ -1588,7 +1602,7 @@
 					</select>
 					</li>					
 					<li><b><s1>&nbsp;*&nbsp;</s1>居住城市:&nbsp;&nbsp;</b>
-					<select name="choose" id="SocCity">
+					<select id="SocCity" name="SocCity">
 						<option value="124">菏泽市</option>
 						<option value="125">济南市</option>
 						<option value="126">青岛市</option>
@@ -1608,17 +1622,17 @@
 						<option value="140">聊城市</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>详细地址:&nbsp;&nbsp;</b><input id="FFDetailAddress" type="text" placeholder="请输入详细地址"></li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>电&nbsp;&nbsp;话:&nbsp;&nbsp;</b><input id="SocTel" type="text" placeholder="请输入电话"></li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input id="SocCompany" type="text" placeholder="请输入工作单位"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>详细地址:&nbsp;&nbsp;</b><input id="FFDetailAddress"  name="FFDetailAddress" type="text" placeholder="请输入详细地址"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>电&nbsp;&nbsp;话:&nbsp;&nbsp;</b><input id="SocTel"  name="SocTel" type="text" placeholder="请输入电话"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input id="SocCompany"  name="SocCompany" type="text" placeholder="请输入工作单位"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>海尔员工:&nbsp;&nbsp;</b>
-					<select name="choose" id="SocIsInHaier">
-					<option selected="selected" value="--请选择--"></option>
+					<select id="SocIsInHaier" name="SocIsInHaier">
+					<option selected="selected" value="">--请选择--</option>
 					<option value="1">是</option>
 					<option value="0">否</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>所在部门:&nbsp;&nbsp;</b><input id="SocHaierBU" type="text" placeholder="请输入所在海尔部门"></li>
+					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>所在部门:&nbsp;&nbsp;</b><input id="SocHaierBU" name="SocHaierBU" type="text" placeholder="请输入所在海尔部门"></li>
 				</ul>
 
 			<ul class="options" id="education" style="display:">
@@ -2039,6 +2053,7 @@ function createOptions(index,ul_list){
 	for(var n=0;n<options.length;n++){
 		var tag_option=$('<li></li>'),//li相当于option
 			txt_option=options.eq(n).text();
+		tag_option.attr('tValue',options.eq(n).val());
 		tag_option.text(txt_option).css('cursor','pointer').appendTo(ul_list);
 		//为被选中的元素添加class为selected
 		if(n==selected_index){
