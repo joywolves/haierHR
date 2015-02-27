@@ -9,6 +9,9 @@
 require_once './common/DB.php';
 require_once './common/config.php';
 require_once("Mail.php");
+require_once("Mail/mime.php");
+require_once 'PhpWord/Autoloader.php';
+\PhpOffice\PhpWord\Autoloader::register();
 
 $json_data = file_get_contents("php://input");
 
@@ -132,6 +135,27 @@ function insert_data($data){
 	return true;
 }
 
+function send_mail($data) {
+	$tmp_file = "/tmp/notification" . time() . ".docx";
+	$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD,'auth' => true));
+	$phpWord = new \PhpOffice\PhpWord\PhpWord();
+	$section = $phpWord->addSection();
+	\PhpOffice\PhpWord\Shared\Html::addHtml($section, str_replace('{name}', $data["name"], MAIL_TEMPLATE));
+	$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+	$objWriter->save($tmp_file);
+	$headers = array('From' => MAIL_FROM, 'To' => $data["to"], 'Subject' => MAIL_SUBJECT);
+	$mime = new Mail_mime(array('eol' => $crlf));
+	//$mime->setTXTBody("体检通知书");
+	$mime->addAttachment($tmp_file, 'application/octet-streafilem');
+	$body = $mime->get();
+	$headers = $mime->headers($headers);
+	$ret = $mailer->send($data["to"], $headers ,$body);
+	unlink($tmp_file);
+	if(PEAR::isError($ret)){
+		die($ret->getMessage() . "\n");
+	}
+}
+
 error_log( ">>> : ".var_export($data, true)."\n", 3, "/var/tmp/my-errors.log");
 
 $ret = null;
@@ -152,11 +176,7 @@ switch ($data["cmd"]) {
 		$ret = insert_data($data["data"]);
 		break;
     case 'send_mail':
-		$mailer = Mail::factory('smtp',array('host' => MAIL_HOST, 'port' => MAIL_PORT, 'username' => MAIL_USER, 'password' => MAIL_PASSWORD,'auth' => true));
-		$ret = $mailer->send($data["to"],array('From' => MAIL_FROM, 'To' => $data["to"], 'Subject' => MAIL_SUBJECT, 'Content-Type' => 'text/html; charset="UTF-8"'),str_replace('{name}', $data["name"], MAIL_TEMPLATE));
-		if(PEAR::isError($ret)){
-			die($ret->getMessage() . "\n");
-		}
+		$ret = send_mail($data);
 		echo json_encode(($ret)); 
 		return;
 	default:
