@@ -206,7 +206,7 @@ function set_select (id,val) {
 		//alert(select_obj.get(0).options[i].value);
 		if(select_obj.get(0).options[i].value == val.toString() ){
 			select_show.text(select_obj.get(0).options[i].text);
-			alert(select_show.text());
+			//alert(select_show.text());
 			//缺少select_option的设置	
 			break;
 		}
@@ -415,16 +415,16 @@ var table;
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名
 		$("#EnglishName").val(table["EnglishName"]);		//英文名
 		$("#Gender").val(table["Gender"]);				//性别
-		$("#Nation").val(get_select("Nation"));				//民族
-		$("#CitizenShip").val(get_select("CitizenShip"));	//国籍
-		$("#IsAlone").val(get_select("IsAlone"));	        //独生子女
-		$("#Religion").val(get_select("Religion"));			//宗教
+		set_select("Nation",table["Nation"]);				//民族
+		set_select("CitizenShip",table["CitizenShip"]);		//国籍
+		set_select("IsAlone",table["IsAlone"]);       //独生子女
+		set_select("Religion",table["Religion"]);		//宗教
 		$("#Birthday").val(get_date(table["Birthday"]));	
 		$("#HukouLocation").val(table["HukouLocation"]);	//户口
 		$("#IdCardNo").val(table["IdCardNo"]);	            //身份证号
 		$("#PassportNo").val(table["PassportNo"]);	        //护照号码
-		$("#MarriedType").val(get_select("MarriedType"));	        //婚姻状况
-		$("#Provience").val(get_select("Provience"));	        //出生省份
+		set_select("MarriedType",table["MarriedType"]);	        //婚姻状况
+		set_select("Provience",table["Provience"]);	        //出生省份
 		
 		
 		$("#MarriageDate").val(get_date(table["MarriageDate"]));	
@@ -449,12 +449,12 @@ var table;
 		$("#Phone").val(table["Phone"]);	                //移动电话
 		
 		//------------------------------附加个人信息--------------------------------------------------
-		$("#LCountryCode").val(get_select("LCountryCode"));	    //居住国家
-		$("#LProvince").val(get_select("LProvince"));	        //居住省份
-		$("#LCityArea").val(get_select("LCityArea"));	        //居住城市
-		$("#IsArmy").val(get_select("IsArmy"));	        		//服军役
+		set_select("LCountryCode",table["LCountryCode"]);    //居住国家
+		set_select("LProvince",table["LProvince"]);	        //居住省份
+		set_select("LCityArea",table["LCityArea"]);	        //居住城市
+		set_select("IsArmy",table["IsArmy"]);	        		//服军役
 		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
-		$("#EducationType").val(get_select("EducationType"));	        		//学历
+		set_select("EducationType",table["EducationType"]);	        		//学历
 		$("#EduEndDate").val(get_date(table["EduEndDate"]));	        //毕业日期
 		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
 		$("#GCOrg").val(table["GCOrg"]);	                //毕业证书发证机关
@@ -464,7 +464,7 @@ var table;
 		$("#FirstMajor").val(table["FirstMajor"]);	        //第一专业
 		$("#SecondMajor").val(table["SecondMajor"]);	    //第二专业
 		$("#SecondDegree").val(table["SecondDegree"]);	    //第二学位
-		$("#HighDegree").val(get_select("HighDegree"));	        //最高学历
+		set_select("HighDegree",table["HighDegree"]);	        //最高学历
 
 		
 		$("#FFName").val(table["FFName"]);	                    //
@@ -492,7 +492,7 @@ var table;
 	//------------------------------------------------------------------------------
 	if(table = data["T_EC_Resume"]){	
 
-		$("#PartyShipName").val(get_select("PartyShipName"));			  //政治面貌
+		set_select("PartyShipName",table["PartyShipName"]);			  //政治面貌
 					  	
 	}
 
