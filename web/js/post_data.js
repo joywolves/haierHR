@@ -218,7 +218,9 @@ function set_select (id,val) {
 //递交信息处理
 function post_data_all(){
 	//校验所有数据
-	check_post_data();
+	if(!check_post_data()){
+		return;
+	}
 	//递交数据
 	post_data();
 }
