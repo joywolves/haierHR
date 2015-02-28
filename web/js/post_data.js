@@ -238,13 +238,14 @@ function post_data(){
 	T_EC_EmpDetail["EnglishName"] = $("#EnglishName").val();         //英文名
 	T_EC_EmpDetail["Gender"] = get_select("Gender");                   //性别
 	T_EC_EmpDetail["Nation"] = get_select("Nation");                   //民族
+	T_EC_EmpDetail["CitizenShip"] = get_select("CitizenShip");         //国籍
 	T_EC_EmpDetail["Religion"] = get_select("Religion");               //宗教
 	T_EC_EmpDetail["Birthday"] = $("#Birthday").val();               //生日
-	
+	T_EC_EmpDetail["IsAlone"] = get_select("IsAlone");               //独生子女
 	T_EC_EmpDetail["HukouLocation"] = $("#HukouLocation").val();     //户口
 	T_EC_EmpDetail["IdCardNo"] = $("#IdCardNo").val();               //身份证号
 	T_EC_EmpDetail["PassportNo"] = $("#PassportNo").val();           //护照号码	
-	T_EC_EmpDetail["MarriedType"] = $("#MarriedType").val();           //婚姻状况
+	T_EC_EmpDetail["MarriedType"] = get_select("MarriedType");          //婚姻状况
 	T_EC_EmpDetail["Provience"] = get_select("Provience");             //出生省份
 	T_EC_EmpDetail["MarriageDate"] = $("#MarriageDate").val();       //结婚日期
 	T_EC_EmpDetail["ChildNo"] = $("#ChildNo").val();      			 //子女数量	
@@ -253,10 +254,12 @@ function post_data(){
 	
 	T_EC_EmpDetail["FirstWorkDate"] = $("#FirstWorkDate").val();     //参加工作时间
 	T_EC_EmpDetail["Phone"] = $("#Phone").val();                     //移动电话
-	T_EC_EmpDetail["LCountryCode"] = $("#LCountryCode").val();       //居住国家
-	T_EC_EmpDetail["LProvince"] = $("#LProvince").val();             //居住省份
-	T_EC_EmpDetail["LCityArea"] = $("#LCityArea").val();             //居住城市
+	T_EC_EmpDetail["LCountryCode"] = get_select("LCountryCode");        //居住国家
+	T_EC_EmpDetail["LProvince"] = get_select("LProvince");             //居住省份
+	T_EC_EmpDetail["LCityArea"] = get_select("LCityArea");             //居住城市
+	T_EC_EmpDetail["IsArmy"] = get_select("IsArmy");             //服军役
 	T_EC_EmpDetail["LDetailAddress"] = $("#LDetailAddress").val();   //详细居住地址
+	T_EC_EmpDetail["EducationType"] = get_select("EducationType");             //学历
 	T_EC_EmpDetail["EduEndDate"] = $("#EduEndDate").val();           //毕业日期
 	T_EC_EmpDetail["GCNo"] = $("#GCNo").val();                       //毕业证书编号
 	T_EC_EmpDetail["GCOrg"] = $("#GCOrg").val();                     //毕业证书发证机关
@@ -266,7 +269,7 @@ function post_data(){
 	T_EC_EmpDetail["FirstMajor"] = $("#FirstMajor").val();           //第一专业
 	T_EC_EmpDetail["SecondMajor"] = $("#SecondMajor").val();         //第二专业
 	T_EC_EmpDetail["SecondDegree"] = $("#SecondDegree").val();       //第二学位
-	T_EC_EmpDetail["HighDegree"] = $("#HighDegree").val();           //最高学历
+	T_EC_EmpDetail["HighDegree"] = get_select("HighDegree");            //最高学历
 	
 	
 	T_EC_EmpDetail["FFName"] = $("#FFName").val();                     //家一名字
@@ -296,7 +299,7 @@ var T_EC_EntryEmpInfoExtra = {};//个人信息拓展表-------------------------
 	
 	
 var T_EC_Resume = {};//外部简历---------------------------------------------	
-	T_EC_Resume["PartyShipName"] = $("#PartyShipName").val();            //政治面貌
+	T_EC_Resume["PartyShipName"] = get_select("PartyShipName");            //政治面貌
 	
 	
 	
@@ -307,18 +310,15 @@ var T_EC_Resume = {};//外部简历---------------------------------------------
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 	data["T_EC_EntryEmpInfo"] = T_EC_EntryEmpInfo;
 	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
-
-	saveFP();
-	if("undefined" != typeof returnFamilyData){
+	if(returnFamilyData){
 		data["T_EC_EntrySocialRelation"] = returnFamilyData;
 	}
-	if("undefined" != typeof returnEducationData){
-		data["T_EC_ResumeEducation"] = returnEducationData;
-	}
-	if("undefined" != typeof returnExperienceData){
-		data["T_EC_ResumeExperience"] = returnExperienceData;
-	}
-	
+	// if(returnEducationData){
+	// 	data["T_EC_ResumeEducation"] = returnEducationData;
+	// }
+	// if(returnExperienceData){
+	// 	data["T_EC_ResumeExperience"] = returnExperienceData;
+	// }
 	var msg = {}
 	msg["cmd"] = "insert_data";
 	msg["data"] = data;
@@ -380,15 +380,17 @@ var table;
 		$("#rz_name").text(table["EmpName"]);
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名
 		$("#EnglishName").val(table["EnglishName"]);		//英文名
-		$("#Gender").val(table["Gender"]);					//性别
-		$("#Nation").val(table["Nation"]);					//民族
-		$("#Religion").val(table["Religion"]);				//宗教
+		$("#Gender").val(get_select("Gender"));				//性别
+		$("#Nation").val(get_select("Nation"));				//民族
+		$("#CitizenShip").val(get_select("CitizenShip"));	//国籍
+		$("#IsAlone").val(get_select("IsAlone"));	        //独生子女
+		$("#Religion").val(get_select("Religion"));			//宗教
 		$("#Birthday").val(get_date(table["Birthday"]));	
 		$("#HukouLocation").val(table["HukouLocation"]);	//户口
 		$("#IdCardNo").val(table["IdCardNo"]);	            //身份证号
 		$("#PassportNo").val(table["PassportNo"]);	        //护照号码
-		$("#MarriedType").val(table["MarriedType"]);	        //婚姻状况
-		$("#Provience").val(table["Provience"]);	        //出生省份
+		$("#MarriedType").val(get_select("MarriedType"));	        //婚姻状况
+		$("#Provience").val(get_select("Provience"));	        //出生省份
 		
 		
 		$("#MarriageDate").val(get_date(table["MarriageDate"]));	
@@ -413,10 +415,12 @@ var table;
 		$("#Phone").val(table["Phone"]);	                //移动电话
 		
 		//------------------------------附加个人信息--------------------------------------------------
-		$("#LCountryCode").val(table["LCountryCode"]);	    //居住国家
-		$("#LProvince").val(table["LProvince"]);	        //居住省份
-		$("#LCityArea").val(table["LCityArea"]);	        //居住城市
+		$("#LCountryCode").val(get_select("LCountryCode"));	    //居住国家
+		$("#LProvince").val(get_select("LProvince"));	        //居住省份
+		$("#LCityArea").val(get_select("LCityArea"));	        //居住城市
+		$("#IsArmy").val(get_select("IsArmy"));	        		//服军役
 		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
+		$("#EducationType").val(get_select("EducationType"));	        		//学历
 		$("#EduEndDate").val(get_date(table["EduEndDate"]));	        //毕业日期
 		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
 		$("#GCOrg").val(table["GCOrg"]);	                //毕业证书发证机关
@@ -426,7 +430,7 @@ var table;
 		$("#FirstMajor").val(table["FirstMajor"]);	        //第一专业
 		$("#SecondMajor").val(table["SecondMajor"]);	    //第二专业
 		$("#SecondDegree").val(table["SecondDegree"]);	    //第二学位
-		$("#HighDegree").val(table["HighDegree"]);	        //最高学历
+		$("#HighDegree").val(get_select("HighDegree"));	        //最高学历
 
 		
 		$("#FFName").val(table["FFName"]);	                    //
@@ -454,7 +458,7 @@ var table;
 	//------------------------------------------------------------------------------
 	if(table = data["T_EC_Resume"]){	
 
-		$("#PartyShipName").val(table["PartyShipName"]);			  //政治面貌
+		$("#PartyShipName").val(get_select("PartyShipName"));			  //政治面貌
 					  	
 	}
 

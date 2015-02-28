@@ -65,7 +65,7 @@
 														"SocJob":$(obj[i]).find('input[name=SocJob]').val(),
 														"SocProvince":$(obj[i]).find('.select_option:eq(3) li[class="selected"]').attr('tValue'),
 														"SocCity":$(obj[i]).find('.select_option:eq(4) li[class="selected"]').attr('tValue'),
-														"SocDetail":$(obj[i]).find('input[name=FFDetailAddress]').val(),
+														"FFDetailAddress":$(obj[i]).find('input[name=FFDetailAddress]').val(),
 														"SocTel":$(obj[i]).find('input[name=SocTel]').val(),
 														"SocCompany":$(obj[i]).find('input[name=SocCompany]').val(),
 														"IsInHaier":$(obj[i]).find('.select_option:eq(5) li[class="selected"]').attr('tValue'),
@@ -73,7 +73,7 @@
 													};
 								returnFamilyData.push(tmp)
 							}
-								alert(returnFamilyData[0].SocType)
+								//alert(returnFamilyData[0].SocType)
 						}
 						
 						function delFP(_this){
@@ -489,7 +489,7 @@
 					</select>
 					</li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>独生子女:&nbsp;&nbsp;</b>
-					<select name="choose" id="choose">
+					<select name="choose" id="IsAlone">
 					<option value="">--请选择--</option>
 					<option value="1">是</option>
 					<option selected="selected" value="0">否</option>
@@ -911,7 +911,7 @@
 					<li><b><s1>&nbsp;*&nbsp;</s1>居住地址:&nbsp;&nbsp;</b><input id="LDetailAddress" type="text" placeholder="请输入详细的居住地址"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>邮政编码:&nbsp;&nbsp;</b><input id="ZipCode" type="text" placeholder="请输入居住地址的邮政编码"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>服过军役:&nbsp;&nbsp;</b>
-					<select name="choose" id="choose">
+					<select name="choose" id="IsArmy">
 					<option selected="selected" value="0">否</option>
 					<option value="1">是</option>
 					</select>
@@ -951,7 +951,7 @@
 				<ul class="options">
 				
 					<li><b><s1>&nbsp;*&nbsp;</s1>学&nbsp;&nbsp;历:&nbsp;&nbsp;</b>
-					<select name="choose" id="choose">
+					<select name="choose" id="EducationType">
 						<option value="请选择全日制学历" selected="selected">请选择全日制学历</option>
 						<option value="0">高中</option>
 						<option value="1">大专</option>
@@ -1719,7 +1719,7 @@
 				<li><b><s1>&nbsp;*&nbsp;</s1>开始日期:&nbsp;&nbsp;</b><input type="text" placeholder="请输入开始日期"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>结束日期:&nbsp;&nbsp;</b><input type="text" placeholder="请输入结束日期"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>国&nbsp;&nbsp;家:&nbsp;&nbsp;</b>
-				<select name="choose" id="choose">
+				<select name="choose" id="JobCountry">
 					<option value="">-请选择-</option>
 					<option selected="selected" value="CN">中国</option>
 					<option value="HK">中国香港</option>
@@ -1963,7 +1963,7 @@
 				</li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>城&nbsp;&nbsp;市:&nbsp;&nbsp;</b><input type="text" value="请输入工作所在城市"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>行&nbsp;&nbsp;业:&nbsp;&nbsp;</b>
-				<select name="choose" id="choose">
+				<select name="choose" id="IndustryType">
 				<option value="01">制造业</option>
 				<option value="02">商品流通</option>
 				<option value="03">金融证券</option>
