@@ -334,7 +334,7 @@ var T_EC_EntryEmpInfoExtra = {};//个人信息拓展表-------------------------
 	
 	
 var T_EC_Resume = {};//外部简历---------------------------------------------	
-	T_EC_Resume["PartyShipName"] = get_select("PartyShipName");            //政治面貌
+//	T_EC_Resume["PartyShipName"] = get_select("PartyShipName");            //政治面貌
 	
 	
 	
@@ -395,7 +395,7 @@ function show_data(data){
 var table;
 	console.log(data)
 	//---------------------------------------------------------------------------
-
+	alert("data:  "+data);
 	//---------------------------------------------------------------------------
 	if(table = data["T_EC_EmpDetail"]){
 		//set_select("Gender",table["Gender"]);
