@@ -112,6 +112,52 @@
 						}
 						function saveED(_this){
 						}
+						
+						//此条是测试数据
+						var familyData=[{SocType:"3",SocName:"姓名",Gender:"1",SocBirthday:"2012-02-02",CitizenShip:"HK",SocJob:"职位",SocProvince:"2",SocCity:"121",SocDetail:"地址",SocTel:"1333333333",SocCompany:"公司名",IsInHaier:"1",SocHaierBU:"部门"},
+							{SocType:"4",SocName:"姓名1",Gender:"2",SocBirthday:"2012-02-01",CitizenShip:"CN",SocJob:"职位",SocProvince:"2",SocCity:"122",SocDetail:"地址1",SocTel:"1333333331",SocCompany:"公司1名",IsInHaier:"1",SocHaierBU:"部门1"}
+						 ]
+						//测试数据END
+						function reView(){
+							var memberArr=[];
+							for(var i=0; i<familyData.length;i++){
+								var o = familyData[i];
+								var infoStr=$('#familyPer').html();
+								++FPno
+								$('#addFPButton').before('<ul  ulType="familyP" id="options_'+FPno+'"> '+infoStr+'</ul>')
+								
+								memberArr.push("#options_"+FPno);
+								$("#options_"+FPno).find('input[name=SocName]').val(o.SocType);
+								$("#options_"+FPno).find('input[name=SocBirthday]').val(o.SocBirthday);
+								$("#options_"+FPno).find('input[name=SocJob]').val(o.SocJob);
+								$("#options_"+FPno).find('input[name=FFDetailAddress]').val(o.SocDetail);
+								$("#options_"+FPno).find('input[name=SocTel]').val(o.SocTel);
+								$("#options_"+FPno).find('input[name=SocHaierBU]').val(o.SocHaierBU);
+								
+								$("#options_"+FPno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
+
+								$("#options_"+FPno).find('select[name=SocType] option[value="'+o.SocType+'"]').attr("selected",true);
+								$("#options_"+FPno).find('select[name=Gender] option[value="'+o.Gender+'"]').attr('selected',true);
+								$("#options_"+FPno).find('select[name=CitizenShip] option[value="'+o.CitizenShip+'"]').attr('selected',true);
+								$("#options_"+FPno).find('select[name=SocProvince] option[value="'+o.SocProvince+'"]').attr('selected',true);
+								$("#options_"+FPno).find('select[name=SocIsInHaier] option[value="'+o.IsInHaier+'"]').attr('selected',true);
+								
+								getCityList($("#options_"+FPno).find('select[name=SocCity]'),o.SocProvince);
+								
+								$("#options_"+FPno).find('select[name=SocCity] option[value="'+o.SocCity+'"]').attr('selected',true);
+								if($("#options_"+FPno).find('select[name=SocCity]').prev().attr('class') == 'select_box') $("#options_"+FPno).find('select[name=SocCity]').prev().remove()
+								
+							}
+							for(var j=0; j<memberArr.length;j++){
+								selects=$(memberArr[j]).find('select');//获取select
+								for(var i=0;i<selects.length;i++){
+									createSelect(selects[i],i);
+								}
+							}
+						}
+
+						
+						
         </script>		
 		
         <script></script>
@@ -2104,13 +2150,13 @@ function formatProv(_objFLag){//_objFLag:目标块标识
 	if(_objFLag==''){
 		$('select[fType="provSelect"]').each(function(n){
 			if($(this).prev().find('ul.select_option').length>0){
-				$(this).prev().find('ul.select_option li').click(function(){getCityList(this,$(this).attr('tValue'))});
+				$(this).prev().find('ul.select_option li').click(function(){getCityList($(this).parent().parent().parent().next().find("select"),$(this).attr('tValue'))});
 			}
 		});
 	}else{
 		$(_objFLag+' select[fType="provSelect"]').each(function(n){
 			if($(this).prev().find('ul.select_option').length>0){
-				$(this).prev().find('ul.select_option li').click(function(){getCityList(this,$(this).attr('tValue'))});
+				$(this).prev().find('ul.select_option li').click(function(){getCityList($(this).parent().parent().parent().next().find("select"),$(this).attr('tValue'))});
 			}
 		});
 	}
@@ -2118,7 +2164,7 @@ function formatProv(_objFLag){//_objFLag:目标块标识
 }
 function getCityList(_obj,_pid){
 	//alert($(_obj).parent().parent().parent().next().html()+'||'+_pid)
-	selects = $(_obj).parent().parent().parent().next().find("select");
+	selects = $(_obj)
 
 	//RETURN直接去掉
 	return;
