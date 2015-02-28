@@ -414,7 +414,7 @@ var table;
 		$("#rz_name").text(table["EmpName"]);
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名
 		$("#EnglishName").val(table["EnglishName"]);		//英文名
-		$("#Gender").val(table["Gender"]));				//性别
+		$("#Gender").val(table["Gender"]);				//性别
 		$("#Nation").val(get_select("Nation"));				//民族
 		$("#CitizenShip").val(get_select("CitizenShip"));	//国籍
 		$("#IsAlone").val(get_select("IsAlone"));	        //独生子女
