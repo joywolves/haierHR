@@ -506,6 +506,7 @@ var table;
 	if("undefined" != typeof familyData && data["T_EC_EntrySocialRelation"]){
 		familyData = data["T_EC_EntrySocialRelation"];
 	}
+	reView();
 	//...set html val by sql data
 }
 

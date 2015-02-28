@@ -113,11 +113,6 @@
 						function saveED(_this){
 						}
 						
-						//此条是测试数据
-						var familyData=[{SocType:"3",SocName:"姓名",Gender:"1",SocBirthday:"2012-02-02",CitizenShip:"HK",SocJob:"职位",SocProvince:"2",SocCity:"121",SocDetail:"地址",SocTel:"1333333333",SocCompany:"公司名",IsInHaier:"1",SocHaierBU:"部门"},
-							{SocType:"4",SocName:"姓名1",Gender:"2",SocBirthday:"2012-02-01",CitizenShip:"CN",SocJob:"职位",SocProvince:"2",SocCity:"122",SocDetail:"地址1",SocTel:"1333333331",SocCompany:"公司1名",IsInHaier:"1",SocHaierBU:"部门1"}
-						 ]
-						//测试数据END
 						function reView(){
 							var memberArr=[];
 							for(var i=0; i<familyData.length;i++){
@@ -637,6 +632,7 @@
 					<li><b><s1>&nbsp;*&nbsp;</s1>移动电话:&nbsp;&nbsp;</b><input id="Phone" type="text" placeholder="请输入移动电话"></li>
 				
 					<div class="buttonType" onClick="saveItem1()"><span class="but green">保存</span></div>
+					<div class="buttonType" onClick="reView()"><span class="but green">测试</span></div>
 				
 				</ul>
 			</li>
