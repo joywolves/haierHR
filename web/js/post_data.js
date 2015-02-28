@@ -293,6 +293,7 @@ function post_data(){
 	T_EC_EmpDetail["LCityArea"] = get_select("LCityArea");             //居住城市
 	T_EC_EmpDetail["IsArmy"] = get_select("IsArmy");             //服军役
 	T_EC_EmpDetail["LDetailAddress"] = $("#LDetailAddress").val();   //详细居住地址
+	T_EC_EmpDetail["Party"] = get_select("Party");             //政治面貌
 	T_EC_EmpDetail["EducationType"] = get_select("EducationType");             //学历
 	T_EC_EmpDetail["EduEndDate"] = $("#EduEndDate").val();           //毕业日期
 	T_EC_EmpDetail["GCNo"] = $("#GCNo").val();                       //毕业证书编号
@@ -429,12 +430,23 @@ var table;
 		
 		$("#MarriageDate").val(get_date(table["MarriageDate"]));	
 		$("#ChildNo").val(table["ChildNo"]);	        
-		$("#Email").val(table["Email"]);	        	
-		$("#ZipCode").val(table["ZipCode"]);	        
+		$("#Email").val(table["Email"]);	        	      
+		
+		$("#FirstWorkDate").val(get_date(table["FirstWorkDate"]));	//参加工作时间
+		$("#Phone").val(table["Phone"]);	                //移动电话
 		
 		
+		
+		//------------------------------附加个人信息--------------------------------------------------
+				
 		//附加个人信息
-        if(table["LDetailAddress"]!=""&&table["ZipCode"]!=""&&table["ProfessionQualification"]!=""&&table["ProfessionAwardDate"]!=""&&table["SpeSkill"]!=""&&table["Award"]!=""&&table["Punishment"]!=""){
+        if(table["LDetailAddress"]!=""&&
+				table["ZipCode"]!=""&&
+				table["ProfessionQualification"]!=""&&
+				table["ProfessionAwardDate"]!=""&&
+				table["SpeSkill"]!=""&&
+				table["Award"]!=""&&
+				table["Punishment"]!=""){
 		   document.getElementById('wsid2').style.color='green';
 		   document.getElementById("wsid2").innerHTML = "已完善";
 		}
@@ -442,18 +454,13 @@ var table;
 		   document.getElementById("wsid2").innerHTML = "未完善";
 		}
 		
-		
-		
-
-		$("#FirstWorkDate").val(get_date(table["FirstWorkDate"]));	//参加工作时间
-		$("#Phone").val(table["Phone"]);	                //移动电话
-		
-		//------------------------------附加个人信息--------------------------------------------------
 		set_select("LCountryCode",table["LCountryCode"]);    //居住国家
 		set_select("LProvince",table["LProvince"]);	        //居住省份
 		set_select("LCityArea",table["LCityArea"]);	        //居住城市
 		set_select("IsArmy",table["IsArmy"]);	        		//服军役
 		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
+		set_select("Party",table["Party"]);			  //政治面貌
+		
 		set_select("EducationType",table["EducationType"]);	        		//学历
 		$("#EduEndDate").val(get_date(table["EduEndDate"]));	        //毕业日期
 		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
@@ -493,7 +500,7 @@ var table;
 	if(table = data["T_EC_Resume"]){	
 
 		set_select("PartyShipName",table["PartyShipName"]);			  //政治面貌
-					  	
+		$("#ZipCode").val(table["ZipCode"]);				//邮政编码
 	}
 
 	if("undefined" != typeof familyData && data["T_EC_EntrySocialRelation"]){
