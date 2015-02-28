@@ -25,15 +25,9 @@
 <script>
 
 function chech_login(){
-	var T_EC_EmpDetail = {}
-	T_EC_EmpDetail["IDCardNo"] = "371329198012115754";
-
-	var data = {}
-	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
-
 	var msg = {}
 	msg["cmd"] = "check_login";
-	msg["data"] = data;
+	msg["data"] = "371329198012115754";
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){

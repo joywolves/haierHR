@@ -343,15 +343,15 @@ var T_EC_Resume = {};//外部简历---------------------------------------------
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 	data["T_EC_EntryEmpInfo"] = T_EC_EntryEmpInfo;
 	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
-	if(returnFamilyData){
+	if("undefined" != typeof returnFamilyData){
 		data["T_EC_EntrySocialRelation"] = returnFamilyData;
 	}
-	// if(returnEducationData){
-	// 	data["T_EC_ResumeEducation"] = returnEducationData;
-	// }
-	// if(returnExperienceData){
-	// 	data["T_EC_ResumeExperience"] = returnExperienceData;
-	// }
+	if("undefined" != typeof returnEducationData){
+		data["T_EC_ResumeEducation"] = returnEducationData;
+	}
+	if("undefined" != typeof returnExperienceData){
+		data["T_EC_ResumeExperience"] = returnExperienceData;
+	}
 	var msg = {}
 	msg["cmd"] = "insert_data";
 	msg["data"] = data;
@@ -495,7 +495,9 @@ var table;
 					  	
 	}
 
-		
+	if("undefined" != typeof familyData && data["T_EC_EntrySocialRelation"]){
+		familyData = data["T_EC_EntrySocialRelation"];
+	}
 	//...set html val by sql data
 }
 
