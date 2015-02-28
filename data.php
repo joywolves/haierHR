@@ -49,6 +49,8 @@ function check_login($code)
 
 	setcookie("ApplyID",$one["ApplyID"]);
 	setcookie("ResumeID",$one["ResumeId"]);
+	setcookie("IDCardNo",$code);
+	
 	return $one;
 }
 function pull_data()
@@ -128,6 +130,7 @@ function insert_image($data){
 function insert_data($data){
 	global  $TABLE_KEY;
 	global  $TABLE_ONE;
+	global  $TABLE_IDCardNo;
 	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
 		return false;
 	}
@@ -144,11 +147,17 @@ function insert_data($data){
 		if($TABLE_ONE[$table]){
 			$fields = $datas;
 			$fields[$key] = $_COOKIE[$key];
+			if($TABLE_IDCardNo[$table]){
+				$fields["IDCardNo"] = $_COOKIE["IDCardNo"];
+			}
 			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
 		}else{
 			$db->remove(DB_NAME,$table,$cond);
 			foreach($datas as $fields){
 				$fields[$key] = $_COOKIE[$key];
+				if($TABLE_IDCardNo[$table]){
+					$fields["IDCardNo"] = $_COOKIE["IDCardNo"];
+				}
 				$ret = $db->insert(DB_NAME,$table,input($fields),$cond);
 			}
 		}
@@ -230,4 +239,4 @@ switch ($data["cmd"]) {
 }
 
 echo json_encode(output($ret));
-error_log( "<<< : ".var_export($ret, true)."\n\n", 3, "/var/tmp/my-errors.log");
+error_log( "<<< : ".var_export(output($ret), true)."\n\n", 3, "/var/tmp/my-errors.log");

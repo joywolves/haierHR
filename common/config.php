@@ -59,3 +59,17 @@ $TABLE_ONE = array(
 	"T_EC_ResumeEducation" => false,
 	"T_EC_ResumeExperience" => false,
 );
+
+$TABLE_IDCardNo = array(
+	"T_EC_Apply" => false,
+	"T_EC_EmpDetail" => false,
+	"T_EC_EntryEmpInfo" => true,
+	"T_EC_EntryEmpInfoExtra" => true,
+	"T_EC_EntryInfo" => false,
+	"T_EC_EntryPhoto" => false,
+	"T_EC_EntrySocialRelation" =>true,
+	"T_EC_PhysicalExamTime" => false,
+	"T_EC_Resume" => false,
+	"T_EC_ResumeEducation" => false,
+	"T_EC_ResumeExperience" => false,
+);
