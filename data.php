@@ -190,14 +190,14 @@ function send_mail($data) {
 function Province(){
 	$db = DB::getInstance();
 	$sql = "select ProName,ProID from T_Intra_Province";
-	$query = $db->query($db,$sql);
+	$query = $db->query(DB_NAME,$sql);
 	$data  = $db->fetch($query);
 	return $data;
 }
 function City($code){
 	$db = DB::getInstance();
 	$sql = "select CityName,CityID from T_Intra_City where ProID= $code";
-	$query = $db->query($db,$sql);
+	$query = $db->query(DB_NAME,$sql);
 	$data  = $db->fetch($query);
 	return $data;
 }
