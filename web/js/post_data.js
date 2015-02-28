@@ -37,14 +37,14 @@ function istel(txttel)
 }
 //点击递交按钮是需要全面校验并给出缺陷提示，点击局部保存按钮时只处理对应区域的内容保存处理
 function check_post_data(){
-//if($("#Gender").val()=="选择性别"){
-	  //alert("请选择性别！");
-	  //return false;
-	//}
-	//if($("#Nation").val()==""){
-	  //alert("请选择民族");
-	  //return false;
-	//}
+	if(get_select("Gender")=="选择性别"){
+		  alert("请选择性别！");
+		  return false;
+		}
+		if(get_select("Nation")==""){
+		  alert("请选择民族");
+		  return false;
+		}
 	if($("#Birthday").val()==""){
 	  alert("生日不能为空！");
 	  return false;
@@ -53,10 +53,18 @@ function check_post_data(){
 	  alert("健康状况不能为空！");
 	  return false;
 	}
-	//if($("#Religion").val()==""){
-	  //alert("请选择宗教！");
-	  //return false;
-	//}
+	if(get_select("IsAlone")==""){
+	  alert("请选择是否为独生子女");
+	  return false;
+	}
+	if(get_select("Religion")==""){
+	  alert("请选择宗教！");
+	  return false;
+	}
+	if(get_select("Provience")==""){
+	  alert("请选择出生省份！");
+	  return false;
+	}
 	if($("#HukouLocation").val()==""){
 	  alert("户口地址不能为空！");
 	  return false;
@@ -89,6 +97,19 @@ function check_post_data(){
 	
 	
    //附加个人信息
+   	if(get_select("LCountryCode")==""){
+	  alert("居住国家不能为空！");
+	  return false;
+	}
+	if(get_select("LProvince")==""){
+	  alert("居住省份不能为空！");
+	  return false;
+	}
+   	if(get_select("LCityArea")==""){
+	  alert("居住城市不能为空！");
+	  return false;
+	}
+   
    if($("#LDetailAddress").val()==""){
 	  alert("居住地址不能为空！");
 	  return false;
@@ -97,6 +118,16 @@ function check_post_data(){
 	  alert("邮政编码不能为空！");
 	  return false;
 	}
+	// if(get_select("IsArmy")==""){
+	  // alert("请选择是否服过军役");
+	  // return false;
+	// }
+	if($("#PartyShipName").val()==""){
+	  alert("请选择政治面貌！");
+	  return false;
+	}
+	
+	
 	//入党派时间没有ID
 	//if($("#").val()==""){
 	  //alert("入党派时间不能为空！");
@@ -482,7 +513,7 @@ function Province () {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		 alert("Data: " + data + "\nStatus: " + status);
+	//	 alert("Data: " + data + "\nStatus: " + status);
 	});
 }
 function City (code) {
@@ -492,7 +523,7 @@ function City (code) {
 
 	$.post("../data.php",JSON.stringify(msg),
 	function(data,status){
-		 alert("Data: " + data + "\nStatus: " + status);
+	//	 alert("Data: " + data + "\nStatus: " + status);
 	});
 }
 function pull_image() {
