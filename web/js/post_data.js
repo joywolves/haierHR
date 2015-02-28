@@ -269,8 +269,9 @@ function post_data(){
 	
 	
 	T_EC_EmpDetail["EnglishName"] = $("#EnglishName").val();         //英文名
-	T_EC_EmpDetail["Gender"] = get_select("Gender");                   //性别
-	T_EC_EmpDetail["Nation"] = get_select("Nation");                   //民族
+	T_EC_EmpDetail["Gender"] = $("#Gender").val();                    //性别
+	T_EC_EmpDetail["Nation"] = get_select("Nation"); 
+	//民族
 	T_EC_EmpDetail["CitizenShip"] = get_select("CitizenShip");         //国籍
 	T_EC_EmpDetail["Religion"] = get_select("Religion");               //宗教
 	T_EC_EmpDetail["Birthday"] = $("#Birthday").val();               //生日
@@ -396,7 +397,7 @@ var table;
 
 	//---------------------------------------------------------------------------
 	if(table = data["T_EC_EmpDetail"]){
-		set_select("Gender",table["Gender"]);
+		//set_select("Gender",table["Gender"]);
 
 		if(table["EmpName"]!=""&&table["Birthday"]!=""&&table["HealthStatus"]!=""&&table["HukouLocation"]!=""&&table["IdCardNo"]!=""&&table["FirstWorkDate"]!=""&&table["Email"]!=""&&table["Phone"]!=""){
 			document.getElementById('wsid1').style.color='green';
@@ -413,7 +414,7 @@ var table;
 		$("#rz_name").text(table["EmpName"]);
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名
 		$("#EnglishName").val(table["EnglishName"]);		//英文名
-		$("#Gender").val(get_select("Gender"));				//性别
+		$("#Gender").val(table["Gender"]);				//性别
 		$("#Nation").val(get_select("Nation"));				//民族
 		$("#CitizenShip").val(get_select("CitizenShip"));	//国籍
 		$("#IsAlone").val(get_select("IsAlone"));	        //独生子女
