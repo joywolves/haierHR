@@ -141,7 +141,7 @@ function insert_data($data){
 		);
 
 		// if(is_assoc($datas)){		
-		if($TABLE_ONE($table)){
+		if($TABLE_ONE[$table]){
 			$fields = $datas;
 			$fields[$key] = $_COOKIE[$key];
 			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);

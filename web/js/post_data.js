@@ -307,6 +307,15 @@ var T_EC_Resume = {};//外部简历---------------------------------------------
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 	data["T_EC_EntryEmpInfo"] = T_EC_EntryEmpInfo;
 	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
+	if(returnFamilyData){
+		data["T_EC_EntrySocialRelation"] = returnFamilyData;
+	}
+	// if(returnEducationData){
+	// 	data["T_EC_ResumeEducation"] = returnEducationData;
+	// }
+	// if(returnExperienceData){
+	// 	data["T_EC_ResumeExperience"] = returnExperienceData;
+	// }
 	var msg = {}
 	msg["cmd"] = "insert_data";
 	msg["data"] = data;
