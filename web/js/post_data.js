@@ -103,7 +103,7 @@ function check_post_data_base(){
 }
 //附加个人信息
 function check_post_data_add(){
-	   	if(get_select("LCountryCode")==""){
+	if(get_select("LCountryCode")==""){
 	  alert("居住国家不能为空！");
 	  return false;
 	}
@@ -551,15 +551,15 @@ var table;
 
 	if(data["T_EC_EntrySocialRelation"]){
 		familyData = data["T_EC_EntrySocialRelation"];
-		alert("familyData--?"+JSON.stringify(familyData));
+	//	alert("familyData--?"+JSON.stringify(familyData));
 	}
 	if(data["T_EC_ResumeExperience"]){
 		experienceData = data["T_EC_ResumeExperience"];
-		alert("experienceData--?"+JSON.stringify(experienceData));
+	//	alert("experienceData--?"+JSON.stringify(experienceData));
 	}
 	if(data["T_EC_ResumeEducation"]){
 		educationData = data["T_EC_ResumeEducation"];
-		alert("educationData--?"+JSON.stringify(educationData));
+	//	alert("educationData--?"+JSON.stringify(educationData));
 	}
 	reView();
 	reViewWE();
@@ -613,7 +613,7 @@ function City (code,_obj) {
 	for(var i=0;i<selects.length;i++){
 	createSelect(selects[i],i);
 	}
-		alert("Data: " + data + "\nStatus: " + status);
+	//	alert("Data: " + data + "\nStatus: " + status);
 	});
 }
 
