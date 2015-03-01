@@ -526,7 +526,7 @@ var table;
 	if(table = data["T_EC_EntryEmpInfoExtra"]){	
 
 		$("#ProfessionQualification").val(table["ProfessionQualification"]);			  //专业技术职务任职资格
-		$("#ProfessionAwardDate").val(table["ProfessionAwardDate"]);			  		  //专业技术职务任职资格
+		$("#ProfessionAwardDate").val(get_date(table["ProfessionAwardDate"]));		//专业技术职务任职资格
 	}
 	//------------------------------------------------------------------------------
 	if(table = data["T_EC_Resume"]){	
