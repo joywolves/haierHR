@@ -213,6 +213,62 @@
 							}
 								//alert(returnEducationData[0].SchoolForms)
 						}
+						
+							function reViewWE(){
+							var memberArr=[];
+							for(var i=0; i<familyData.length;i++){
+								var o = familyData[i];
+								var infoStr=$('#workExperience').html();
+								++FPno
+								$('#addFPButton').before('<ul  ulType="workE" id="options_'+FPno+'"> '+infoStr+'</ul>')
+
+								memberArr.push("#options_"+FPno);
+								$("#options_"+FPno).find('input[name=CompanyName]').val(o.CompanyName);
+								$("#options_"+FPno).find('input[name=WorkDuty]').val(o.WorkDuty);
+								$("#options_"+FPno).find('input[name=WorkStartDate]').val(o.WorkStartDate);
+								$("#options_"+FPno).find('input[name=WorkEndDate]').val(o.WorkEndDate);
+								$("#options_"+FPno).find('input[name=JobCity]').val(o.JobCity);
+								
+								$("#options_"+FPno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
+
+								$("#options_"+FPno).find('select[name=JobCountry] option[value="'+o.JobCountry+'"]').attr("selected",true);
+								$("#options_"+FPno).find('select[name=IndustryType] option[value="'+o.IndustryType+'"]').attr('selected',true);
+							}
+							for(var j=0; j<memberArr.length;j++){
+								selects=$(memberArr[j]).find('select');//获取select
+								for(var i=0;i<selects.length;i++){
+									createSelect(selects[i],i);
+								}
+							}
+						}
+
+						function reViewED(){
+
+							var memberArr=[];
+							for(var i=0; i<familyData.length;i++){
+								var o = familyData[i];
+								var infoStr=$('#education').html();
+								++FPno
+								$('#addFPButton').before('<ul  ulType="education" id="options_'+FPno+'"> '+infoStr+'</ul>')
+
+								memberArr.push("#options_"+FPno);
+								$("#options_"+FPno).find('input[name=EnterSchoolDate]').val(o.EnterSchoolDate);
+								$("#options_"+FPno).find('input[name=GraduateDate]').val(o.GraduateDate);
+								$("#options_"+FPno).find('input[name=College]').val(o.College);
+								$("#options_"+FPno).find('input[name=Specialty]').val(o.Specialty);
+								$("#options_"+FPno).find('input[name=EduCertificer]').val(o.EduCertificer);
+								
+								$("#options_"+FPno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
+
+								$("#options_"+FPno).find('select[name=SchoolForms] option[value="'+o.SchoolForms+'"]').attr("selected",true);
+							}
+							for(var j=0; j<memberArr.length;j++){
+								selects=$(memberArr[j]).find('select');//获取select
+								for(var i=0;i<selects.length;i++){
+									createSelect(selects[i],i);
+								}
+							}
+						}
 
 						
 						

@@ -552,6 +552,8 @@ var table;
 		alert("educationData--?"+JSON.stringify(educationData));
 	}
 	reView();
+	reViewWE();
+	reViewED();
 	//...set html val by sql data
 }
 
