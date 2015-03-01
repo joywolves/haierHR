@@ -170,6 +170,49 @@
 
 
 						}
+						
+						var returnExperienceData=new Array();
+						function saveWE(){
+							returnExperienceData=[];
+							
+							var obj = $('#WEDiv ul ul[ultype=workE]');
+							for(var i=0; i<obj.length;i++){
+								var tmp = {
+														"CompanyName":$(obj[i]).find('input[name=CompanyName]').val(),//公司名称
+														"WorkDuty":$(obj[i]).find('input[name=WorkDuty]').val(),//职  务
+														"WorkStartDate":$(obj[i]).find('input[name=WorkStartDate]').val(),//开始日期
+														"WorkEndDate":$(obj[i]).find('input[name=WorkEndDate]').val(),//结束日期
+														"JobCity":$(obj[i]).find('input[name=JobCity]').val(),//城市
+
+														"JobCountry":$(obj[i]).find('.select_option:eq0) li[class="selected"]').attr('tValue'),//国家
+														"IndustryType":$(obj[i]).find('.select_option:eq(1) li[class="selected"]').attr('tValue')//行业: 
+													};
+								returnExperienceData.push(tmp)
+							}
+								alert(returnExperienceData[0].CompanyName)
+						}
+						
+						var returnEducationData=new Array();
+						
+						function saveED(){
+							returnEducationData=[];
+							
+							var obj = $('#eduDiv ul ul[ultype=education]');
+							for(var i=0; i<obj.length;i++){
+								var tmp = {
+														"SchoolForms":$(obj[i]).find('.select_option:eq(0) li[class="selected"]').attr('tValue'),//教育类型
+														
+														
+														"EnterSchoolDate":$(obj[i]).find('input[name=EnterSchoolDate]').val(),//入学日期
+														"GraduateDate":$(obj[i]).find('input[name=GraduateDate]').val(),//毕业日期
+														"College":$(obj[i]).find('input[name=College]').val(),//毕业学校
+														"Specialty":$(obj[i]).find('input[name=Specialty]').val(),//专  业
+														"EduCertificer":$(obj[i]).find('input[name=EduCertificer]').val()//证 明 人:
+													};
+								returnEducationData.push(tmp)
+							}
+								alert(returnEducationData[0].SchoolForms)
+						}
 
 						
 						
@@ -1059,7 +1102,7 @@
 					<div class="buttonType" onClick="saveItem2()"><span class="but green">保存</span></div>
 				</ul>
 			</li>
-			<li class="block">
+			<li class="block" id="eduDiv">
 				<input type="checkbox" name="item" id="item3" />   
 				<label for="item3"><i aria-hidden="true" class="icon-images"></i> 教育信息 <span>未完善</span>
 				<i class="jt-down"><i id="triangle-down"> </i></i>
@@ -1109,10 +1152,12 @@
 				
 					<div class="buttonType" onClick="addED(this)"><span class="but">添加</span></div>
 					<div class="buttonType" onClick="saveItem3()"><span class="but green">保存</span></div>
+					<div class="buttonType" onClick="saveED()"><span class="but green">测试</span></div>
+					
 					<!--div class="buttonType" onClick="saveFP(this)"><span class="but green">保存</span></div-->
 				</ul>
 			</li>
-			<li class="block">
+			<li class="block"  id="WEDiv">
 				<input type="checkbox" name="item" id="item4" />   
 				<label for="item4"><i aria-hidden="true" class="icon-microphone"></i> 工作简历 <span style="color:green">已完善</span>
 				<i class="jt-down"><i id="triangle-down"> </i></i>
@@ -1121,6 +1166,7 @@
 					<li><b><s1>&nbsp;(请从参加工作开始写起)&nbsp;</s1></b></li>
 					<div class="buttonType" onClick="addWE(this)"><span class="but">添加</span></div>
 					<div class="buttonType" onClick="saveItem4()"><span class="but green">保存</span></div>
+					<div class="buttonType" onClick="saveWE()"><span class="but green">测试</span></div>
 				</ul>
 			</li>
 			<li class="block" id="familyPersionDiv">
@@ -1822,7 +1868,7 @@
 			<ul class="options" id="education" style="display:">
 				<div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>	
 					<li><b><s1>&nbsp;*&nbsp;</s1>教育类型:&nbsp;&nbsp;</b>
-					<select name="choose" id="SchoolForms">
+					<select id="SchoolForms" name="SchoolForms">
 						<option value="">——请选择——</option>
 						<option value="01" selected="selected" >小学</option>
 						<option value="02">初中</option>
@@ -1839,21 +1885,21 @@
 						<option value="13">博士后</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>入学日期:&nbsp;&nbsp;</b><input id="EnterSchoolDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入入学日期"></li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>毕业日期:&nbsp;&nbsp;</b><input id="GraduateDate"  class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入毕业日期"></li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>毕业学校:&nbsp;&nbsp;</b><input id="College" name="SocHaierBU" type="text" placeholder="请输入毕业学校"></li>
-					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>专&nbsp;&nbsp;业:&nbsp;&nbsp;</b><input id="Specialty" name="SocHaierBU" disabled="disabled" type="text" placeholder="请输入专业"></li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>证&nbsp;明&nbsp;人:&nbsp;&nbsp;</b><input id="EduCertificer" name="SocHaierBU" type="text" placeholder="请输入毕业学校"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>入学日期:&nbsp;&nbsp;</b><input id="EnterSchoolDate" name="EnterSchoolDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入入学日期"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>毕业日期:&nbsp;&nbsp;</b><input id="GraduateDate" name="GraduateDate"  class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入毕业日期"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>毕业学校:&nbsp;&nbsp;</b><input id="College" name="College" name="SocHaierBU" type="text" placeholder="请输入毕业学校"></li>
+					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>专&nbsp;&nbsp;业:&nbsp;&nbsp;</b><input id="Specialty" name="Specialty" name="SocHaierBU" disabled="disabled" type="text" placeholder="请输入专业"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>证&nbsp;明&nbsp;人:&nbsp;&nbsp;</b><input id="EduCertificer" name="EduCertificer" name="SocHaierBU" type="text" placeholder="请输入毕业学校"></li>
 			</ul>
 			
 			<ul class="options" id="workExperience" style="display:">
 				<div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>	
-				<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input type="text" placeholder="请输入工作单位"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;务:&nbsp;&nbsp;</b><input type="text" placeholder="请输入职务"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>开始日期:&nbsp;&nbsp;</b><input type="text" placeholder="请输入开始日期"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>结束日期:&nbsp;&nbsp;</b><input type="text" placeholder="请输入结束日期"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input type="text" name="CompanyName" placeholder="请输入工作单位"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;务:&nbsp;&nbsp;</b><input type="text" name="WorkDuty" placeholder="请输入职务"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>开始日期:&nbsp;&nbsp;</b><input type="text" name="WorkStartDate" placeholder="请输入开始日期"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>结束日期:&nbsp;&nbsp;</b><input type="text" name="WorkEndDate" placeholder="请输入结束日期"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>国&nbsp;&nbsp;家:&nbsp;&nbsp;</b>
-				<select name="choose" id="JobCountry">
+				<select name="JobCountry" id="JobCountry">
 					<option value="">-请选择-</option>
 					<option selected="selected" value="CN">中国</option>
 					<option value="HK">中国香港</option>
@@ -2095,9 +2141,9 @@
 					<option value="ZW">津巴布韦</option>
 				</select>
 				</li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>城&nbsp;&nbsp;市:&nbsp;&nbsp;</b><input type="text" value="请输入工作所在城市"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>城&nbsp;&nbsp;市:&nbsp;&nbsp;</b><input type="text" name="JobCity" placeholder="请输入工作所在城市"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>行&nbsp;&nbsp;业:&nbsp;&nbsp;</b>
-				<select name="choose" id="IndustryType">
+				<select name="IndustryType" id="IndustryType">
 				<option value="01">制造业</option>
 				<option value="02">商品流通</option>
 				<option value="03">金融证券</option>
@@ -2113,7 +2159,7 @@
 				<option value="99">其他</option>
 				</select>
 				</li>
-			</ul>				
+			</ul>
 <!---->
 			<!--add by luan pull data -->
         <script>

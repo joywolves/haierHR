@@ -2,6 +2,8 @@
  * 日期格式化函数
  */
 var familyData = [];
+var experienceData = [];
+var educationData = [];
 
 Date.prototype.Format = function(format){ 
 	var o = { 
@@ -538,6 +540,14 @@ var table;
 	if(data["T_EC_EntrySocialRelation"]){
 		familyData = data["T_EC_EntrySocialRelation"];
 		alert("familyData--?"+JSON.stringify(familyData));
+	}
+	if(data["T_EC_ResumeExperience"]){
+		experienceData = data["T_EC_ResumeExperience"];
+		alert("experienceData--?"+JSON.stringify(experienceData));
+	}
+	if(data["T_EC_ResumeEducation"]){
+		educationData = data["T_EC_ResumeEducation"];
+		alert("educationData--?"+JSON.stringify(educationData));
 	}
 	reView();
 	//...set html val by sql data
