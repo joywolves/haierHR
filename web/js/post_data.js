@@ -1,6 +1,8 @@
 /**
  * 日期格式化函数
  */
+var familyData = [];
+
 Date.prototype.Format = function(format){ 
 	var o = { 
 		"M+" : this.getMonth()+1, //month 
@@ -339,7 +341,7 @@ var T_EC_Resume = {};//外部简历---------------------------------------------
 	
 	
 	
-	
+	saveFP();
 	var data = {}
 //	data["T_EC_Apply"] = T_EC_Apply; 主表只限于查询
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
@@ -503,8 +505,9 @@ var table;
 		$("#ZipCode").val(table["ZipCode"]);				//邮政编码
 	}
 
-	if("undefined" != typeof familyData && data["T_EC_EntrySocialRelation"]){
+	if(data["T_EC_EntrySocialRelation"]){
 		familyData = data["T_EC_EntrySocialRelation"];
+		alert("--?"+JSON.stringify(familyData));
 	}
 	reView();
 	//...set html val by sql data
