@@ -186,8 +186,8 @@ switch ($data["cmd"]) {
 		// $ret = City($data["data"]);
 		$ret = array(
 				array(
-					"city" => "yantai",
-					"code" => "111",
+					"CityName" => "yantai",
+					"CityID" => "111",
 				),
 			);
 		break;
