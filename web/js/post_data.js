@@ -560,16 +560,36 @@ function Province () {
 	//	 alert("Data: " + data + "\nStatus: " + status);
 	});
 }
-function City (code) {
+function City (code,_obj) {
 	var msg = {}
 	msg["cmd"] = "City";
 	msg["data"] = code;
 
+	//$.post("../data.php",JSON.stringify(msg),
 	$.post("../data.php",JSON.stringify(msg),
+
 	function(data,status){
-	//	 alert("Data: " + data + "\nStatus: " + status);
+
+	selects = $(_obj);
+	//放至此处
+	$(selects).empty();
+	//此处将JSON数组转化并赋值给arr1;可以下一行后打印测试信息
+	var arr1=JSON.parse(data);
+	var arr2;
+
+	for(var j=0;j<arr1.length;j++){
+	if(arr1[j] != ''){
+	$(selects).append("<option value='"+arr1[j].code+"'>"+arr1[j].city+"</option>");
+	}
+	}
+	$(selects).prev().remove();
+	for(var i=0;i<selects.length;i++){
+	createSelect(selects[i],i);
+	}
+		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
+
 function pull_image() {
 	var msg = {}
 	msg["cmd"] = "pull_image";

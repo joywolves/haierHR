@@ -632,7 +632,7 @@
 					</li>				
 					<li><b><s1>&nbsp;*&nbsp;</s1>户口地址:&nbsp;&nbsp;</b>
 					
-					<select name="choose" id="LProvince">
+					<select name="choose" fType = "provSelect" id="LProvince">
 						<option value="1">北京</option>
 						<option value="2">天津</option>
 						<option value="3">河北</option>
@@ -966,7 +966,7 @@
 					</select>
 					</li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>居住省份:&nbsp;&nbsp;</b>
-					<select name="choose" id="LProvince">
+					<select name="choose" fType = "provSelect" id="LProvince">
 						<option value="1">北京</option>
 						<option value="2">天津</option>
 						<option value="3">河北</option>
@@ -1748,7 +1748,7 @@
 					</li>					
 					<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;业:&nbsp;&nbsp;</b><input id="SocJob" name="SocJob" type="text" placeholder="请输入职业"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>居住省份:&nbsp;&nbsp;</b>
-					<select id="SocProvince" name="SocProvince" >
+					<select id="SocProvince" fType = "provSelect" name="SocProvince" >
 						<option value="1">北京</option>
 						<option value="2">天津</option>
 						<option value="3">河北</option>
@@ -2256,6 +2256,8 @@ function formatProv(_objFLag){//_objFLag:目标块标识
 	
 }
 function getCityList(_obj,_pid){
+	alert("------------------------");
+	return City(_pid,_obj);
 	//alert($(_obj).parent().parent().parent().next().html()+'||'+_pid)
 	selects = $(_obj)
 

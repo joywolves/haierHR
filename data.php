@@ -180,7 +180,13 @@ switch ($data["cmd"]) {
 		$ret = Province();
 		break;
 	case "City":
-		$ret = City($data["data"]);
+		// $ret = City($data["data"]);
+		$ret = array(
+				array(
+					"city" => "yantai",
+					"code" => "111",
+				),
+			);
 		break;
 	default:
 		echo "Error command:".$data["cmd"];
