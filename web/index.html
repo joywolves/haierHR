@@ -216,8 +216,8 @@
 						
 							function reViewWE(){
 							var memberArr=[];
-							for(var i=0; i<familyData.length;i++){
-								var o = familyData[i];
+							for(var i=0; i<experienceData.length;i++){
+								var o = experienceData[i];
 								var infoStr=$('#workExperience').html();
 								++FPno
 								$('#addFPButton').before('<ul  ulType="workE" id="options_'+FPno+'"> '+infoStr+'</ul>')
@@ -245,8 +245,8 @@
 						function reViewED(){
 
 							var memberArr=[];
-							for(var i=0; i<familyData.length;i++){
-								var o = familyData[i];
+							for(var i=0; i<educationData.length;i++){
+								var o = educationData[i];
 								var infoStr=$('#education').html();
 								++FPno
 								$('#addFPButton').before('<ul  ulType="education" id="options_'+FPno+'"> '+infoStr+'</ul>')
