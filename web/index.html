@@ -141,7 +141,7 @@
 
 								memberArr.push("#options_"+FPno);
 								$("#options_"+FPno).find('input[name=SocName]').val(o.SocName);
-								$("#options_"+FPno).find('input[name=SocBirthday]').val(o.SocBirthday);
+								$("#options_"+FPno).find('input[name=SocBirthday]').val(get_date(o.SocBirthday));
 								$("#options_"+FPno).find('input[name=SocJob]').val(o.SocJob);
 								$("#options_"+FPno).find('input[name=SocDetail]').val(o.SocDetail);
 								$("#options_"+FPno).find('input[name=SocTel]').val(o.SocTel);
@@ -225,8 +225,8 @@
 								memberArr.push("#options_"+WEno);
 								$("#options_"+WEno).find('input[name=CompanyName]').val(o.CompanyName);
 								$("#options_"+WEno).find('input[name=WorkDuty]').val(o.WorkDuty);
-								$("#options_"+WEno).find('input[name=WorkStartDate]').val(o.WorkStartDate);
-								$("#options_"+WEno).find('input[name=WorkEndDate]').val(o.WorkEndDate);
+								$("#options_"+WEno).find('input[name=WorkStartDate]').val(get_date(o.WorkStartDate));
+								$("#options_"+WEno).find('input[name=WorkEndDate]').val(get_date(o.WorkEndDate));
 								$("#options_"+WEno).find('input[name=JobCity]').val(o.JobCity);
 								
 								$("#options_"+WEno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
@@ -1949,8 +1949,8 @@
 				<div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>	
 				<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input type="text" name="CompanyName" placeholder="请输入工作单位"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>职&nbsp;&nbsp;务:&nbsp;&nbsp;</b><input type="text" name="WorkDuty" placeholder="请输入职务"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>开始日期:&nbsp;&nbsp;</b><input type="text" name="WorkStartDate" placeholder="请输入开始日期"></li>
-				<li><b><s1>&nbsp;*&nbsp;</s1>结束日期:&nbsp;&nbsp;</b><input type="text" name="WorkEndDate" placeholder="请输入结束日期"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>开始日期:&nbsp;&nbsp;</b><input class="Wdate" type="text" onClick="WdatePicker()" name="WorkStartDate" placeholder="请输入开始日期"></li>
+				<li><b><s1>&nbsp;*&nbsp;</s1>结束日期:&nbsp;&nbsp;</b><input class="Wdate" type="text" onClick="WdatePicker()" name="WorkEndDate" placeholder="请输入结束日期"></li>
 				<li><b><s1>&nbsp;*&nbsp;</s1>国&nbsp;&nbsp;家:&nbsp;&nbsp;</b>
 				<select name="JobCountry" id="JobCountry">
 					<option value="">-请选择-</option>

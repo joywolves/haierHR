@@ -40,7 +40,9 @@ function istel(txttel)
 	return regx.test(txttel);
 }
 //点击递交按钮是需要全面校验并给出缺陷提示，点击局部保存按钮时只处理对应区域的内容保存处理
-function check_post_data(){
+
+//基本信息的校验
+function check_post_data_base(){
 	if(get_select("Gender")=="选择性别"){
 		  alert("请选择性别！");
 		  return false;
@@ -98,10 +100,10 @@ function check_post_data(){
 		 return false;
 	  }
 	}
-	
-	
-   //附加个人信息
-   	if(get_select("LCountryCode")==""){
+}
+//附加个人信息
+function check_post_data_add(){
+	   	if(get_select("LCountryCode")==""){
 	  alert("居住国家不能为空！");
 	  return false;
 	}
@@ -157,6 +159,14 @@ function check_post_data(){
 	  alert("何时何处何原因受过处分不能为空！");
 	  return false;
 	}
+}
+
+
+function check_post_data(){
+	//基本信息的校验
+	check_post_data_base();
+   //附加个人信息
+	check_post_data_add();
 	
 
 }
