@@ -220,7 +220,7 @@
 								var o = experienceData[i];
 								var infoStr=$('#workExperience').html();
 								++FPno
-								$('#addFPButton').before('<ul  ulType="workE" id="options_'+FPno+'"> '+infoStr+'</ul>')
+								$('#weButton').before('<ul  ulType="workE" id="options_'+FPno+'"> '+infoStr+'</ul>')
 
 								memberArr.push("#options_"+FPno);
 								$("#options_"+FPno).find('input[name=CompanyName]').val(o.CompanyName);
@@ -249,7 +249,7 @@
 								var o = educationData[i];
 								var infoStr=$('#education').html();
 								++FPno
-								$('#addFPButton').before('<ul  ulType="education" id="options_'+FPno+'"> '+infoStr+'</ul>')
+								$('#edButton').before('<ul  ulType="education" id="options_'+FPno+'"> '+infoStr+'</ul>')
 
 								memberArr.push("#options_"+FPno);
 								$("#options_"+FPno).find('input[name=EnterSchoolDate]').val(o.EnterSchoolDate);
@@ -811,7 +811,6 @@
 					<li><b><s1>&nbsp;*&nbsp;</s1>移动电话:&nbsp;&nbsp;</b><input id="Phone" type="text" placeholder="请输入移动电话"></li>
 				
 					<div class="buttonType" onClick="saveItem1()"><span class="but green">保存</span></div>
-					<div class="buttonType" onClick="reView()"><span class="but green">测试</span></div>
 				
 				</ul>
 			</li>
@@ -1206,9 +1205,8 @@
 					</li>
 				
 				
-					<div class="buttonType" onClick="addED(this)"><span class="but">添加</span></div>
+					<div class="buttonType" id="edButton" onClick="addED(this)"><span class="but">添加</span></div>
 					<div class="buttonType" onClick="saveItem3()"><span class="but green">保存</span></div>
-					<div class="buttonType" onClick="saveED()"><span class="but green">测试</span></div>
 					
 					<!--div class="buttonType" onClick="saveFP(this)"><span class="but green">保存</span></div-->
 				</ul>
@@ -1220,9 +1218,8 @@
 				</label>
 				<ul class="options">
 					<li><b><s1>&nbsp;(请从参加工作开始写起)&nbsp;</s1></b></li>
-					<div class="buttonType" onClick="addWE(this)"><span class="but">添加</span></div>
+					<div class="buttonType" id="weButton" onClick="addWE(this)"><span class="but">添加</span></div>
 					<div class="buttonType" onClick="saveItem4()"><span class="but green">保存</span></div>
-					<div class="buttonType" onClick="saveWE()"><span class="but green">测试</span></div>
 				</ul>
 			</li>
 			<li class="block" id="familyPersionDiv">
