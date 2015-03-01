@@ -121,8 +121,26 @@
 								++FPno
 								$('#addFPButton').before('<ul  ulType="familyP" id="options_'+FPno+'"> '+infoStr+'</ul>')
 								
+								var testStr = 'name'+o.SocName+
+								'SocBirthday'+o.SocBirthday+
+								'SocJob'+o.SocJob+
+								'SocDetail'+o.SocDetail+
+								'SocTel'+o.SocTel+
+								'SocHaierBU'+o.SocHaierBU+
+								'SocDetail'+o.SocDetail+
+
+								'SocType'+o.SocType+
+								'Gender'+o.Gender+
+								'CitizenShip'+o.CitizenShip+
+								'SocProvince'+o.SocProvince+
+								'SocIsInHaier'+o.SocIsInHaier+
+								'SocCity'+o.SocCity;
+								alert(testStr);
+
+
+
 								memberArr.push("#options_"+FPno);
-								$("#options_"+FPno).find('input[name=SocName]').val(o.SocType);
+								$("#options_"+FPno).find('input[name=SocName]').val(o.SocName);
 								$("#options_"+FPno).find('input[name=SocBirthday]').val(o.SocBirthday);
 								$("#options_"+FPno).find('input[name=SocJob]').val(o.SocJob);
 								$("#options_"+FPno).find('input[name=FFDetailAddress]').val(o.SocDetail);
@@ -149,6 +167,8 @@
 									createSelect(selects[i],i);
 								}
 							}
+
+
 						}
 
 						
@@ -1049,7 +1069,7 @@
 				<i class="jt-down"><i id="triangle-down"> </i></i>
 				</label>
 				<ul class="options">
-					<div class="buttonType" onClick="addFP(this)"><span class="but">添加</span></div>
+					<div id="addFPButton" class="buttonType" onClick="addFP(this)"><span class="but">添加</span></div>
 					<div class="buttonType" onClick="saveItem5()"><span class="but green">保存</span></div>
 				</ul>
 			</li>

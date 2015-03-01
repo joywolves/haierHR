@@ -507,7 +507,7 @@ var table;
 
 	if(data["T_EC_EntrySocialRelation"]){
 		familyData = data["T_EC_EntrySocialRelation"];
-		alert("--?"+JSON.stringify(familyData));
+		alert("familyData--?"+JSON.stringify(familyData));
 	}
 	reView();
 	//...set html val by sql data

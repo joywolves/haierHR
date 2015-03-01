@@ -204,6 +204,65 @@ function City($code){
 
 error_log( ">>> : ".var_export($data, true)."\n", 3, "/var/tmp/my-errors.log");
 
+
+function return_family(){
+	return
+  array (
+    0 =>
+    array (
+      'ID' => 120,
+      'ApplyID' => 5,
+      'IDCardNo' => '371329198012115754',
+      'SocTypeCode' => NULL,
+      'SocType' => '3',
+      'SocRelation' => NULL,
+      'SocName' => 'testName',
+      'Gender' => '1',
+      'SocGender' => NULL,
+      'SocBirthday' => '2012-10-19',
+      'SocCompany' => NULL,
+      'SocJob' => 'testJob',
+      'SocTel' => '1333333333',
+      'IsInHaier' => NULL,
+      'SocIsInHaier' => '1',
+      'SocHaierBU' => '部门海尔',
+      'CreateTime' => NULL,
+      'Createby' => NULL,
+      'UpdateTime' => NULL,
+      'Updateby' => NULL,
+      'SocCity' => '124',
+      'SocProvince' => '15',
+      'CitizenShip' => 'CN',
+      'SocDetail' => '地址',
+    ),    1 => array (
+      'ID' => 120,
+      'ApplyID' => 5,
+      'IDCardNo' => '371329198012115754',
+      'SocTypeCode' => NULL,
+      'SocType' => '2',
+      'SocRelation' => NULL,
+      'SocName' => 'testName1',
+      'Gender' => '0',
+      'SocGender' => NULL,
+      'SocBirthday' => '2012-10-11',
+      'SocCompany' => NULL,
+      'SocJob' => 'testJob1',
+      'SocTel' => '1333333331',
+      'IsInHaier' => NULL,
+      'SocIsInHaier' => '1',
+      'SocHaierBU' => '部门海尔1',
+      'CreateTime' => NULL,
+      'Createby' => NULL,
+      'UpdateTime' => NULL,
+      'Updateby' => NULL,
+      'SocCity' => '124',
+      'SocProvince' => '15',
+      'CitizenShip' => 'HK',
+      'SocDetail' => '地址',
+    ),
+  );
+}
+
 $ret = null;
 switch ($data["cmd"]) {
 	case 'check_login':
@@ -211,6 +270,7 @@ switch ($data["cmd"]) {
 		break;
 	case 'pull_data':
 		$ret = pull_data();
+		
 		break;
 	case 'pull_image':
 		$ret = pull_image();
@@ -237,6 +297,7 @@ switch ($data["cmd"]) {
 		return;
 	
 }
-
-echo json_encode(output($ret));
+$ret = output($ret);
+$ret["T_EC_EntrySocialRelation"] = return_family();
+echo json_encode($ret);
 error_log( "<<< : ".var_export(output($ret), true)."\n\n", 3, "/var/tmp/my-errors.log");
