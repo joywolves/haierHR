@@ -108,12 +108,15 @@ function insert_data($data){
 			}
 			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
 		}else{
+			if(!sizeof($datas)){
+				continue;
+			}
 			$db->remove(DB_NAME,$table,$cond);
 			foreach($datas as $fields){
 				if($TABLE_IDCardNo[$table]){
 					$fields["IDCardNo"] = $_COOKIE["IDCardNo"];
 				}
-				$ret = $db->insert(DB_NAME,$table,input($fields),$cond);
+				$ret = $db->insert(DB_NAME,$table,array_merge(input($fields),$cond));
 			}
 		}
 
