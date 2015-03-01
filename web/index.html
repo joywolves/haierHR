@@ -219,20 +219,20 @@
 							for(var i=0; i<experienceData.length;i++){
 								var o = experienceData[i];
 								var infoStr=$('#workExperience').html();
-								++FPno
-								$('#weButton').before('<ul  ulType="workE" id="options_'+FPno+'"> '+infoStr+'</ul>')
+								++WEno
+								$('#weButton').before('<ul  ulType="workE" id="options_'+WEno+'"> '+infoStr+'</ul>')
 
-								memberArr.push("#options_"+FPno);
-								$("#options_"+FPno).find('input[name=CompanyName]').val(o.CompanyName);
-								$("#options_"+FPno).find('input[name=WorkDuty]').val(o.WorkDuty);
-								$("#options_"+FPno).find('input[name=WorkStartDate]').val(o.WorkStartDate);
-								$("#options_"+FPno).find('input[name=WorkEndDate]').val(o.WorkEndDate);
-								$("#options_"+FPno).find('input[name=JobCity]').val(o.JobCity);
+								memberArr.push("#options_"+WEno);
+								$("#options_"+WEno).find('input[name=CompanyName]').val(o.CompanyName);
+								$("#options_"+WEno).find('input[name=WorkDuty]').val(o.WorkDuty);
+								$("#options_"+WEno).find('input[name=WorkStartDate]').val(o.WorkStartDate);
+								$("#options_"+WEno).find('input[name=WorkEndDate]').val(o.WorkEndDate);
+								$("#options_"+WEno).find('input[name=JobCity]').val(o.JobCity);
 								
-								$("#options_"+FPno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
+								$("#options_"+WEno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
 
-								$("#options_"+FPno).find('select[name=JobCountry] option[value="'+o.JobCountry+'"]').attr("selected",true);
-								$("#options_"+FPno).find('select[name=IndustryType] option[value="'+o.IndustryType+'"]').attr('selected',true);
+								$("#options_"+WEno).find('select[name=JobCountry] option[value="'+o.JobCountry+'"]').attr("selected",true);
+								$("#options_"+WEno).find('select[name=IndustryType] option[value="'+o.IndustryType+'"]').attr('selected',true);
 							}
 							for(var j=0; j<memberArr.length;j++){
 								selects=$(memberArr[j]).find('select');//获取select
@@ -248,19 +248,19 @@
 							for(var i=0; i<educationData.length;i++){
 								var o = educationData[i];
 								var infoStr=$('#education').html();
-								++FPno
-								$('#edButton').before('<ul  ulType="education" id="options_'+FPno+'"> '+infoStr+'</ul>')
+								++EDno
+								$('#edButton').before('<ul  ulType="education" id="options_'+EDno+'"> '+infoStr+'</ul>')
 
-								memberArr.push("#options_"+FPno);
-								$("#options_"+FPno).find('input[name=EnterSchoolDate]').val(o.EnterSchoolDate);
-								$("#options_"+FPno).find('input[name=GraduateDate]').val(o.GraduateDate);
-								$("#options_"+FPno).find('input[name=College]').val(o.College);
-								$("#options_"+FPno).find('input[name=Specialty]').val(o.Specialty);
-								$("#options_"+FPno).find('input[name=EduCertificer]').val(o.EduCertificer);
+								memberArr.push("#options_"+EDno);
+								$("#options_"+EDno).find('input[name=EnterSchoolDate]').val(o.EnterSchoolDate);
+								$("#options_"+EDno).find('input[name=GraduateDate]').val(o.GraduateDate);
+								$("#options_"+EDno).find('input[name=College]').val(o.College);
+								$("#options_"+EDno).find('input[name=Specialty]').val(o.Specialty);
+								$("#options_"+EDno).find('input[name=EduCertificer]').val(o.EduCertificer);
 								
-								$("#options_"+FPno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
+								$("#options_"+EDno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
 
-								$("#options_"+FPno).find('select[name=SchoolForms] option[value="'+o.SchoolForms+'"]').attr("selected",true);
+								$("#options_"+EDno).find('select[name=SchoolForms] option[value="'+o.SchoolForms+'"]').attr("selected",true);
 							}
 							for(var j=0; j<memberArr.length;j++){
 								selects=$(memberArr[j]).find('select');//获取select
