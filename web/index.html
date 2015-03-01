@@ -57,7 +57,7 @@
 							var obj = $('#familyPersionDiv ul ul[ultype=familyP]');
 							for(var i=0; i<obj.length;i++){
 								var tmp = {
-														"SocType":$(obj[i]).find('.select_option:eq(0) li[class="selected"]').attr('tValue'),
+														"SocTypeCode":$(obj[i]).find('.select_option:eq(0) li[class="selected"]').attr('tValue'),
 														"SocName":$(obj[i]).find('input[name=SocName]').val(),
 														"Gender":$(obj[i]).find('.select_option:eq(1) li[class="selected"]').attr('tValue'),
 														"SocBirthday":$(obj[i]).find('input[name=SocBirthday]').val(),
@@ -73,7 +73,7 @@
 													};
 								returnFamilyData.push(tmp)
 							}
-								//alert(returnFamilyData[0].SocType)
+								//alert(returnFamilyData[0].SocTypeCode)
 						}
 						
 						function delFP(_this){
@@ -129,7 +129,7 @@
 								'SocHaierBU'+o.SocHaierBU+
 								'SocDetail'+o.SocDetail+
 
-								'SocType'+o.SocType+
+								'SocTypeCode'+o.SocTypeCode+
 								'Gender'+o.Gender+
 								'CitizenShip'+o.CitizenShip+
 								'SocProvince'+o.SocProvince+
@@ -149,7 +149,7 @@
 								
 								$("#options_"+FPno).find('select').each(function(){$(this).find('option:selected').attr('selected',null);});
 
-								$("#options_"+FPno).find('select[name=SocType] option[value="'+o.SocType+'"]').attr("selected",true);
+								$("#options_"+FPno).find('select[name=SocTypeCode] option[value="'+o.SocTypeCode+'"]').attr("selected",true);
 								$("#options_"+FPno).find('select[name=Gender] option[value="'+o.Gender+'"]').attr('selected',true);
 								$("#options_"+FPno).find('select[name=CitizenShip] option[value="'+o.CitizenShip+'"]').attr('selected',true);
 								$("#options_"+FPno).find('select[name=SocProvince] option[value="'+o.SocProvince+'"]').attr('selected',true);
@@ -1483,7 +1483,7 @@
 			<ul class="options" id="familyPer" style="display:">
           <div class="buttonType" onClick="delFP(this)"><span class="but" style="background:red;">删除</span></div>
 					<li><b><s1>&nbsp;*&nbsp;</s1>成员类型:&nbsp;&nbsp;</b>
-					<select id="SocType" name="SocType">
+					<select id="SocTypeCode" name="SocTypeCode">
 					<option selected="selected" value="1">配偶</option>
 					<option value="2">子女</option>
 					<option value="11">父亲</option>
