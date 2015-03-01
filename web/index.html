@@ -610,7 +610,67 @@
 						<option value="320">重庆</option>
 					</select>
 					</li>				
-					<li><b><s1>&nbsp;*&nbsp;</s1>户口地址:&nbsp;&nbsp;</b><input id="HukouLocation" type="text" placeholder="请输入户口所在地"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>户口地址:&nbsp;&nbsp;</b>
+					
+					<select name="choose" id="LProvince">
+						<option value="1">北京</option>
+						<option value="2">天津</option>
+						<option value="3">河北</option>
+						<option value="4">山西</option>
+						<option value="5">内蒙古</option>
+						<option value="6">辽宁</option>
+						<option value="7">吉林</option>
+						<option value="8">黑龙江</option>
+						<option value="9">上海</option>
+						<option value="10">江苏</option>
+						<option value="11">浙江</option>
+						<option value="12">安徽</option>
+						<option value="13">福建</option>
+						<option value="14">江西</option>
+						<option value="15" selected="selected" >山东</option>
+						<option value="16">河南</option>
+						<option value="17">湖北</option>
+						<option value="18">湖南</option>
+						<option value="19">广东</option>
+						<option value="20">海南</option>
+						<option value="21">广西</option>
+						<option value="22">甘肃</option>
+						<option value="23">陕西</option>
+						<option value="24">新疆</option>
+						<option value="25">青海</option>
+						<option value="26">宁夏</option>
+						<option value="27">重庆</option>
+						<option value="28">四川</option>
+						<option value="29">贵州</option>
+						<option value="30">云南</option>
+						<option value="31">西藏</option>
+						<option value="32">台湾</option>
+						<option value="33">澳门</option>
+						<option value="34">香港</option>
+					</select>
+								
+					<select name="choose" id="LCityArea">
+						<option value="124">菏泽市</option>
+						<option value="125">济南市</option>
+						<option value="126">青岛市</option>
+						<option value="127">淄博市</option>
+						<option value="128">德州市</option>
+						<option value="129">烟台市</option>
+						<option value="130">潍坊市</option>
+						<option value="131">济宁市</option>
+						<option value="132">泰安市</option>
+						<option value="133">临沂市</option>
+						<option value="134">滨州市</option>
+						<option value="135">东营市</option>
+						<option value="136">威海市</option>
+						<option value="137">枣庄市</option>
+						<option value="138">日照市</option>
+						<option value="139">莱芜市</option>
+						<option value="140">聊城市</option>
+					</select>
+					</li>
+					
+					<input id="HukouLocation" type="text" placeholder="请输入户口所在地"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>身份证号:&nbsp;&nbsp;</b><input id="IdCardNo" type="text" disabled="disabled" placeholder="身份证号"></li>
 					<li><b><s1>&nbsp;&nbsp;&nbsp;</s1>护照号码:&nbsp;&nbsp;</b><input id="PassportNo" type="text" placeholder="请输入护照号码"></li>
 
@@ -970,7 +1030,7 @@
 					<option value="13">群众</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>入党派时间:&nbsp;&nbsp;</b><input class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入加入党派时间"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>入党派时间:&nbsp;&nbsp;</b><input id="JoinPartyDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入加入党派时间"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>专业技术职务任职资格:&nbsp;&nbsp;</b><input id="ProfessionQualification" type="text" placeholder="示例：高级工程师，没有填写“无”"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>授予时间:&nbsp;&nbsp;</b><input id="ProfessionAwardDate" class="Wdate" type="text" onClick="WdatePicker()" placeholder="请输入授予时间"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>爱好特长:&nbsp;&nbsp;</b><input id="SpeSkill" type="text" placeholder="没有请填写“无”"></li>
@@ -1138,6 +1198,7 @@
 			<!-- 内容开始 -->
 			<div class="TabContent">
 			  <div id="myTab1_Content0"> <br/>
+			
 				<h1>工资卡办理</h1><br/>
 				<p>如您本人有中国建设银行的储蓄卡：请在入职当月内登陆“人力资源信息网”补充上银行卡信息，具体地址：“人力资源信息网—我的空间—我的自助—银行卡信息”。 </p><br/>
 				<p>如您本人无中国建设银行的储蓄卡：有如下两种方案，请根据您的需求自行选择。 </p>
@@ -1148,6 +1209,7 @@
 			  </div>
 			  
 			  <div id="myTab1_Content1" class="none"><br/>
+				<div id="myTab_Content11">
 				<h1>关于保险、公积金、档案的处理：</h1><br/>
 				<p>◆保险</p>
 				<p>1.由新入职单位直接办理保险投缴业务。注：入职前需确认原单位已办理停保手续，以便新单位办理招用、保险投缴业务。</p>
@@ -1158,7 +1220,22 @@
 				<p>◆档案</p>
 				<p>需提供学籍档案、工作档案</p>
 				<p>如有任何疑问，请及时致电档案管理模块，电话：88938401</p><br/><br/><br/><br/><br/><br/>
+				</div>
+				
+				<div id="myTab_Content12">
+				<h1>关于保险、公积金、档案的处理：</h1><br/>
+				<p>◆保险</p>
+				<p>1.由新入职单位直接办理保险投缴业务。注：入职前需确认原单位已办理停保手续，以便新单位办理招用、保险投缴业务。</p>
+				<p>2.如需办理跨省市保险转移的，可提前咨询海尔集团人力服务热线0532-88931001或入职后咨询相关保险窗口。</p>
+				<p>◆公积金</p>
+				<p>1.原单位属青岛市范围内的，需要办理公积金转移：办理完入职手续后，直接到公积金窗口领取公积金转移函，交与原单位办理转移；未在青岛投缴公积金的，新单位根据户口性质直接办理公积金新开户业务</p>
+				<p>2.原单位非青岛市范围内的，公积金不转移</p>
+				<p>◆档案</p>
+				<p>1.曾经在青岛市范围内有就业单位的：需提供在青岛就业单位的档案（其中：招用人员登记表、劳动合同、解除劳动合同报告书、失业人员登记表是必要材料）</p>
+				<p>2.不在青岛市范围内有过就业单位的：不做要求</p><br/><br/><br/><br/><br/><br/>
+				</div>
 			  </div>
+			  
 			</div>
 		  </div>
 	</div>
