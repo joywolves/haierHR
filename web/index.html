@@ -214,7 +214,7 @@
 								//alert(returnEducationData[0].SchoolForms)
 						}
 						
-							function reViewWE(){
+						function reViewWE(){
 							var memberArr=[];
 							for(var i=0; i<experienceData.length;i++){
 								var o = experienceData[i];
@@ -252,8 +252,8 @@
 								$('#edButton').before('<ul  ulType="education" id="options_'+EDno+'"> '+infoStr+'</ul>')
 
 								memberArr.push("#options_"+EDno);
-								$("#options_"+EDno).find('input[name=EnterSchoolDate]').val(o.EnterSchoolDate);
-								$("#options_"+EDno).find('input[name=GraduateDate]').val(o.GraduateDate);
+								$("#options_"+EDno).find('input[name=EnterSchoolDate]').val(get_date(o.EnterSchoolDate));
+								$("#options_"+EDno).find('input[name=GraduateDate]').val(get_date(o.GraduateDate));
 								$("#options_"+EDno).find('input[name=College]').val(o.College);
 								$("#options_"+EDno).find('input[name=Specialty]').val(o.Specialty);
 								$("#options_"+EDno).find('input[name=EduCertificer]').val(o.EduCertificer);
@@ -283,7 +283,7 @@
 	<div class="header">
 		<div id="head_page0" class="headinfo">
 			<div id="preview"><a href="" class="headshow"><img id="imghead" src="img/headshow.png"></a></div>		
-
+				<div style="color: red;margin-top: 2px;">&nbsp;&nbsp;上传彩色一寸免冠</div>
 			<div class="content_person">
 
 				<h1 id="name_head">小小曹</h1>
@@ -295,6 +295,7 @@
 				 </form>
 				 <iframe src=""  width="0" height="0" style="display:none;" name="tarframe"></iframe>
 				<a href="" onClick="t_file.click()" class="load_tx"><img src="img/load_tx.png"></a> 
+
 			</div>			
 		</div>
 </div></div>
@@ -314,7 +315,7 @@
 				<h2 id="name_bm">PSI部门</h2>
 				<h2 id="name_zw">软件工程师</h2>
 				<a href="" onClick="t_file.click()" class="load_tx"><img src="img/load_tx.png"></a> 
-			</div>			
+			</div>				
 		</div>
 		<div class="instruction">
 			请完善以下个人信息，提交个人信息后，你只需携带相关入职资料到指定地点签订劳动合同。
@@ -1242,7 +1243,7 @@
 <div class="page2 hide">
 	<div>
 		<div class="header">
-		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
+		<a href="" class="logo_bt"><img src="img/logo_bt2.png"></a>    
 		<div class="headinfo hide">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">
@@ -1290,7 +1291,7 @@
 <div class="page3 hide">
 	<div>
 		<div class="header">
-		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
+		<a href="" class="logo_bt"><img src="img/logo_bt3.png"></a>    
 		<div class="headinfo hide">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">
@@ -1363,7 +1364,7 @@
 <div class="page4 hide">
 	<div>
 		<div class="header">
-		<a href="" class="logo_bt"><img src="img/logo_bt1.png"></a>    
+		<a href="" class="logo_bt"><img src="img/logo_bt4.png"></a>    
 		<div class="headinfo hide">
 			<a href="" class="headshow"><img src="img/headshow.png"></a> 
 			<div class="content_person">

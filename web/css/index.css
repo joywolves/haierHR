@@ -49,16 +49,16 @@ margin-top: -155px;
 .header .logo_bt{ display:block; width:100%; height:40px; overflow:hidden;  margin:0 0;} 
 .header .logo_bt img{ width:110px; height:40px;}
 
-#head_page0{margin-top:50px;z-index:99999}
+#head_page0{margin-top:0px;z-index:99999}
 .page0 .header{z-index:99999}
-#preview{width:110px;height:110px;}
+#preview{width:110px;height:110px;margin-top: 20px;}
 /*头像显示*/
-.header .headinfo{  position:relative; height:110px;overflow:hidden; margin:3% 0;}
+.header .headinfo{  position:relative; height:150px;overflow:hidden; margin:3% 0;}
 .header .headinfo .headshow img{ width:110px; height:110px;}
 .header .headinfo .load_tx img{ width:92px; height:30px;}
-.headshow{position:absolute;top:10%;}
+.headshow{position:absolute;}
 
-.content_person{position:relative;top:30%;left:50%;text-align:left;width:110px;height:110px;margin:-110px 0 0 0;}
+.content_person{position:relative;top:10%;left:50%;text-align:left;width:110px;height:110px;margin:-110px 0 0 0;}
 .content_person h1{font-size:18px;font-weight:bold;}
 .content_person h2{font-size:14px;margin:2px 0;}
 .instruction{line-height:20px;margin:122px 0 5% 0;}
