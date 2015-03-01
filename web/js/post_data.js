@@ -372,6 +372,8 @@ var T_EC_Resume = {};//外部简历---------------------------------------------
 	
 	
 	saveFP();
+	saveWE();
+	saveED();
 	var data = {}
 //	data["T_EC_Apply"] = T_EC_Apply; 主表只限于查询
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
