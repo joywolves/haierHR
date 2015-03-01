@@ -82,50 +82,7 @@ function pull_data()
 	}
 	return $datas;
 }
-function pull_image()
-{
-	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
-		return false;
-	}
-	$db = DB::getInstance();
-	$table = "T_EC_EntryPhoto";
-	$key = $TABLE_KEY[$table];
-	$cond = array(
-		$key => $_COOKIE[$key],
-	);
-	$ret = $db->find(DB_NAME,$table,array("*"),$cond);
-	if(is_array($ret) && sizeof($ret) >= 1){
-		$one = end($ret);
-		return $one;
-	}
-	return null;
-}
-//not test yet
-function insert_image($data){
-	global  $TABLE_KEY;
-	if(!isset($_COOKIE["ApplyID"]) || !isset($_COOKIE["ResumeID"])){
-		return false;
-	}
-	$db = DB::getInstance();
-    $filename = $_FILES["file"]["name"];
-    $tmp_filename = $_FILES["file"]["tmp_name"];
-    $datastring = implode('', file ($tmp_filename));
-    $data = unpack("H*hex", $datastring);
-    $EmpPhoto = "0x".$data['hex'];
 
-    $table = "T_EC_EntryPhoto";
-    $fields = $data[$table];
-    $fields["ImgContent"] = $EmpPhoto;
-	$key = $TABLE_KEY[$table];
-	$cond = array(
-		$key => $_COOKIE["ApplyID"],
-	);
-	$fields[$key] = $_COOKIE["ApplyID"];
-    $ret = $db->update(DB_NAME,$table,$fields,$cond,true);
-
-    return $ret;
-}
 
 function insert_data($data){
 	global  $TABLE_KEY;
@@ -146,7 +103,6 @@ function insert_data($data){
 		// if(is_assoc($datas)){		
 		if($TABLE_ONE[$table]){
 			$fields = $datas;
-			$fields[$key] = $_COOKIE[$key];
 			if($TABLE_IDCardNo[$table]){
 				$fields["IDCardNo"] = $_COOKIE["IDCardNo"];
 			}
@@ -154,7 +110,6 @@ function insert_data($data){
 		}else{
 			$db->remove(DB_NAME,$table,$cond);
 			foreach($datas as $fields){
-				$fields[$key] = $_COOKIE[$key];
 				if($TABLE_IDCardNo[$table]){
 					$fields["IDCardNo"] = $_COOKIE["IDCardNo"];
 				}
@@ -212,12 +167,7 @@ switch ($data["cmd"]) {
 	case 'pull_data':
 		$ret = pull_data();
 		break;
-	case 'pull_image':
-		$ret = pull_image();
-		break;
-	case 'insert_image':
-		$ret = insert_image($data["data"]);
-		break;
+
 	case 'insert_data':
 		$ret = insert_data($data["data"]);
 		break;

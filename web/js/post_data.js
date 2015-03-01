@@ -313,7 +313,7 @@ function post_data(){
 	T_EC_EmpDetail["MarriageDate"] = $("#MarriageDate").val();       //结婚日期
 	T_EC_EmpDetail["ChildNo"] = $("#ChildNo").val();      			 //子女数量	
 	T_EC_EmpDetail["Email"] = $("#Email").val();      				 //Email 
-	T_EC_EmpDetail["ZipCode"] = $("#ZipCode").val();      			 //邮政编码 
+	// T_EC_EmpDetail["ZipCode"] = $("#ZipCode").val();      			 //邮政编码 
 	
 	T_EC_EmpDetail["FirstWorkDate"] = $("#FirstWorkDate").val();     //参加工作时间
 	T_EC_EmpDetail["Phone"] = $("#Phone").val();                     //移动电话
@@ -364,7 +364,7 @@ var T_EC_EntryEmpInfoExtra = {};//个人信息拓展表-------------------------
 	
 var T_EC_Resume = {};//外部简历---------------------------------------------	
 //	T_EC_Resume["PartyShipName"] = get_select("PartyShipName");            //政治面貌
-	
+	T_EC_Resume["ZipCode"] = $("#ZipCode").val();      			 //邮政编码 
 	
 	
 	
@@ -374,6 +374,7 @@ var T_EC_Resume = {};//外部简历---------------------------------------------
 	data["T_EC_EmpDetail"] = T_EC_EmpDetail;
 	data["T_EC_EntryEmpInfo"] = T_EC_EntryEmpInfo;
 	data["T_EC_EntryEmpInfoExtra"] = T_EC_EntryEmpInfoExtra;
+	data["T_EC_Resume"] = T_EC_Resume;
 	if("undefined" != typeof returnFamilyData){
 		data["T_EC_EntrySocialRelation"] = returnFamilyData;
 	}
