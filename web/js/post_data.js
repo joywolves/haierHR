@@ -190,6 +190,33 @@ function set_select_special(id,val) {
 			$("#ChildNo").parent("li").removeClass("hide");
 		}
 	}
+	if(id == "Party"){
+		if(val == 13){	//入党时间处理
+			$("#JoinPartyDate").parent("li").addClass("hide");
+			
+		}else{
+			$("#JoinPartyDate").parent("li").removeClass("hide");
+			
+		}
+	}
+	if(id == "SchoolForms"){
+		if(val == 01|| val ==02|| val ==03){	//学历专业处理
+			$("#Specialty").parent("li").addClass("hide");
+			
+		}else{
+			$("#Specialty").parent("li").removeClass("hide");
+			
+		}
+	}
+	if(id == "SchoolForms"){
+		if(val == 01){	//档案处理
+			$("#Specialty").parent("li").addClass("hide");
+			
+		}else{
+			$("#Specialty").parent("li").removeClass("hide");
+			
+		}
+	}
 }
 //设置sect的值
 function set_select (id,val) {
