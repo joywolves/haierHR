@@ -323,6 +323,7 @@ function post_data(){
 	T_EC_EmpDetail["IsArmy"] = get_select("IsArmy");             //服军役
 	T_EC_EmpDetail["LDetailAddress"] = $("#LDetailAddress").val();   //详细居住地址
 	T_EC_EmpDetail["Party"] = get_select("Party");             //政治面貌
+	T_EC_EmpDetail["JoinPartyDate"] = $("#JoinPartyDate").val();                 //加入党派时间
 	T_EC_EmpDetail["EducationType"] = get_select("EducationType");             //学历
 	T_EC_EmpDetail["EduEndDate"] = $("#EduEndDate").val();           //毕业日期
 	T_EC_EmpDetail["GCNo"] = $("#GCNo").val();                       //毕业证书编号
@@ -488,11 +489,12 @@ var table;
 		set_select("LProvince",table["LProvince"]);	        //居住省份
 		set_select("LCityArea",table["LCityArea"]);	        //居住城市
 		set_select("IsArmy",table["IsArmy"]);	        		//服军役
+		$("#EduEndDate").val(get_date(table["EduEndDate"]));	
 		$("#LDetailAddress").val(table["LDetailAddress"]);	//详细居住地址
 		set_select("Party",table["Party"]);			  //政治面貌
-		
+		$("#JoinPartyDate").val(get_date(table["JoinPartyDate"]));	        //加入党派时间		
 		set_select("EducationType",table["EducationType"]);	        		//学历
-		$("#EduEndDate").val(get_date(table["EduEndDate"]));	        //毕业日期
+
 		$("#GCNo").val(table["GCNo"]);	                    //毕业证书编号
 		$("#GCOrg").val(table["GCOrg"]);	                //毕业证书发证机关
 		$("#FirstDegree").val(table["FirstDegree"]);	    //第一学位
