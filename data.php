@@ -26,6 +26,9 @@ function is_assoc ($arr) {
 
 function check_login($code)
 {
+	if(!$code){
+		return false;
+	}
 	$db = DB::getInstance();
 	//导入人员明细
 	$T_EC_Resume = array();
