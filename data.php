@@ -108,7 +108,7 @@ function insert_data($data){
 			}
 			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
 		}else{
-			if(!sizeof(datas)){
+			if(!sizeof($datas)){
 				continue;
 			}
 			$db->remove(DB_NAME,$table,$cond);
