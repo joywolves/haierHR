@@ -65,7 +65,7 @@
 														"SocJob":$(obj[i]).find('input[name=SocJob]').val(),
 														"SocProvince":$(obj[i]).find('.select_option:eq(3) li[class="selected"]').attr('tValue'),
 														"SocCity":$(obj[i]).find('.select_option:eq(4) li[class="selected"]').attr('tValue'),
-														"FFDetailAddress":$(obj[i]).find('input[name=FFDetailAddress]').val(),
+														"SocDetail":$(obj[i]).find('input[name=SocDetail]').val(),
 														"SocTel":$(obj[i]).find('input[name=SocTel]').val(),
 														"SocCompany":$(obj[i]).find('input[name=SocCompany]').val(),
 														"IsInHaier":$(obj[i]).find('.select_option:eq(5) li[class="selected"]').attr('tValue'),
@@ -143,7 +143,7 @@
 								$("#options_"+FPno).find('input[name=SocName]').val(o.SocName);
 								$("#options_"+FPno).find('input[name=SocBirthday]').val(o.SocBirthday);
 								$("#options_"+FPno).find('input[name=SocJob]').val(o.SocJob);
-								$("#options_"+FPno).find('input[name=FFDetailAddress]').val(o.SocDetail);
+								$("#options_"+FPno).find('input[name=SocDetail]').val(o.SocDetail);
 								$("#options_"+FPno).find('input[name=SocTel]').val(o.SocTel);
 								$("#options_"+FPno).find('input[name=SocHaierBU]').val(o.SocHaierBU);
 								
@@ -1806,7 +1806,7 @@
 						<option value="140">聊城市</option>
 					</select>
 					</li>
-					<li><b><s1>&nbsp;*&nbsp;</s1>详细地址:&nbsp;&nbsp;</b><input id="FFDetailAddress"  name="FFDetailAddress" type="text" placeholder="请输入详细地址"></li>
+					<li><b><s1>&nbsp;*&nbsp;</s1>详细地址:&nbsp;&nbsp;</b><input id="SocDetail"  name="SocDetail" type="text" placeholder="请输入详细地址"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>电&nbsp;&nbsp;话:&nbsp;&nbsp;</b><input id="SocTel"  name="SocTel" type="text" placeholder="请输入电话"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>工作单位:&nbsp;&nbsp;</b><input id="SocCompany"  name="SocCompany" type="text" placeholder="请输入工作单位"></li>
 					<li><b><s1>&nbsp;*&nbsp;</s1>海尔员工:&nbsp;&nbsp;</b>
