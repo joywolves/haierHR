@@ -572,6 +572,7 @@ function Province () {
 	//	 alert("Data: " + data + "\nStatus: " + status);
 	});
 }
+//"select CityName,CityID from T_Intra_City where ProID= $code";
 function City (code,_obj) {
 	var msg = {}
 	msg["cmd"] = "City";
@@ -591,7 +592,7 @@ function City (code,_obj) {
 
 	for(var j=0;j<arr1.length;j++){
 	if(arr1[j] != ''){
-	$(selects).append("<option value='"+arr1[j].code+"'>"+arr1[j].city+"</option>");
+	$(selects).append("<option value='"+arr1[j].CityID+"'>"+arr1[j].CityName+"</option>");
 	}
 	}
 	$(selects).prev().remove();

@@ -26,6 +26,9 @@ function is_assoc ($arr) {
 
 function check_login($code)
 {
+	if(!$code){
+		return false;
+	}
 	$db = DB::getInstance();
 	//导入人员明细
 	$T_EC_Resume = array();
@@ -108,9 +111,9 @@ function insert_data($data){
 			}
 			$ret = $db->update(DB_NAME,$table,input($fields),$cond,true);
 		}else{
-			if(!sizeof($datas)){
-				continue;
-			}
+			// if(!sizeof($datas)){
+			// 	continue;
+			// }
 			$db->remove(DB_NAME,$table,$cond);
 			foreach($datas as $fields){
 				if($TABLE_IDCardNo[$table]){
@@ -186,8 +189,8 @@ switch ($data["cmd"]) {
 		// $ret = City($data["data"]);
 		$ret = array(
 				array(
-					"city" => "yantai",
-					"code" => "111",
+					"CityName" => "yantai",
+					"CityID" => "111",
 				),
 			);
 		break;
