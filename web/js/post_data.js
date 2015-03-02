@@ -440,7 +440,7 @@ function show_data(data){
 var table;
 	console.log(data)
 	//---------------------------------------------------------------------------
-	alert("data:  "+data);
+	//alert("data:  "+data);
 	//---------------------------------------------------------------------------
 	if(table = data["T_EC_EmpDetail"]){
 		//set_select("Gender",table["Gender"]);
