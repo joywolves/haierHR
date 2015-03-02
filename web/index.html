@@ -114,6 +114,7 @@
 						}
 						
 						function reView(){
+						return;
 							var memberArr=[];
 							for(var i=0; i<familyData.length;i++){
 								var o = familyData[i];
@@ -135,7 +136,7 @@
 								'SocProvince'+o.SocProvince+
 								'SocIsInHaier'+o.SocIsInHaier+
 								'SocCity'+o.SocCity;
-								alert(testStr);
+								//alert(testStr);
 
 
 
@@ -2356,7 +2357,7 @@ function formatProv(_objFLag){//_objFLag:目标块标识
 	
 }
 function getCityList(_obj,_pid){
-	alert("------------------------");
+	//alert("------------------------");
 	return City(_pid,_obj);
 	//alert($(_obj).parent().parent().parent().next().html()+'||'+_pid)
 	selects = $(_obj)
