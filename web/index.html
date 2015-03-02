@@ -48,6 +48,7 @@
 							
 							selects=$("#options_"+FPno).find('select');//获取select
 							for(var i=0;i<selects.length;i++){
+								alert($(selects[i]).parent().html())
 								createSelect(selects[i],i);
 							}
 							formatProv("#options_"+FPno);
@@ -2310,7 +2311,7 @@ function createSelect(select_container,index){
 		$(this).addClass('selected').siblings().removeClass('selected');
 		var value=$(this).text();
 		//alert($(this).parent().parent().parent().html());
-		//alert("id:  "+$(this).parent().parent().parent().children("select").attr("id")+"  val:  "+$(this).attr("tvalue"));
+		alert("id:  "+$(this).parent().parent().parent().children("select").attr("id")+"  val:  "+$(this).attr("tvalue"));
 		set_select_special($(this).parent().parent().parent().children("select").attr("id"),$(this).attr("tvalue"));		
 		select_showbox.text(value);
 		ul_option.hide();
