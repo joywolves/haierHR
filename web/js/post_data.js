@@ -460,7 +460,16 @@ var table;
 		$("#rz_name").text(table["EmpName"]);
 		$("#name_head").text(table["EmpName"]);		//应聘者姓名
 		$("#EnglishName").val(table["EnglishName"]);		//英文名
-		$("#Gender").val(table["Gender"]);				//性别
+		$("#Gender").val(table["Gender"]);	
+
+			//性别
+			if(table["Gender"]==1){
+				$("#Gender").val("男");
+			}else if(table["Gender"]==2){
+				$("#Gender").val("女");
+			}else{
+				$("#Gender").val("--请选择--");
+			}
 		set_select("Nation",table["Nation"]);				//民族
 		set_select("CitizenShip",table["CitizenShip"]);		//国籍
 		set_select("IsAlone",table["IsAlone"]);       //独生子女
